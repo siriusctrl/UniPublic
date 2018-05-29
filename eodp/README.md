@@ -379,3 +379,94 @@ challenges involved
 
 --------
 ## LECTURE 16-18: DATA LINKAGE
+
+1. Data linkage problem
+    - combining related/equivalent records across data sources
+2. Why matching a database against itself can be regarded as a data linkage task
+    - business wishes to carry out an advertising campaign
+    - the customer database changes over time, people move address, change their names.
+    - duplicate records about individuals - business wishes to know if the same person appears more than once.
+3. Why record linkage is applied
+    - For businesses purpose, need to identify if two or more records fefer to the same individual.
+    - build connection between the similar record in separate table.
+4. Blocking
+    - process
+        - preprocessing
+            - clean the data
+        - Blocking
+            - represent complex records as simple values(blocks). Only score records with simple value in common.
+        - Scoring
+            - comparing two records and asses their similarity
+            - can use Jaccard similarity of edit distance here.
+        - Matching
+            - match sufficiently similar records
+        - Merging
+            - merge two group
+    - Why?
+        - since blocking is much faster than linear scan and compare (n*m), but blocking only takes (m/b\*n/b\*b = m\*n/b)
+    - challenges
+        - to determine the size of b
+            - when b is too small the speed is not significantly improved
+            - when b is too large the accuracy will drop dramaticaclly
+            - for a good blocking stategy(uniform spread across blocks), then accuracy may be almost as good as strategy without blocking, but much much faster.
+5. Privacy
+    - When important?
+        - Matched data is being passed to another organisation or being made public
+        - Data matching is being conducted across databases from different organisation.
+    - the objective of privacy preserving
+        - to protect sensitive informations
+6. One way hasing
+    - also means non invertible hash function
+    - for each organisation, applies a one way hash function to the attribute used to join the databases and shares its hashed values with other organisation. Each checks which ones match. These are linked records.
+    - Disadvantages
+        - little big difference results in a completely different output
+        - Dictionary attack: an organisation could mount a dictionary attack to "invert" the hash function. for example, organisation A scans the hashed values received from Organisation B. Checks if any match its hash dictionary. If yes, privacy is lost for those items.
+7. Third party protocol
+    - using salt
+        - organisation A and B concatenate a secret word to every name field in their data before hashing(known as salt). Organisation C does not know what this word is and thus can't perform a dictionary attack to "reverse" the hashed values it received. **when we send the databases to 3rd part are we going to include the name? even if it already been hashed or just the hashed value?**
+        - disadvantages
+            - may not robust to frequent attck,that is, 3rd party compares the distribution of hashed values to some known distribution. E.g. distribution of surename frequencies in a public database versus distribution of hash value. ***To prevent this, we also need to add some random record.***
+            - adding salt does not help two parties protocol **right?**
+8. Similar match
+    - using 2-grams to calculate the approximate similarity
+        - 2*(number of 2 common 2-grams)/ (total number of 2-grams in both string)
+9. Bloom filter
+    - how it works
+        - A bloom filter is an array of n bits, with all bits initially set to zero. We may store strings in the bloom filter by using hash functions H1...Hk to turn on certain bit. If a bit was set to 1 before, no change is made.
+        - similarity is (number of bits set to 1 in bot bloom filter) / (sum of 1 bitss in bot bloom filter)
+        - need to set the thread for similar comparison.
+    - how to protect string
+        - Very hard for third party to guess the exact word by only using the bloom filter but still perform similar to exact string compare. **right?**
+    - notice that chose a proper size of bloom filter and number of hash function is very important, when bloom filter is too small or use too many hash functions the comparison is useless since almost all string has full 1 bits in bloom filter.
+
+------
+## LECTURE 19-20 BLOCKCHAIN
+
+1. why blockchain
+    - remove the middle man, that is, no central, trusted point of control
+    - less administration, less bureaucracy
+    - less fees
+    - faster transactions
+    - more control over records handed to users
+    - ability to be anonymous
+    - users can verify data in the blockchain
+    - more secure solution(maybe)
+2. why secure
+    - each computer hold a copy of the ledger, the public ledger is called the blockchain (a file)
+    - file is a sequecen of blocks, each block contains a header and some data(list of transactions)
+    - block ID equals to a hash of its header
+    - each block contains the ID of its parent block
+    - therefore, any change will results in different hash results, and all of it child will change relatively
+3. advantage
+    - the advantage of this property is that the content is very hard to modify once it been created
+    - **anything more?**
+4. disadvantages
+    - after it created, if there is a mistake, it is very hard for us to correct
+    - **anything more?**
+5. understand how digital signatures be used to verify data on the blockchain
+    - using private key and public key, A place a digital signiture on a block, B can use public key to verfy if it is ture.
+6. how hashing can be used to make information on the blockchain private
+    - applies a hash to the fact then adds this hash output to the blockchain along with a digital signiture. No one can reverse the hash function to uncover the fact, and it store on the blockchain but privacy is preserved. Alternatively could encrypt the fact using Alice's public key.
+
+---------
+## LECTURE 21-22
