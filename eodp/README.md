@@ -10,6 +10,9 @@
 3. why it is useful?
 	- normally the raw data is not usable, including some wrong data and missing value
 	- we need to build connection beteween different data set in order to  implement anaylsis
+4. why it is challenging
+    - reformatting and validating data requires transforms, which is can be difficult to specify and evaluate
+    - converting data values to different types sometimes quite challenge
 
 ---------------------------------
 ### LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
@@ -30,11 +33,11 @@
 	- '*' zero or more repetitions
 	- '+' one or more repetitions
 	- '|' the or operator, used in conjunction with parantheses ()
-	- '[]' a set of character, e.g. [abcd] or [a-zA-Z]
+	- '\[\]' a set of character, e.g. \[abcd\] or \[a-zA-Z\]
 	- JA the pattern J followed immediately by A
 	- JA* the pattern J followed by one or more occurences of A
 	- (J|A)* Zero or more repetitions of 'J' or 'A'
-	- (J|A)+ One or more repetitions of 'J' or 'A' can also be writen as [JA]+
+	- (J|A)+ One or more repetitions of 'J' or 'A' can also be writen as \[JA\]+
 4. what is csv file, what is a spreadsheet, and difference between them
 	- csv is comma separated values
 	- spreadsheet is an electronic document in which data is arranged in the rows
@@ -43,11 +46,14 @@
 	- difference: csv file is human readable, versus binary xls(Excel)
 	- csv lack the formatting information of an xls file
 5. Motivation for XML and XML namespaces
-	-  both human and mechine readable format
-	- namespace declaration are used to qualify names with URI's.
+    - XML
+    	- **both human and mechine readable format.**
+        - allowing search engines or other tools to operate over a range of documents that vary in many respects but use common names for common element types
+    - XML namespace
+    	- namespace declaration are used to qualify names with URI's.
     A URI uniquely identifies a resource on the Web.
     Notice that a URI doesn't have to refer to a real Web resource.
-	- namespace can be used to descrive both elements and attributes.
+    	- namespace can be used to descrive both elements and attributes.
 6. differences between XML and HTML
 	- HTML tags are predefined tags where as XML tags are user defined tags.
 	- HTML tags are limited number of tags where as XML tags are extensible and user defined.
@@ -89,8 +95,9 @@
 9. XML documents namespace syntax and exampe
 	- xmlns:prefix="namespaceURI", for example, xmlns:a="http://info.gov.uk"
 	- example was shown above
-10. Why namespace?
+10. Why we need namespace?
     - define the scope of attributes or elements. **(right?)**
+    - **same as motivation of namespace i think**
 11. Difference between XML and JSON, and where they suit
 	- JSON dont have tags, instead, it use brackets to structure data
 	- JSON is simler and more compact/lightweight than XML and easier to parse,
@@ -242,10 +249,12 @@ would be useful
     - disadvantages: the ordering is very important, bad ordering may results in hard to find difference or similarity between items. (see the lecture example of iris species)
 5. why it is useful to perform clustering on a dataset and understand the
 challenges involved
-    - clustering is used to find sturecutre in unlabeled data
+    - clustering is used to find structure in unlabeled data
     - it can discover which set of data shows similar pattern
     - clustering is a major task in data analysis and visualisation
-    - what callenges **?**
+    - what callenges
+        - bad clustering may mislead us to find the structure of the data
+        - **anything more?**
 6. why it can bu useful to normalise each feature into the range \[0,1\] before computing Euclidean distance between vectors
     - make sure they are in the same scale **(right?)**
 7. k-means
