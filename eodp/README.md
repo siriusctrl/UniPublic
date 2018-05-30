@@ -13,6 +13,7 @@
 4. why it is challenging
     - reformatting and validating data requires transforms, which is can be difficult to specify and evaluate
     - converting data values to different types sometimes quite challenge
+    test
 
 ---------------------------------
 ### LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
