@@ -127,6 +127,14 @@ Improves readability - from a parser perspective short prefix is identical to fu
 		- Avoids tedium of typing by providing a mechanism for defining default namespace within a document so unqualified names automatically acquire this full qualification from parser perspective.
 
 11. Difference between XML and JSON, and where they suit
+- JSON SUMMARY:
+		• JavaScript Object Notation
+		• Lightweight, streamlined, standard method of data exchange
+		• Designed to speed up client/server interactions:
+			– By running in the client browser
+		• Native Javascript, so can be executed as code
+		• Lacks context and schema definitions
+		• Integral to the Big Data paradigm (NoSQL)
 - for JSON: 
 	
  ~~~JSON
