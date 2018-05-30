@@ -65,6 +65,8 @@
 	-  Use HTML for data that will be viewed in browser by humans, formatdd nicely.
      XML for applications such as data exchange, integration, export
      into other formats. where semantics is needed, etc.
+     	- HTML is about displaying data,hence static. XML is about carrying information,hence dynamic.
+	- HTML is not strict if the user does not use the closing tags. XML makes it mandatory for the user the close each tag that has been used.
 7. difference between XML attributes and elements, and when should use one is preferred over the other
 	- attributes are designed to contain data related to specific element or
     provide additional information about elements
