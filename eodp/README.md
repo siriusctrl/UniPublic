@@ -81,6 +81,15 @@
 	- An atrribute is something that is self-contained, i.e., a color, and ID,
     a name. Whereas, an element is something that does or could have attributes
     of its own or contain other elements.
+    	When shoud use elements instead of attributes?
+		Some of the problems with attributes are:
+		- attributes cannot contain multiple values (child elements can)
+		- attributes are not easily expandable (for future changes)
+		- attributes cannot describe structures (child elements can)
+		- attributes are more difficult to manipulate by program code
+		- attribute values are not easy to test against a DTD
+		- If you use attributes as containers for data, you end up with documents that are difficult to read and maintain. Try to use elements to describe data. Use attributes only to provide information that is not relevant to the data
+		
 8. XML documents example with attributes and name space
 	~~~XML
 	<?xml version="1.0" encoding="utf-8"?>
