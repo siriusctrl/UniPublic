@@ -13,7 +13,7 @@
 4. why it is challenging
     - reformatting and validating data requires transforms, which is can be difficult to specify and evaluate
     - converting data values to different types sometimes quite challenge
-    test
+    
 
 ---------------------------------
 ### LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
@@ -70,10 +70,10 @@
 	- HTML is not strict if the user does not use the closing tags. XML makes it mandatory for the user the close each tag that has been used.
 	
 7. difference between XML attributes and elements, and when should use one is preferred over the other
-	Attributes:
+    - Attributes:
 	- attributes give a little bit more infomation about a particular elements, more functionality. An attribute is an additional code within an opening element tag.
 	- When we use attributes, we are providing 2 infomation: attribute's name, and the value that we are assign to an attribute.
-	Difference:
+    - Difference:
 	- attributes are designed to contain data related to specific element or
     provide additional information about elements
 	- elements is the basic building block for XML, it can behave as
@@ -81,7 +81,7 @@
 	- An atrribute is something that is self-contained, i.e., a color, and ID,
     a name. Whereas, an element is something that does or could have attributes
     of its own or contain other elements.
-    	When shoud use elements instead of attributes?
+    - When shoud use elements instead of attributes?
 		Some of the problems with attributes are:
 		- attributes cannot contain multiple values (child elements can)
 		- attributes are not easily expandable (for future changes)
