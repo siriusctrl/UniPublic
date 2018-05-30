@@ -116,6 +116,9 @@
 10. Why we need namespace?
     - define the scope of attributes or elements. **(right?)**
     - **same as motivation of namespace i think**
+    - purpose
+		-XML Namespaces provide a method to avoid element name conflicts.
+
 11. Difference between XML and JSON, and where they suit
 	- JSON dont have tags, instead, it use brackets to structure data
 	- JSON is simler and more compact/lightweight than XML and easier to parse,
