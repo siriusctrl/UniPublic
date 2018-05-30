@@ -91,7 +91,7 @@
 		- If you use attributes as containers for data, you end up with documents that are difficult to read and maintain. Try to use elements to describe data. Use attributes only to provide information that is not relevant to the data
 		
 8. XML documents example with attributes and name space
-	~~~XML
+~~~XML
 	<?xml version="1.0" encoding="utf-8"?>
 
 	<q:queen title="Queen Elizabeth II" marriedTo="Philip, Duke of Edinburgh"
@@ -110,6 +110,7 @@
 	</q:queen>
 	<!-- notice that the indentation here is not necessary >
 	~~~
+
 9. XML documents namespace syntax and exampe
 	- xmlns:prefix="namespaceURI", for example, xmlns:a="http://info.gov.uk"
 	- example was shown above
@@ -136,8 +137,8 @@ Improves readability - from a parser perspective short prefix is identical to fu
 ]}
 ~~~
   
-	- for XML
-	~~~XML
+	- for XML:
+~~~XML
 	<employees>
     <employee>
         <firstName>John</firstName> <lastName>Doe</lastName>
@@ -150,6 +151,7 @@ Improves readability - from a parser perspective short prefix is identical to fu
     </employee>
 </employees>
 ~~~
+
 	- JSON dont have tags, instead, it use brackets to structure data
 	- JSON is simler and more compact/lightweight than XML and easier to parse,
     which originally designed to speed up interactions. Widely used for storing
