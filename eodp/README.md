@@ -109,7 +109,7 @@
 		<p:prince title="Edward, Earl of Wessex" />
 	</q:queen>
 	<!-- notice that the indentation here is not necessary >
-	~~~
+~~~
 
 9. XML documents namespace syntax and exampe
 	- xmlns:prefix="namespaceURI", for example, xmlns:a="http://info.gov.uk"
