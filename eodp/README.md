@@ -62,12 +62,18 @@
 	- HTML tags are meant for displaying the data but not for describing the data
     where as XML tags are meant for describing the data.
 	- HTML focuses on how data looks whereas XML focuses on what data is.
-	-  Use HTML for data that will be viewed in browser by humans, formatdd nicely.
+	- Use HTML for data that will be viewed in browser by humans, formatdd nicely.
      XML for applications such as data exchange, integration, export
      into other formats. where semantics is needed, etc.
-     	- HTML is about displaying data,hence static. XML is about carrying information,hence dynamic.
+     	
+	- HTML is about displaying data,hence static. XML is about carrying information,hence dynamic.
 	- HTML is not strict if the user does not use the closing tags. XML makes it mandatory for the user the close each tag that has been used.
+	
 7. difference between XML attributes and elements, and when should use one is preferred over the other
+	Attributes:
+	- attributes give a little bit more infomation about a particular elements, more functionality. An attribute is an additional code within an opening element tag.
+	- When we use attributes, we 
+	Difference:
 	- attributes are designed to contain data related to specific element or
     provide additional information about elements
 	- elements is the basic building block for XML, it can behave as
