@@ -72,7 +72,7 @@
 7. difference between XML attributes and elements, and when should use one is preferred over the other
 	Attributes:
 	- attributes give a little bit more infomation about a particular elements, more functionality. An attribute is an additional code within an opening element tag.
-	- When we use attributes, we 
+	- When we use attributes, we are providing 2 infomation: attribute's name, and the value that we are assign to an attribute.
 	Difference:
 	- attributes are designed to contain data related to specific element or
     provide additional information about elements
