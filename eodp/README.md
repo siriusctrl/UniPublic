@@ -126,12 +126,37 @@ Improves readability - from a parser perspective short prefix is identical to fu
 		- Avoids tedium of typing by providing a mechanism for defining default namespace within a document so unqualified names automatically acquire this full qualification from parser perspective.
 
 11. Difference between XML and JSON, and where they suit
+	- for JSON: 
+	
+ ~~~JSON
+{"employees":[
+    { "firstName":"John", "lastName":"Doe" },
+    { "firstName":"Anna", "lastName":"Smith" },
+    { "firstName":"Peter", "lastName":"Jones" }
+]}
+~~~
+  
+	- for XML
+	~~~XML
+	<employees>
+    <employee>
+        <firstName>John</firstName> <lastName>Doe</lastName>
+    </employee>
+    <employee>
+        <firstName>Anna</firstName> <lastName>Smith</lastName>
+    </employee>
+    <employee>
+        <firstName>Peter</firstName> <lastName>Jones</lastName>
+    </employee>
+</employees>
+~~~
 	- JSON dont have tags, instead, it use brackets to structure data
 	- JSON is simler and more compact/lightweight than XML and easier to parse,
     which originally designed to speed up interactions. Widely used for storing
     data in noSQL database.
 	- XML allows complex schema definitions (via re) and allows formal validation.
     Also, XML makes you consider the data design more closely.
+    
 12. eample of making JSON doc and converting to XML
   ~~~JSON
   {
