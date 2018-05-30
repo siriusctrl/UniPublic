@@ -219,12 +219,15 @@ Improves readability - from a parser perspective short prefix is identical to fu
     - data transfermation: maybe implement data transfermation or data normalization.
 3. terminologies explain: features, attributes, instances, objects.
     - features: the property of the data, normally is the columns of the data. For example, the height and weight of a person.
-    - attributes: same as features **(right?)**
+    - attributes: same as features
     - instances: data items (for the above example, just each person), normally represent number of rows
     - objects: same as instances
 4. the difference between categorical/discrete features versus continuous features
     - categorical features and discrete features are the same things. they normally imply individually separate features. For example, gender.
     - continuous features are not restricted to separate values, for example, the height of people.
+    - Discrete data can only take particular values. There may potentially be an infinite number of those values, but each is distinct and there's no grey area in between. Discrete data can be numeric -- like numbers of apples -- but it can also be categorical -- like red or blue, or male or female, or good or bad.
+    - Continuous data are not restricted to defined separate values, but can occupy any value over a continuous range. Between any two continuous data values there may be an infinite number of others. Continuous data are always essentially numeric.
+    
 5. why data might be missing, and the possible causes
     - malfunction of equipment (e.g. sensor)
     - not recorded due to misunderstanding
