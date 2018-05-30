@@ -117,7 +117,13 @@
     - define the scope of attributes or elements. **(right?)**
     - **same as motivation of namespace i think**
     - purpose
-		-XML Namespaces provide a method to avoid element name conflicts.
+		- XML Namespaces provide a method to avoid element name conflicts.
+    - why namespace useful?
+		- Facilitate use of different XML vocabularies in the same XML document by resolving conflicts stemming from identical tags being used in different vocabularies. The name clashes need to be averted. The namespace qualifier makes the tag globally unique, thus obviating any ambiguities. It is not unusual to have multiple vocabularies in a single document; for example XSLT stylesheet needs three different XML vocabularies so avoiding name clashes is of fundamental importance.
+		- Provides a simple, abbreviated, XML-compliant prefix for a unique uniform resource identifier (URI), thus avoiding syntactical difficulties stemming from non-compliant characters if one were forced to use full URI for qualifying tags.
+Improves readability - from a parser perspective short prefix is identical to full namespace name.
+		- Allows an organisation to have their distinct tags with distinct meanings through different namespaces associated with different URIs and they can all be called within same XML document., ie Adobe can have different tags for different image formats and they can all be used in a single document,
+		- Avoids tedium of typing by providing a mechanism for defining default namespace within a document so unqualified names automatically acquire this full qualification from parser perspective.
 
 11. Difference between XML and JSON, and where they suit
 	- JSON dont have tags, instead, it use brackets to structure data
