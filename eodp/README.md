@@ -136,10 +136,10 @@ Improves readability - from a parser perspective short prefix is identical to fu
     { "firstName":"Peter", "lastName":"Jones" }
 ]}
 ~~~
-  
-	- for XML:
+- for XML
+	
 ~~~XML
-	<employees>
+<employees>
     <employee>
         <firstName>John</firstName> <lastName>Doe</lastName>
     </employee>
@@ -151,14 +151,13 @@ Improves readability - from a parser perspective short prefix is identical to fu
     </employee>
 </employees>
 ~~~
-
-	- JSON dont have tags, instead, it use brackets to structure data
+.	- JSON dont have tags, instead, it use brackets to structure data
 	- JSON is simler and more compact/lightweight than XML and easier to parse,
     which originally designed to speed up interactions. Widely used for storing
     data in noSQL database.
 	- XML allows complex schema definitions (via re) and allows formal validation.
     Also, XML makes you consider the data design more closely.
-    
+
 12. eample of making JSON doc and converting to XML
   ~~~JSON
   {
