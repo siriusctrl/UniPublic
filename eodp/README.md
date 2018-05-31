@@ -9,17 +9,17 @@
     structuring, storage, visualisation and publishing.
 3. why it is useful?
 	- normally the raw data is not usable, including some wrong data and missing value
-	- we need to build connection beteween different data set in order to  implement anaylsis
+	- we need to build connection between different data set in order to  implement anaylsis
 4. why it is challenging
     - reformatting and validating data requires transforms, which is can be difficult to specify and evaluate
     - converting data values to different types sometimes quite challenge
-    
+
 
 ---------------------------------
 ### LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
 1. How is data stored and in what formats
-    - Structured: Relational databses, CSV
-	- Unstructured: text -- no Structure, harder to organise, lacks regularity and
+    - Structured: Relational databases, CSV
+    - Unstructured: text -- no Structure, harder to organise, lacks regularity and
     decomposable internal structure. Also very hard to process/search for information.
 	- Semi-structured: HTML, XML, JSON
 2. the role that relational databases play in data wrangling
@@ -65,10 +65,10 @@
 	- Use HTML for data that will be viewed in browser by humans, formatdd nicely.
      XML for applications such as data exchange, integration, export
      into other formats. where semantics is needed, etc.
-     	
+
 	- HTML is about displaying data,hence static. XML is about carrying information,hence dynamic.
 	- HTML is not strict if the user does not use the closing tags. XML makes it mandatory for the user the close each tag that has been used.
-	
+
 7. difference between XML attributes and elements, and when should use one is preferred over the other
     - Attributes:
 		- attributes give a little bit more infomation about a particular elements, more functionality. An attribute is an additional code within an opening element tag.
@@ -89,7 +89,7 @@
 		- attributes are more difficult to manipulate by program code
 		- attribute values are not easy to test against a DTD
 		- If you use attributes as containers for data, you end up with documents that are difficult to read and maintain. Try to use elements to describe data. Use attributes only to provide information that is not relevant to the data
-		
+
 8. XML documents example with attributes and name space
 ~~~XML
 	<?xml version="1.0" encoding="utf-8"?>
@@ -111,7 +111,7 @@
 	<!-- notice that the indentation here is not necessary >
 ~~~
 
-9. XML documents namespace syntax and exampe
+9. XML documents namespace syntax and example
 	- xmlns:prefix="namespaceURI", for example, xmlns:a="http://info.gov.uk"
 	- example was shown above
 10. Why we need namespace?
@@ -135,9 +135,9 @@ Improves readability - from a parser perspective short prefix is identical to fu
 	- Native Javascript, so can be executed as code
 	- Lacks context and schema definitions
 	- Integral to the Big Data paradigm (NoSQL)
-	
-- for JSON: 
-	
+
+- for JSON:
+
  ~~~JSON
 {"employees":[
     { "firstName":"John", "lastName":"Doe" },
@@ -146,7 +146,7 @@ Improves readability - from a parser perspective short prefix is identical to fu
 ]}
 ~~~
 - for XML
-	
+
 ~~~XML
 <employees>
     <employee>
@@ -160,14 +160,14 @@ Improves readability - from a parser perspective short prefix is identical to fu
     </employee>
 </employees>
 ~~~
-- JSON dont have tags, instead, it use brackets to structure data
-- JSON is simler and more compact/lightweight than XML and easier to parse,
+- JSON don't have tags, instead, it use brackets to structure data
+- JSON is similar and more compact/lightweight than XML and easier to parse,
     which originally designed to speed up interactions. Widely used for storing
     data in noSQL database.
 - XML allows complex schema definitions (via re) and allows formal validation.
     Also, XML makes you consider the data design more closely.
 
-12. eample of making JSON doc and converting to XML
+12. example of making JSON doc and converting to XML
   ~~~JSON
   {
       "id": "book001",
@@ -204,7 +204,7 @@ Improves readability - from a parser perspective short prefix is identical to fu
 ## LECTURE 4
 
 1. the motivation behind data preprocessing and data cleaning
-    - to impove the data quality from the following perspectives.
+    - to improve the data quality from the following perspectives.
     - Accuracy: correct or wrong, accurate or not.
     - Completeness: not recorded, unavilable.
     - Consistency: discrepancies in representaion.
@@ -227,7 +227,7 @@ Improves readability - from a parser perspective short prefix is identical to fu
     - continuous features are not restricted to separate values, for example, the height of people.
     - Discrete data can only take particular values. There may potentially be an infinite number of those values, but each is distinct and there's no grey area in between. Discrete data can be numeric -- like numbers of apples -- but it can also be categorical -- like red or blue, or male or female, or good or bad.
     - Continuous data are not restricted to defined separate values, but can occupy any value over a continuous range. Between any two continuous data values there may be an infinite number of others. Continuous data are always essentially numeric.
-    
+
 5. why data might be missing, and the possible causes
     - malfunction of equipment (e.g. sensor)
     - not recorded due to misunderstanding
@@ -275,24 +275,35 @@ would be useful
 
 1. what is a recommander system
     - normally is a system that give some advise of what should buy to the customer based on what they bought and what they like.
+
+
 2. collaborative filtering
     - make predictions about a user's missing data according to the behaviour of many other users
     - User based methods: Identify like-minded users
     - Item based methods: Identify similar items
     - Model (matrix) based methods: Solve an optimization problem and identify latent factors
     - difference:
-    		- Recommenders scale with the number of items or users they must deal with, so there are scenarios in which each type can perform better than the other
+    	- Recommenders scale with the number of items or users they must deal with, so there are scenarios in which each type can perform better than the other
 		- Similarity estimates between items are more likely to converge over time than similarities between users
 		-  We can compute and cache similarities that converge, which can give item based recommenders a performance advantage
 		-  Item based recommenders begin with a list of a user's preferred items and therefore do not need a nearest item neighborhood as user based recommenders do
-	
+        - model based method look at user and items in combination.
+
 3. Method 1 and Method 2
     - Method1: compute mean value for each user (2 in total in this example), and then compute and summing Euclidean distance between resulting vector.
     - Method2:compute and sum Euclidean distance between vectors, summing only pairs without missing values. Scale the result, according to percentage of pairs with a missing value, for example, if 6 results in total but 2 are missing, then the sum should be sacle up by 6/(6-2)
-    - when there are a lot of missing value, method 2 won't work.
+    - pro/cons:
+        - when there are a lot of missing value, method 2 (ignore the missing value) won't work.
+        - using method 1 (replace the missing value with mean) gonna change the distribution of the data.
 4. when performing user-user similarity, understand how to select neighbors and make a prediction of the missing item
     - find distance or compute user cluster offline, but it's really time consuming, since we should update the cluster when any customer buy a item.
-5. Item-Item based
+5. User based method summary:
+    - achieve good quality in practie.
+    - the more processing we push offline, the better the method scale.
+    - However:
+        - User preference is dynamic => High update frequency of offline-calculated information
+        - No recommendation for new users => cuz we dont know much about them yet.
+6. Item-Item based
     - search for simiarities among items
     - all computations can be done offline
     - item-item similarity is more stable than user-user similarity which no need for frequent updates
@@ -503,10 +514,11 @@ challenges involved
         - Dictionary attack: an organisation could mount a dictionary attack to "invert" the hash function. for example, organisation A scans the hashed values received from Organisation B. Checks if any match its hash dictionary. If yes, privacy is lost for those items.
 7. Third party protocol
     - using salt
-        - organisation A and B concatenate a secret word to every name field in their data before hashing(known as salt). Organisation C does not know what this word is and thus can't perform a dictionary attack to "reverse" the hashed values it received. **when we send the databases to 3rd part are we going to include the name? even if it already been hashed or just the hashed value?**
+        - organisation A and B concatenate a secret word to every name field in their data before hashing(known as salt). Organisation C does not know what this word is and thus can't perform a dictionary attack to "reverse" the hashed values it received. **when we send the databases to 3rd part are we going to include the name? even if it already been hashed or just the hashed value?**- we just give the hash things.
         - disadvantages
             - may not robust to frequent attck,that is, 3rd party compares the distribution of hashed values to some known distribution. E.g. distribution of surename frequencies in a public database versus distribution of hash value. ***To prevent this, we also need to add some random record.***
             - adding salt does not help two parties protocol **right?**
+            - it doesnt help to appro match
 8. Similar match
     - using 2-grams to calculate the approximate similarity
         - 2*(number of 2 common 2-grams)/ (total number of 2-grams in both string)
