@@ -5,14 +5,13 @@
 1. what is data wrangling?
     - The process of organising, converting, mapping data from one format into another
 2.  what activities it encompasses(include)
-	- This may include activites such as data integration, enrichment, aggregation
-    structuring, storage, visualisation and publishing.
+    - This may include activites such as data integration, enrichment, aggregation structuring, storage, visualisation and publishing.
 3. why it is useful?
 	- normally the raw data is not usable, including some wrong data and missing value
 	- we need to build connection beteween different data set in order to  implement anaylsis
 4. why it is challenging
-    - reformatting and validating data requires transforms, which is can be difficult to specify and evaluate
-    - converting data values to different types sometimes quite challenge
+    - reformatting and validating data requires transforms, which is can be difficult to specify and evaluate.
+    - converting data values to different types sometimes quite challenge.
 
 ---------------------------------
 ### LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
@@ -48,6 +47,7 @@
 5. Motivation for XML and XML namespaces
     - XML
     	- **both human and mechine readable format.**
+        - more flexible than csv
         - allowing search engines or other tools to operate over a range of documents that vary in many respects but use common names for common element types
     - XML namespace
     	- namespace declaration are used to qualify names with URI's.
@@ -69,9 +69,7 @@
     provide additional information about elements
 	- elements is the basic building block for XML, it can behave as
     containers to hold informations.
-	- An atrribute is something that is self-contained, i.e., a color, and ID,
-    a name. Whereas, an element is something that does or could have attributes
-    of its own or contain other elements.
+	- An atrribute is something that is self-contained, i.e., a color, and ID, a name. Whereas, an element is something that does or could have attributes of its own or contain other elements.
 8. XML documents example with attributes and name space
 	~~~XML
 	<?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +94,8 @@
 	- xmlns:prefix="namespaceURI", for example, xmlns:a="http://info.gov.uk"
 	- example was shown above
 10. Why we need namespace?
-    - define the scope of attributes or elements. **(right?)**
+    - define the scope of attributes or elements.
+    - to say somethings meaningful.
     - **same as motivation of namespace i think**
 11. Difference between XML and JSON, and where they suit
 	- JSON dont have tags, instead, it use brackets to structure data
@@ -152,12 +151,11 @@
 2. details about each step of data pre-preprocessing
     - data cleaning: transfer the raw data to useable data.
     - data integration: combine similar data from each dataset.
-    - data reduction: remove some unwanted or redundent data. Maybe delete some
-      real data or delete some features.
+    - data reduction: remove some unwanted or redundent data. Maybe delete some real data or delete some features.
     - data transfermation: maybe implement data transfermation or data normalization.
 3. terminologies explain: features, attributes, instances, objects.
     - features: the property of the data, normally is the columns of the data. For example, the height and weight of a person.
-    - attributes: same as features **(right?)**
+    - attributes: same as features
     - instances: data items (for the above example, just each person), normally represent number of rows
     - objects: same as instances
 4. the difference between categorical/discrete features versus continuous features
@@ -199,8 +197,8 @@ would be useful
     - global outlier: significantly deviate from the rest of the data set
     - contextual outlier: significantly deviate from the give contextual, for example, 5 degree for human body temperature.
 4. Tukey Boxplot
-    - Outlier(filled black) area: \>3\*IQR above third quartile or \>3\*IQR below 1st quartile (IQR is the distance between first and third quartile)
-    - Outlier(open black) area: \>1.5\*IQR above third quartile or \>1.5\*IQR below 1st quartile
+    - Outlier(filled black) area: \>3\*IQR above third quartile or \>3\*IQR below 1st quartile (IQR is the distance between first and third quartile).
+    - Suspect Outlier(open black) area: \>1.5\*IQR above third quartile or \>1.5\*IQR below 1st quartile.
 5. Histergrams
     - advantage: can clearly shows the distribution of the data, and outlier can be found by eyeballing.
     - disadvantages: Hard to choose an appropriate bin size for histograms,too small bin size will results in normal objects in empty or rare bins, false positive. Too big bin size will results in outliers in some frequent bins, false negative.
@@ -216,11 +214,13 @@ would be useful
     - Item based methods: Identify similar items
     - Model (matrix) based methods: Solve an optimization problem and identify latent factors
 3. Method 1 and Method 2
-    - Method1: compute mean value for each user (2 in total in this example), and then compute and summing Euclidean distance between resulting vector.
-    - Method2:compute and sum Euclidean distance between vectors, summing only pairs without missing values. Scale the result, according to percentage of pairs with a missing value, for example, if 6 results in total but 2 are missing, then the sum should be sacle up by 6/(6-2)
-    - when there are a lot of missing value, method 2 won't work.
+    - Method1: compute mean value for each user (2 in total in this example), and then compute and summing Euclidean distance between resulting vector. But it may change the distribution of the data.
+    - Method2:compute and sum Euclidean distance between vectors, summing only pairs without missing values. Scale the result, according to percentage of pairs with a missing value, for example, if 6 results in total but 2 are missing, then the sum should be sacle up by 6/(6-2). when there are a lot of missing value, method 2 won't work.
 4. when performing user-user similarity, understand how to select neighbors and make a prediction of the missing item
-    - find distance or compute user cluster offline, but it's really time consuming, since we should update the cluster when any customer buy a item.
+    - Use a method to calculate the similarity between you and other users.
+    - Then select the top k similar users and find the similarity.
+    - Then predict the missing value based on top k similar users.
+    - **but how to predict?**
 5. Item-Item based
     - search for simiarities among items
     - all computations can be done offline
@@ -229,7 +229,9 @@ would be useful
     - a circle, popular items been recommended --> users are more likely to give high rates to those item --> the popularity of these items increse.
     - Recommendar system(RS) has no understanding of the items, over and under recommending naturally occur as the system performing its job.
     - The approaches to address this is adding an extra level to manipulate the results from RS, to ensure the diversity (cover a board range of items) to prevent users get the same recommendation all the time.
-
+7. online and offline
+    - online is more conputational intense, is a real time calculation.
+    - offline did the calculation before, which means it will response quicker.
 -----
 ## LECTURE 6-8: visualisation
 
@@ -254,9 +256,12 @@ challenges involved
     - clustering is a major task in data analysis and visualisation
     - what callenges
         - bad clustering may mislead us to find the structure of the data
-        - **anything more?**
+        - define K
+        - what is the formula for distance
+        - what feature to use
 6. why it can bu useful to normalise each feature into the range \[0,1\] before computing Euclidean distance between vectors
-    - make sure they are in the same scale **(right?)**
+    - make sure they are in the same scale
+    - well contribution of distance, instead of bigger number comtribute more.
 7. k-means
     - algorithms (understand only)
         - select k seed points as the intial cluster centres
@@ -330,7 +335,7 @@ challenges involved
 ## LECTURE 13 AND 14: CLASSIFICATION AND REGRESSION TECHNIQUES
 
 1. Classification
-    - definiton: given a collection of records(training set), each record contains a set of attributes, one of the attributes is the class. Find a predictive model for class attributes as a function of the values of other attributes. **then what is the difference between this and prediction? Is this only implement on known data?**
+    - definiton: given a collection of records(training set), each record contains a set of attributes, one of the attributes is the class. Find a predictive model for class attributes as a function of the values of other attributes. **then what is the difference between this and prediction? Is this only implement on known data?** same thing! classification is to predict a category.
     - useful scenarios:
         - animal classification
         - bank classifying borrower
@@ -338,6 +343,7 @@ challenges involved
 2. Regression
     - given a collection of records each record contains a set of attributes, one of the attributes is the target variable. Regression is use other attributes to fit the target variable.
     - useful scenarios:
+        - predict a number/discrete data.
         - predicting ice-creams consumption from temperature
         - predict activity level of a target gene
 3. Decision Tree
@@ -432,10 +438,11 @@ challenges involved
         - Dictionary attack: an organisation could mount a dictionary attack to "invert" the hash function. for example, organisation A scans the hashed values received from Organisation B. Checks if any match its hash dictionary. If yes, privacy is lost for those items.
 7. Third party protocol
     - using salt
-        - organisation A and B concatenate a secret word to every name field in their data before hashing(known as salt). Organisation C does not know what this word is and thus can't perform a dictionary attack to "reverse" the hashed values it received. **when we send the databases to 3rd part are we going to include the name? even if it already been hashed or just the hashed value?**
+        - organisation A and B concatenate a secret word to every name field in their data before hashing(known as salt). Organisation C does not know what this word is and thus can't perform a dictionary attack to "reverse" the hashed values it received. When we send
         - disadvantages
             - may not robust to frequent attck,that is, 3rd party compares the distribution of hashed values to some known distribution. E.g. distribution of surename frequencies in a public database versus distribution of hash value. ***To prevent this, we also need to add some random record.***
-            - adding salt does not help two parties protocol **right?**
+            - adding salt does not help two parties protocol
+            - doesnt help approximate matching
 8. Similar match
     - using 2-grams to calculate the approximate similarity
         - 2*(number of 2 common 2-grams)/ (total number of 2-grams in both string)
@@ -445,7 +452,7 @@ challenges involved
         - similarity is (number of bits set to 1 in bot bloom filter) / (sum of 1 bitss in bot bloom filter)
         - need to set the thread for similar comparison.
     - how to protect string
-        - Very hard for third party to guess the exact word by only using the bloom filter but still perform similar to exact string compare. **right?**
+        - Very hard for third party to guess the exact word by only using the bloom filter but still perform similar to exact string compare.
     - notice that chose a proper size of bloom filter and number of hash function is very important, when bloom filter is too small or use too many hash functions the comparison is useless since almost all string has full 1 bits in bloom filter.
 
 ------
@@ -468,10 +475,10 @@ challenges involved
     - therefore, any change will results in different hash results, and all of it child will change relatively
 3. advantage
     - the advantage of this property is that the content is very hard to modify once it been created
-    - **anything more?**
+    - no central authority
 4. disadvantages
-    - after it created, if there is a mistake, it is very hard for us to correct
-    - **anything more?**
+    - after it created, if there is a mistake, it is very hard for us to correct.
+    - sometimes advatages can becomes disadvantages.
 5. understand how digital signatures be used to verify data on the blockchain
     - using private key and public key, A place a digital signiture on a block, B can use public key to verfy if it is ture.
 6. how hashing can be used to make information on the blockchain private
@@ -485,7 +492,7 @@ challenges involved
     - sensitive attributes
         - information that people don't wish to reveal (e.g. medical condition)
     - non-sensitive attributes
-        - information that people don't care reveal or not. **maybe?**
+        - information that people don't care reveal or not.
     - quasi identifier
         - a combination of non sensitive attributes that can be linked with external data to identify an individual (e.g. gender, age, zip code)
     - Explicit identifier
@@ -538,7 +545,7 @@ challenges involved
             - k=hgih: larger privacy loss, high utility
             - k=low: low privacy loss, lower utility
     - Global sensitivity (G)
-        - How much difference the presence of absence of an indivual could make to the result
+        - How much difference the presence or absence of an indivual could make to the result
         - can be calculated by look at the datasets
     - how much to add
         - depending on G/k, that is, large G and small k allows more noise to be added.
@@ -556,8 +563,8 @@ challenges involved
         - society
             - guide and regular
 2. appreciate the difference between the following two perspectives on the definition of (big) data analytics
-    - Perspective 1: The ability to collect, store, and process increasingly large and complex data sets from a variety of sources, into competitive advantage.
-    - Perspective 2: Data is contributed, collected, extracted, exchanged, sold, shared, and processed for the purpose of predicting and modifying human behaviour in the production of economic or social value
+    - Perspective 1: The ability to collect, store, and process increasingly large and complex data sets from a variety of sources, into competitive advantage. (more technology)
+    - Perspective 2: Data is contributed, collected, extracted, exchanged, sold, shared, and processed for the purpose of predicting and modifying human behaviour in the production of economic or social value. (more social)
     - p1 is a organization perspective, p2 is a social perspective
 3. summary of the 10 rules
     - rule 1
