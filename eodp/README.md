@@ -549,4 +549,111 @@ challenges involved
     - applies a hash to the fact then adds this hash output to the blockchain along with a digital signiture. No one can reverse the hash function to uncover the fact, and it store on the blockchain but privacy is preserved. Alternatively could encrypt the fact using Alice's public key.
 
 ---------
-## LECTURE 21-22
+## LECTURE 21-22 PRIVACY
+
+1. Individual's privacy may be uncovered by linking to an external dataset or by use of background or external knowledge
+2. Terms understandind
+    - sensitive attributes
+        - information that people don't wish to reveal (e.g. medical condition)
+    - non-sensitive attributes
+        - information that people don't care reveal or not. **maybe?**
+    - quasi identifier
+        - a combination of non sensitive attributes that can be linked with external data to identify an individual (e.g. gender, age, zip code)
+    - Explicit identifier
+        - Unique for an individual (e.g. passport number)
+3. K-anonymity
+    - A record satisfies k-anonymity if every record in the table is indistinguishable from at least k-1 other records with respect to every set of quasi-identifier attributes. Such a table is called a k-anonymous table.
+    - k-anonymity is susceptible to two tyoes of privacy attacks
+        - homogeneity attack
+            - k-anonymity can create groups that leak information due to leak of diversity in the sensitie attributes, which is caused by the sensitive information lack diversity when the attacker has some information about the person.
+        - background attack
+            - k-anonymity does not protect against attacks based on background knowledge. (e.g. Japanese have very low incidence of heart disease)
+4. I-diversity
+    - its a figure to indicate how sensitive attributes diverse within each group
+5. How does K-anoymity and I-diversity protect privacy
+    - with higher k and i, it makes the attacker much harder to find the sensitive information of individuals.
+6. Benefits of using and sharing people’s location data
+    - post on facebook or something like that
+    - use GPS
+    - use google map to find the nearest restaurant.
+7. Possible privacy concerns of people’s location data being shared
+    - under the potential of suffer inference attacks
+        - Home/work location pairs may lead to a small set of potential individuals
+        - regular visit place. (e.g Alice is Japanese, and regular visit heart hospital, so the user can be guessed.)
+        - learn about indivuals travlling habits.
+8. tradeoff to protect privacy
+    - anonymity: clocking
+        - K-anonymity
+            - individuals are k-anonymous if their location information cannot be distinguish from k-1 other indivuals
+        - Spatial cloaking
+            - Gruteser & Grunwald use quadtrees
+            - adapt the spatial precision of location information about a person according to the number of other people in the same quadrant
+        - Temporal cloaking
+            - Reduce the frequency of temporal information
+    - Obfuscation
+        - Idea
+            - Mask an individual's precise location
+            - Delibeately degrade the quality of information about an individual's location(imperfect information)
+            - identity can be revealed
+        - Assumption
+            - Spatial imperfection almost means privacy
+            - the greater the imperfect knowledge about a user's location, the greater the user's privacy
+9. Differential privacy
+    - What information is being protected
+        - feels safe their are not much difference whether or not I take part in the survey
+10. How much noise should be added?
+    - Privacy budget (K)
+        - how private we want the result to be (how hard for the attacker to guess the true result)
+        - A is the probability that result is R with me, B is the probability that results R without me. Choses k to gearantee that A <= 2^k * B
+            - k=0 No privacy loss, low utility
+            - k=hgih: larger privacy loss, high utility
+            - k=low: low privacy loss, lower utility
+    - Global sensitivity (G)
+        - How much difference the presence of absence of an indivual could make to the result
+        - can be calculated by look at the datasets
+    - how much to add
+        - depending on G/k, that is, large G and small k allows more noise to be added.
+        - but the average value of the noise is 0
+
+-----------
+## LECTURE 23 ETHICAL
+
+1. Stakeholder
+    - who
+        - indivual
+            - create big data
+        - organization
+            - own and benefit from data
+        - society
+            - guide and regular
+2. appreciate the difference between the following two perspectives on the definition of (big) data analytics
+    - Perspective 1: The ability to collect, store, and process increasingly large and complex data sets from a variety of sources, into competitive advantage.
+    - Perspective 2: Data is contributed, collected, extracted, exchanged, sold, shared, and processed for the purpose of predicting and modifying human behaviour in the production of economic or social value
+    - p1 is a organization perspective, p2 is a social perspective
+3. summary of the 10 rules
+    - rule 1
+        - acknowledge that data are people and can do harm
+        - all data are direct or indirect to people
+    - rule 2
+        - recognize that privacy is more than binary value
+    - rule 3
+        - guard against the reidentification of your data
+    - rule 4
+        - practie ethical data sharing
+            - seeking consent from participants to share data
+    - rule 5
+        - consider the strengths and limitations of your data, big does not automatically mean better
+    - rule 6
+        - debate the tough, ethical choices
+            - importance of debating the issues within groups of peers
+    - rule 7
+        - develop a code of conduct for your organization, research community or industry
+    - rule 8
+        - desing your data and systems for auditability
+            - plan for and welcome audits of your big data practices
+    - rule 9
+        - engage with the broader consequences of data and analysis practices
+        - that is, concern more about the society
+    - rule 10
+        - know when to break these rule
+        - that is, know when to ignore these rules
