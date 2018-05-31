@@ -281,10 +281,10 @@ would be useful
     - Item based methods: Identify similar items
     - Model (matrix) based methods: Solve an optimization problem and identify latent factors
     - difference:
-    	1) Recommenders scale with the number of items or users they must deal with, so there are scenarios in which each type can perform better than the other
-	2) Similarity estimates between items are more likely to converge over time than similarities between users
-	3) We can compute and cache similarities that converge, which can give item based recommenders a performance advantage
-	4) Item based recommenders begin with a list of a user's preferred items and therefore do not need a nearest item neighborhood as user based recommenders do
+    		- Recommenders scale with the number of items or users they must deal with, so there are scenarios in which each type can perform better than the other
+		- Similarity estimates between items are more likely to converge over time than similarities between users
+		-  We can compute and cache similarities that converge, which can give item based recommenders a performance advantage
+		-  Item based recommenders begin with a list of a user's preferred items and therefore do not need a nearest item neighborhood as user based recommenders do
 	
 3. Method 1 and Method 2
     - Method1: compute mean value for each user (2 in total in this example), and then compute and summing Euclidean distance between resulting vector.
