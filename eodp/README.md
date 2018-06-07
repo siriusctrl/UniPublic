@@ -99,7 +99,7 @@
     - **same as motivation of namespace i think**
 11. Difference between XML and JSON, and where they suit
 	- JSON dont have tags, instead, it use brackets to structure data
-	- JSON is simler and more compact/lightweight than XML and easier to parse,
+	- JSON is smaller and more compact/lightweight than XML and easier to parse,
     which originally designed to speed up interactions. Widely used for storing
     data in noSQL database.
 	- XML allows complex schema definitions (via re) and allows formal validation.
