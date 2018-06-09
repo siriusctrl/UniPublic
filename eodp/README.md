@@ -4,7 +4,7 @@
 ### LECTURE 1 ( concept of data wrangling)
 1. what is data wrangling?
     - The process of organising, converting, mapping data from one format into another
-2.  what activities it encompasses(include)
+2. what activities it encompasses(include)
     - This may include activites such as data integration, enrichment, aggregation structuring, storage, visualisation and publishing.
 3. why it is useful?
 	- normally the raw data is not usable, including some wrong data and missing value
@@ -12,6 +12,9 @@
 4. why it is challenging
     - reformatting and validating data requires transforms, which is can be difficult to specify and evaluate.
     - converting data values to different types sometimes quite challenge.
+5. why it is done
+    - make data more accessible
+    - have better insights about data
 
 ---------------------------------
 ### LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
@@ -34,7 +37,7 @@
 	- '|' the or operator, used in conjunction with parantheses ()
 	- '\[\]' a set of character, e.g. \[abcd\] or \[a-zA-Z\]
 	- JA the pattern J followed immediately by A
-	- JA* the pattern J followed by one or more occurences of A
+	- JA* the pattern J followed by zero or more occurences of A
 	- (J|A)* Zero or more repetitions of 'J' or 'A'
 	- (J|A)+ One or more repetitions of 'J' or 'A' can also be writen as \[JA\]+
 4. what is csv file, what is a spreadsheet, and difference between them
@@ -96,6 +99,7 @@
 10. Why we need namespace?
     - define the scope of attributes or elements.
     - to say somethings meaningful.
+    - allow multiple mark-up languages to be combined
     - **same as motivation of namespace i think**
 11. Difference between XML and JSON, and where they suit
 	- JSON dont have tags, instead, it use brackets to structure data
@@ -220,7 +224,7 @@ would be useful
     - Use a method to calculate the similarity between you and other users.
     - Then select the top k similar users and find the similarity.
     - Then predict the missing value based on top k similar users.
-    - **but how to predict?**
+    - **but how to predict?** (use weighted average, detailed calculations not examinable)
 5. Item-Item based
     - search for simiarities among items
     - all computations can be done offline
@@ -311,6 +315,8 @@ challenges involved
     - motivation: it's a systematical way to implement dimensionality reduction which is much better than doing it manually
     - PCA Idea: find the new axis line with the largest variance among data
     - not much infomation lost when drop pc2 in 2D plot since it contains the least variance
+    - disadvantage: can lose much information without care; takes too long for large dataset
+    - Second Principal Component: orthogonal to the first, capture as much of the rest variability as possible
 
 ------
 ## LECTURE 11 AND 12: CORRELATION
@@ -325,11 +331,15 @@ challenges involved
     - advantage: can easily find how data are related from the result
     - disadvantages: can only find linear relation
 4. Mutual Information(MI)
-    - preprocessing: continuous features are first discreted into bins
+    - detect non-linear, discrete features
+    - preprocessing: continuous features are first discreted into bins (by domain knowledge or equal width or equal frequency)
     - Entropy is a measuer used to assess the amount of uncertainty in an outcome
     - about how to calculate MI is on the formula sheet
-    - mutual information indicate that the amount of information shared between two variables X and Y
-    - difference with Pearson correlation: MI can measure non-linear relation
+    - mutual information indicate that the amount of information about X we gain from knowing Y
+    - Normalised mutual information: NMI can be used to provide a more interpretable measure of correlation than MI
+    - difference with Pearson correlation: 
+    1) MI can measure non-linear relation
+    2) MI is very effective for use with discrete features
 
 -------
 ## LECTURE 13 AND 14: CLASSIFICATION AND REGRESSION TECHNIQUES
