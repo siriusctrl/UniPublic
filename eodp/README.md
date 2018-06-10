@@ -381,9 +381,9 @@ challenges involved
         - May behave strangely for some types of features, for example student ID
 4. Metrics for performance evaluation
     - TP: should say yes, and we said yes.
-    - FN: should say yes, and we said no.
+    - FN: should say yes, but we said no.
     - FP: should say no, but we said yes.
-    - TN: should say no, but we said no.
+    - TN: should say no, and we said no.
     - first letter represent the result we get is right(T) or wrong(F), the second letter represent how right or wrong we are.
     - Accuracy formula is on the fomula sheet
     - the accuracy may misleading at here, it may not detect any other value in a dataset but still get very high accuracy. Therefore, we need other concept here, for example, recall rate here.
@@ -395,12 +395,24 @@ challenges involved
         - use class labels of nearest neighbors to determine the class label of unknown record
     - Advantage
         - easier to calculate than dicision tree
+	- can handle datasets with complex structure 
     - Disadvantages
         - hard to determine the size of k
             - if k is too small, sensitive to noise points
             - if k is too large, neighborhood may include points from other classes
+	- classification may be slow for large datasets
+	- need to store training data in order to make the prediction 
 6. why we need to split the dataset into training set and test set
-    - It's like hyou are asking the model to make predictions to data that it has seen before. Data that was used to create the model. It will give us good but not true results.
+    - Learn decision tree using training set and evaluate performance on the test set. This gives unbiased evaluation.
+7. appreciate the benefits and limitations of accuracy as a performance metric for classification 
+    - suppose there are 2 classes 0 and 1, with 9990 and 10 instances each
+    - can be misleading if all test cases are predicted as class 0
+8. understand why it is necessary to avoid using the test data (directly or indirectly), when constructing a model such as decision tree (from workshop)
+    - Look at test data in feature selection will provide information to the feature selection process that should not have been seen. Consequently the model that was trained using the results from the feature selection was developed on information that should not have been seen.  The reported accuracy will thus likely be over optimistic. 
+    - Test data missing value: Could either 
+    i) Impute the missing values and then use the decision tree (the merit of doing this will depend on the accuracy of imputation), or 
+    ii) When at prediction time we encounter a node in the decision tree which tests a variable A, and for that variable we have in our instance a missing value than all the possibilities are explored. 
+    - Thus, for each possible sub-node a prediction is made. We keep the distribution for each sub-node and we add them. Finally the class chosen for prediction is the class with the biggest density value. 
 
 --------
 ## LECTURE 16-18: DATA LINKAGE
@@ -422,25 +434,25 @@ challenges involved
             - represent complex records as simple values(blocks). Only score records with simple value in common.
         - Scoring
             - comparing two records and asses their similarity
-            - can use Jaccard similarity of edit distance here.
+            - can use Jaccard similarity or edit distance here.
         - Matching
             - match sufficiently similar records
         - Merging
-            - merge two group
+            - merge two groups, resolve conflicting attributes
     - Why?
         - since blocking is much faster than linear scan and compare (n*m), but blocking only takes (m/b\*n/b\*b = m\*n/b)
     - challenges
         - to determine the size of b
             - when b is too small the speed is not significantly improved
-            - when b is too large the accuracy will drop dramaticaclly
-            - for a good blocking stategy(uniform spread across blocks), then accuracy may be almost as good as strategy without blocking, but much much faster.
+            - when b is too large the accuracy will drop dramatically
+            - for a good blocking strategy(uniform spread across blocks), then accuracy may be almost as good as strategy without blocking, but much much faster.
 5. Privacy
     - When important?
         - Matched data is being passed to another organisation or being made public
         - Data matching is being conducted across databases from different organisation.
     - the objective of privacy preserving
-        - to protect sensitive informations
-6. One way hasing
+        - without revealing any information about individuals who do not get linked across the databases
+6. One way hashing
     - also means non invertible hash function
     - for each organisation, applies a one way hash function to the attribute used to join the databases and shares its hashed values with other organisation. Each checks which ones match. These are linked records.
     - Disadvantages
@@ -456,6 +468,7 @@ challenges involved
 8. Similar match
     - using 2-grams to calculate the approximate similarity
         - 2*(number of 2 common 2-grams)/ (total number of 2-grams in both string)
+	- easy comparison and effective method
 9. Bloom filter
     - how it works
         - A bloom filter is an array of n bits, with all bits initially set to zero. We may store strings in the bloom filter by using hash functions H1...Hk to turn on certain bit. If a bit was set to 1 before, no change is made.
@@ -527,7 +540,7 @@ challenges involved
         - Home/work location pairs may lead to a small set of potential individuals
         - regular visit place. (e.g Alice is Japanese, and regular visit heart hospital, so the user can be guessed.)
         - learn about indivuals travlling habits.
-8. tradeoff to protect privacy
+8. tradeoff to protect privacy (This part not examinable)
     - anonymity: clocking
         - K-anonymity
             - individuals are k-anonymous if their location information cannot be distinguish from k-1 other indivuals
@@ -579,7 +592,7 @@ challenges involved
 3. summary of the 10 rules
     - rule 1
         - acknowledge that data are people and can do harm
-        - all data are direct or indirect to people
+        - all data are direct or indirect to people (e.g. social media)
     - rule 2
         - recognize that privacy is more than binary value
     - rule 3
@@ -588,18 +601,19 @@ challenges involved
         - practie ethical data sharing
             - seeking consent from participants to share data
     - rule 5
-        - consider the strengths and limitations of your data, big does not automatically mean better
+        - consider the strengths and limitations of your data, big does not automatically mean better (Do not overstate clarity)
     - rule 6
         - debate the tough, ethical choices
             - importance of debating the issues within groups of peers
     - rule 7
-        - develop a code of conduct for your organization, research community or industry
+        - develop a code of conduct for your organization, research community or industry (e.g. terms of service)
     - rule 8
         - desing your data and systems for auditability
             - plan for and welcome audits of your big data practices
+	    - clarify how different datasets differ from each other
     - rule 9
         - engage with the broader consequences of data and analysis practices
         - that is, concern more about the society
     - rule 10
         - know when to break these rule
-        - that is, know when to ignore these rules
+        - that is, know when to ignore these rules (e.g. natural disaster)
