@@ -1,2 +1,2 @@
 # UniPublic
-Uni related resources public
+Uni related public resources
