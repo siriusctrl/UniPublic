@@ -118,6 +118,88 @@
 1. Association: When one class is contained by another, we always use an association.
 2. Aggregation: Different form of association, where one class "has" another class, but both exist independently. For example, pond has duck.
 3. Composition: Indicating one class cannot exist without the other. A Department is entirely dependent on a University to exist.
-4. 
 
-### Lecture 13:
+### Lecture 13: Generics
+1. ArrayList:
+    - a.add(index(not mendatory),content) to add content
+    - use a.got(index) to get the content at index
+    - use Collections.sort(a) to sort a ArrayList
+    - use a.remove(index) to remove the contect at index
+    - use a.contains(content) to detect if content is in the ArrayList
+    - use a.size() to return the size of the ArrayList
+    - can be iterated using for-each
+2. collections: A framework that permits storing, accessing and manipulating collections of similar objects.
+
+### Lecture 14: Exceptions
+1. Syndax Error: Errors where what you write isn't legal code; identified by the editor/compiler.
+2. Semantic Error: Code runs to completion, but results in incorrect output/operation; identified through software testing.
+3. Runtime Error: An error that causes your program to end prematurely(crash and burn); identified through execution.
+4. Exceptions: An error state created by a runtime error in your code; an exceptions. Can also represent an object created by JAVA to represet the error that was encountered.
+5. Exception Handling: Code that actively protects your program in the case of exceptions.
+6. the stucture is like try...catch...final...
+7. try: Attempt to execute some code that may result in an error state (exception).
+8. catch: Deal with the exception. This could be recovery (ask the user to input again, adjust an index) or failure (output an error message and exit).
+9. finally: Perform clean up (like closing files) assuming the code didn’t exit.
+10. throw: Respond to an error state by creating an exception object.
+11. throws: Indicate a method has the potential to create an exception, and can’t be bothered to deal with it, or that the exact response varies by application.
+12. Checked: Must be handled by the programmer explicitly by the programmer in some way; the compiler gives an error if a checked exception is ignored.
+13. Unchecked: Can be safely ignored by the programmer; most Java exceptions are unchecked, because you aren’t forced to protect against them.
+
+### Lecture 15: Testing
+1. Poor Design Symptoms
+    - Rigidity: Hard to modify the system because changes in one class/method cascade to many others.
+    - Fragility: Changing one part of the system causes unrelated part to break.
+    - Immobility: Cannot decompose the system into reusable modules.
+    - Viscosity: Writing "hacks" when adding code in order to preserve the design.
+    - Complexity: Lots of clever code that isn't necessary right now; premature optimisation is bad.
+    - Repetition: Code looks like it was written by Cut and Paste.
+    - Opacity: Lots of convoluted logic, design is hard to follow.
+2. GRASP Basic
+    - Cohesion: **Classes are designed to solve clear, focused problems.** The class' methods/attributes are related to and work towards, this objective. Design should have maximum cohesion.
+    - Coupling: **The degree of interaction between classes**; invoking another class' method or accessing/modifying its variable. Design should have minimum coupling.
+    - Open-Closed Principle: Classes should be open to extension, but closed to modification. (better to use inheritance instead of modify the original one)
+    - Abstraction: Solving problems by **creating abstract data types to represent problem components**
+        - Achieved in Java through classes, which represent data and actions.
+    - Encapsulation: The details of a class should be kept hidden or private, and the user's ability to access the hidden details is restricted or controlled. **Also known as data or information hidden.**
+    - Polymorphism: The ability to use an object or method in many different ways.
+        - achieved in Java through ad hoc (overloading), subtype (overriding, substitution), and parametric (generics) polymorphism.
+    - Delegation: **Keeping classes focused by passing work to other classes.** Computations should be performed in the class with the greatest amount of relevent information.
+3. Software Testing
+    - Unit: A Small, well-define component of a software system with one, or a small number, of responsibility.
+    - Unit Test: Verifying the operation of a unit by testing a single unit case(input/output), intending for it to fail.
+    - Unit Testing: Identifying bugs in software by subjecting every unit to a suite of tests.
+4. Unit tests
+    - Manual Testing: Testing code manually, in an ad-hoc manner. Generally difficult to reach all edge cases, and not scalable for large projects.
+    - Automated Testing: Testing code with automated, purpose built software. Generally faster, more reliable, and less reliant on humans.
+5. JUnit Automated Testing
+    - assert: A true or false statement that indicates the success or failure of a test case.
+    - TestCase class: A class dedicated to testing a single unit.
+    - TestRunner class: A class dedicated to executing the tests on a unit.
+    - Advantages:
+        - Easy to set up
+        - Scalable
+        - Repeatable
+        - Not human intensive
+        - Incredibly powerful
+        - Finds bug
+
+### Lecture 16 Patterns
+1. Factory Pattern
+    - Factory: A general technique for manufacturing(creating) objects.
+    - Product: An abstract class that generalises the objects being created/produced by the factory.
+    - Creator: An abstract class that generalises the objects that will consume/produce products.
+        - generally have some operation that will invoke the factory method.
+
+2. Analysis a pattern
+    - Intent: The goal of the pattern, why it exists.
+    - Motivation: A scenario that highlights a need for the pattern
+    - Applicability: General situations where you can use the pattern
+    - Structure: Graphical representations of the pattern, likely a UML class diagram
+    - Participants: List of classes/objects and their roles in the pattern
+    - Collaboration: How the objects in the pattern interact
+    - Consequences: A description of the results, side effects, and tradeoffs when using the pattern
+    - Implementation: Example of “solving a problem” with the pattern
+    - Known Uses: Specific, real-world examples of using the pattern
+3. Observer pattern
+    - Subject: An "important" object, whose state (or change in state) determines the actions of other classes.
+    - Observer: An object that monitors the subject in order to respond to its state, and any changes made to it.
