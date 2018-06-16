@@ -17,7 +17,7 @@
 
 ### Lecture 4: Arrays
 1. Arrays: A sequence of elements of the same type arranged in order in memory.
-2. syndax:
+2. syntax:
     ```JAVA
     int[] ints = {0,1,2,3,4};
     int[] ints = new int[100];
@@ -131,7 +131,7 @@
 2. collections: A framework that permits storing, accessing and manipulating collections of similar objects.
 
 ### Lecture 14: Exceptions
-1. Syndax Error: Errors where what you write isn't legal code; identified by the editor/compiler.
+1. syntax Error: Errors where what you write isn't legal code; identified by the editor/compiler.
 2. Semantic Error: Code runs to completion, but results in incorrect output/operation; identified through software testing.
 3. Runtime Error: An error that causes your program to end prematurely(crash and burn); identified through execution.
 4. Exceptions: An error state created by a runtime error in your code; an exceptions. Can also represent an object created by JAVA to represet the error that was encountered.
