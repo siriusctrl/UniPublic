@@ -96,6 +96,10 @@
 4. Upcasting: When an object of a child class is assigned to a variable of an ancestor class.
 5. Downcasting: When an object of an ancestor class is assigned to a variable of a child class. Only makes sense if the underlying object is actually of that class. Why?
 6. Polymorphism: The ability to use objects or methods in many different ways; roughly means “multiple forms”.
+    - Overloading: method use depends on signature.
+    - Overriding: method use depends on the class that was instantiate.
+    - Substitution: subclass taking the place of superclass.
+    - Generics: defining parametrised methods/class.
 7. abstract: Defines a superclass method that is common to all subclasses, but has no implementation. Each subclass then provides it’s own implementation through overriding.
     - Classes with abstract method must be abstract class
     - abstract class can have no abstract methods.
@@ -115,9 +119,12 @@
     - Interface: Represents the ability of a class to perform an action. Fundamentally a "Can do" relationship.
 
 ### Lecture 12: UML
-1. Association: When one class is contained by another, we always use an association.
+1. Association: When one class is contained by another, we always use an association. It implies that one class (arrow end) is an instance variable of the other class.
 2. Aggregation: Different form of association, where one class "has" another class, but both exist independently. For example, pond has duck.
 3. Composition: Indicating one class cannot exist without the other. A Department is entirely dependent on a University to exist.
+4. Multiplicity: a number or range at the end of an association. Multiplicity indicates that one class has an array, list, or similar data structure to store multiple instances of another class.
+5. Abstract: indicated by italicised text on a class or method name
+6. Interface: an interface is defined like a class, with the keyword \<\<interface\>\>. A link from a class that implements an interface is drawn with a dashed line, and empty triangle.
 
 ### Lecture 13: Generics
 1. ArrayList:
