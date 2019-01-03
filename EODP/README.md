@@ -386,7 +386,7 @@ challenges involved
     - TN: should say no, and we said no.
     - first letter represent the result we get is right(T) or wrong(F), the second letter represent how right or wrong we are.
     - Accuracy formula is on the fomula sheet
-    - the accuracy may misleading at here, it may not detect any other value in a dataset but still get very high accuracy. Therefore, we need other concept here, for example, recall rate here.
+    - the accuracy may misleading at here, it may not detect any other value in a dataset but still get very high accuracy. Therefore, we need other concept here, for example, recall rate might be useful.
 5. K-nearest neighbors(K-NN / KNN)
     - k-nearest neighbors of a record x are data points that have the k smallest distance to x
     - process
