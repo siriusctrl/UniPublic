@@ -61,9 +61,9 @@
     - link dependent
   - <u>Physical layer</u>
     - in charge of transform the byte stream into electrical signal and pulse depends on the media.  
-  - ~transport layer, application layer~ are end-to-end, which means they don’t care about how the information has delivered. They only focus on the source and destination.
-  - Notice that ~network layer~ is a **mix** of end-to-end and point-to-point. From the IP address perspective, it is from one IP to another, thus, it is a n end-to-end. From routing perspective, it has to decide transfer from which route to which node, thus, it is point-to-point.
-  - ~Link and Physical~ are point to point, since they are link dependent. For example, using WIFI will use the different protocol comparing with using Ethernet.
+  - <u>transport layer, application layer</u> are end-to-end, which means they don’t care about how the information has delivered. They only focus on the source and destination.
+  - Notice that <u>network layer</u> is a **mix** of end-to-end and point-to-point. From the IP address perspective, it is from one IP to another, thus, it is a n end-to-end. From routing perspective, it has to decide transfer from which route to which node, thus, it is point-to-point.
+  - <u>Link and Physical</u> are point to point, since they are link dependent. For example, using WIFI will use the different protocol comparing with using Ethernet.
 - OSI Model (7 Layers)
   - Extra two layers directly under Application layer
   - <u>Presentation layer</u>
@@ -80,22 +80,22 @@
   - An API that transport layer provides to application layer
 - HTTP
   - need a client program and a server program
-  - ~Web page~
+  - <u>Web page</u>
     - document consisting of objects
-  - ~object~
+  - <u>Object</u>
     - a file that is addressable by URL, such as a image
-  - ~URL (Uniform Resource Locator)~
+  - <u>URL (Uniform Resource Locator)</u>
     - hostname
     - path name
       ![1B68B60C-3562-4478-9441-9953CD198C65](assets/1B68B60C-3562-4478-9441-9953CD198C65.png)
-  - ~Web browsers~ are at client side, ~web servers~ are at server side.
+  - <u>Web browsers</u> are at client side, <u>web servers</u> are at server side.
   - **TCP** is the transport protocol for HTTP
     - Non-persistent connections
       - each request/response is sent over a separate TCP connection
       - For each object, it requires a request time + file transmission time
       - memory consuming
         -  since the TCP variable must be kept in buffer during the transmission
-      - browser often open ~parallel~ TCP connections to fetch referenced objects.
+      - browser often open <u>parallel</u> TCP connections to fetch referenced objects.
     - Persistent connections (default option for HTTP)
       - All the requests and their responses are sent over the same TCP connection.
       - Server leaves connection open after sending response. The connection closes if it is not used for a certain time.
@@ -103,9 +103,20 @@
       - client can send requests at anytime without need to wait the pending requests (**pipelining**)
     - example are refer to the lecture slides
   - HTTP Request Message
-    - Format
+    - Format and info
+      - Host
+      - User-agent
+      - Connection
+      - Accept-language
     - different method
     - different response code
+  - HTTP Response Message
+    - Format and info
+      - Connection
+      - <u>Date</u> of today with time
+      - <u>Server</u> type
+      - <u>Last-modified</u> date
+      - Connection-length and type
   - Cookies
     - For allowing Web servers to identify users
 
