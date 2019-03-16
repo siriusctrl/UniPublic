@@ -1,4 +1,3 @@
-# COMP30023 Computer System
 ## lecture 1 (Application layer Protocols)
 1. The File Transfer Protocol (FTP)
   - like a client accessing a folder in a remote server
