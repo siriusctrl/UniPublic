@@ -1,4 +1,5 @@
-## lecture 1 (Application layer Protocols)
+## Lecture 1 (Application layer Protocols)
+
 1. The File Transfer Protocol (FTP)
   - like a client accessing a folder in a remote server
   - using **TWO** parallel TCP connection
@@ -79,6 +80,7 @@
       - Each ISP  such as uni may hold a local DNS server call default name server, it act as a proxy
       - The query first go to the local DNS server. If the local DNS server does not have the record, it will send the query to root DNS servers to do the job.
 ## Lecture 2
+
 1. Version Control
   * It is a system that records changes to a file or a set of files over time, so we can roll back at any time.
   * <u>local version control</u>
