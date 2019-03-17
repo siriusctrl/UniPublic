@@ -34,16 +34,16 @@
       - Both of them use persistent TCP connections to transfer file
     - Difference
       - one
-        - HTTP is mainly a ~pull protocol~
+        - HTTP is mainly a <u>pull protocol</u>
           - the TCP connection is initiated by the machine that wants to receive the file
         - SMTP is primarily a ~push protocol~
           - the TCP connection is initiated by the machine that wants to send the file
       - two
-        - SMTP requires each message, including the body of each message to be in ~7-bit ASCII format~
+        - SMTP requires each message, including the body of each message to be in <u>7-bit ASCII format</u>
         - HTTP does not have that kind of restriction
       - three
         - HTTP encapsulates each object in its own HTTP response message
-        - SMTP places all of the message’s objects into on message (all in one)
+        - SMTP places all of the message’s objects into one message (all in one)
     - Mail Access Protocols
       - Post Office Protocol — version 3 (POP3)
         - very simple, can download all the mail or either delete the message
