@@ -1,6 +1,21 @@
 ## Lecture 1
 Some Very basic probability
 
+- Entropy
+
+  - A measure of unpredictability
+  - H(X) = $-\sum_{i=1}^{n}P(x_i)log_2P(x_i)$, where we define $0\log_20=0$
+  - The range of the entropy value is **not** [0,1]
+  - $0 \leq Entropy \leq log(n)$, where n is the number of outcomes
+    - 0 is one probability is 1, others are 0
+    - log(n) uniform probability distribution which is each has $\frac{1}{n}$ 
+
+- IG (information gain)
+
+  - Parent entropy - weighted child entropy
+
+    ![image-20190319000158230](assets/image-20190319000158230.png)
+
 - Model
   - abstract representation of data
 - probability model 
