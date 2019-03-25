@@ -1,27 +1,31 @@
 ## Lecture 1
 Some Very basic probability
 
-- Entropy
+### Entropy
 
-  - A measure of unpredictability
-  - H(X) = $-\sum_{i=1}^{n}P(x_i)log_2P(x_i)$, where we define $0\log_20=0$
-  - The range of the entropy value is **not** [0,1]
-  - $0 \leq Entropy \leq log(n)$, where n is the number of outcomes
-    - 0 is one probability is 1, others are 0
-    - log(n) uniform probability distribution which is each has $\frac{1}{n}$ 
+- A measure of unpredictability
+- H(X) = $-\sum_{i=1}^{n}P(x_i)log_2P(x_i)$, where we define $0\log_20=0$
+- The range of the entropy value is **not** [0,1]
+- $0 \leq Entropy \leq log(n)$, where n is the number of outcomes
+  - 0 is a single event with probability 1, others are 0
+  - log(n) uniform probability distribution which is each has $\frac{1}{n}$ 
 
-- IG (information gain)
+### IG (information gain)
 
-  - Parent entropy - weighted child entropy
+- Parent entropy - weighted child entropy
 
-    ![image-20190319000158230](assets/image-20190319000158230.png)
+  ![image-20190319000158230](assets/image-20190319000158230.png)
 
-- Model
-  - abstract representation of data
+### Model
+
+- abstract representation of data
+
 - probability model 
   - we normally don’t know the probability so we have to estimate based on the incoming informations
 
-## Lecture 2 (Naive Bayes)
+## Lecture 2 
+### Naive Bayes 
+
 - supervised machine learning algorithms
 - Based on the bayes rule, for a given instance X with features x^I^ (I = 1…n)
   - We want
@@ -42,7 +46,7 @@ Some Very basic probability
     - If the incoming instance has a feature that we haven't seen in the training set, we might get a 0 probability as a bad result.
     - However, nothing is 100% impossible.
   - <u>How?</u> 
-    - Epsilon ($\epsilon$) smoothing
+    - Epsilon ($\epsilon​$) smoothing
       - Replace all the 0 with a $\epsilon$ which is a number which greater than 0 but smaller than $\frac{1}{n}$ (preferably).
       - Assume $1+\epsilon \approx 1$
     - Laplace smoothing
@@ -53,7 +57,9 @@ Some Very basic probability
       - Add-k smoothing: set $\lambda$ to any integer which larger than one.
       - Regression
       - Good-Turing estimation
--  Missing value
+    - Which one is better?
+      - Normally Laplace may perform better, but overall it depends on the data.
+- Missing value
   - In training set and testing set, just ignore it.
 - Advantages
   - Very simple to build, and run extremely fast to make decisions
