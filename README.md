@@ -1,4 +1,6 @@
 # UniPublic
-Uni related public resources
-Notice that all the notes including Math equation has been written in Typora.
-If you want to visualise all the Math equation, you probably need Typora or things like that.
+Uni related public resources and notes.
+
+Notice that all the notes including Math equation were written in and support by Typora markdown.
+
+High recommend using Typora to read the notes for the best experience.

@@ -85,33 +85,37 @@
 - Problem encountered
   - IP is provided <u>network layer</u>, but it is a unreliable service
   - We want a <u>reliable data transfer</u> building on transport layer which is on the top of the <u>unreliable IP</u>
-- RDT 1.0
-  - Suppose there is a <u>perfect reliable channel</u> underneath
-  - What only work left for RDT is send/receive and make/extract packet
-- RDT 2.0 (stop and wait protocols)
-  - Bits in a packet may be corrupted
-  - The notetaker will send a feedback to the send when receives a message (positive acknowledgements, negative acknowledgements)
-  - This retransmission are know as <u>ARQ (Automatic Repeat reQuest)</u>
-    - Error detection
-      - Allow receiver to detect bit error (checksum)
-    - Receiver feedback
-      - ACK and NAK
-      - One bit for each, 1 = ACK, 0 = NAK
-    - Retransmission
-      - The sender retransmit a packet when it is received in errors
-      - When the sender is in the <u>wait-for-ACK-or-NAK state</u>, it cannot get more data from the upper layer
-  - Bit error
-    - Fatal flaw about RDT 2.0
-      -  the ACK or NAK packet could be corrupted
-    - How to fix this?
-      - checksum
-    - How protocol should handle the errors
-      - Retrainsmit the garbled ACK/NAK packet
-        - However, the retransmission can also corrupted, and  the system may failed after that.
-      - Use enough checksum so that the receiver can also recover from bit errors.
-        - But it couldn't handle if the packets were lost
-      - Resends the current data packet when it receives a garbled ACK or NAK packet
-        - Add a <u>sequence number</u> so that the receiver knows whether the message is a old message or new one
-          - In stop-and-wait protocol, a 1-bit sequence number will suffice. The sender keep alternates the 1-bit sequence number between 0 and 1.
-          - 
+
+### RDT 1.0
+
+- Suppose there is a <u>perfect reliable channel</u> underneath
+- What only work left for RDT is send/receive and make/extract packet
+
+### RDT 2.0 (stop and wait protocols) 
+
+- Bits in a packet may be corrupted
+- The notetaker will send a feedback to the send when receives a message (positive acknowledgements, negative acknowledgements)
+- This retransmission are know as <u>ARQ (Automatic Repeat reQuest)</u>
+  - Error detection
+    - Allow receiver to detect bit error (checksum)
+  - Receiver feedback
+    - ACK and NAK
+    - One bit for each, 1 = ACK, 0 = NAK
+  - Retransmission
+    - The sender retransmit a packet when it is received in errors
+    - When the sender is in the <u>wait-for-ACK-or-NAK state</u>, it cannot get more data from the upper layer
+- Bit error
+  - Fatal flaw about RDT 2.0
+    -  the ACK or NAK packet could be corrupted
+  - How to fix this?
+    - checksum
+  - How protocol should handle the errors
+    - Retrainsmit the garbled ACK/NAK packet
+      - However, the retransmission can also corrupted, and  the system may failed after that.
+    - Use enough checksum so that the receiver can also recover from bit errors.
+      - But it couldn't handle if the packets were lost
+    - Resends the current data packet when it receives a garbled ACK or NAK packet
+      - Add a <u>sequence number</u> so that the receiver knows whether the message is a old message or new one
+        - In stop-and-wait protocol, a 1-bit sequence number will suffice. The sender keep alternates the 1-bit sequence number between 0 and 1.
+        - 
 
