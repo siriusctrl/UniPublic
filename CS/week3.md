@@ -93,7 +93,12 @@
 
 ### RDT 2.0 (stop and wait protocols) 
 
+- Finite state machine
+
+  ![image-20190326232321041](assets/image-20190326232321041.png)
+
 - Bits in a packet may be corrupted
+- The <u>sequence of file</u> must be kept, otherwise error may occur.
 - The notetaker will send a feedback to the send when receives a message (positive acknowledgements, negative acknowledgements)
 - This retransmission are know as <u>ARQ (Automatic Repeat reQuest)</u>
   - Error detection
@@ -117,5 +122,4 @@
     - Resends the current data packet when it receives a garbled ACK or NAK packet
       - Add a <u>sequence number</u> so that the receiver knows whether the message is a old message or new one
         - In stop-and-wait protocol, a 1-bit sequence number will suffice. The sender keep alternates the 1-bit sequence number between 0 and 1.
-        - 
 
