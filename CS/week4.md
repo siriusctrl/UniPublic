@@ -44,7 +44,7 @@
 
     ![image-20190327142912731](assets/image-20190327142912731.png)
 
-- Howeveßr, this is not a good choice for practice
+- However, this is not a good choice for practice
 
   - Since when the distance is long between two host, the waiting time will be really long.
 

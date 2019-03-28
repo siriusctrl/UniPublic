@@ -27,24 +27,27 @@
 - **Network layer** provides IP(Internet Protocol)
   - IP provide <u>logical communication</u> between hosts.
   - However, IP is an **unreliable service**
-    - Does not guarantee segment delivery
+    - Does not guarantee segment <u>delivery</u>
       - It may lost half way
-    - Does not preserve the order of the segment
-    - Does not guarantee the integrity of the data in segment
+    - Does not preserve the <u>order</u> of the segment
+    - Does not guarantee the <u>integrity</u> of the data in segment
       - The content might be altered
-- In order to extend process-to-process to host to host, we need **transport layer** (notice that each socket has a unique identifier and each segment has a set of fields for identifying socket in their header)
+- In order to extend process-to-process to host to host, we need **transport layer**
   - Multiplexing (analogous to  Bill's job)
     - At the <u>receiving end</u>, the <u>transport layer</u> examines the fields in the segment to identify the receiving socket and then directs the segment to the socket.
   - Demultiplexing (analogous to Ann's job)
     - Gather data chunks at the source host from different sockets
     - Encapsulate each data chunk with header to create segments
     - Pass the segments to the network layer
+  - each socket has a **unique identifier** 
+    - and each segment has a set of fields for identifying socket in their header
+    - The **format** of the identifier depends on what transport-layer protocol is used
 
-### Transport Layer Service
+### Transport Layer UDP 
 
 - UDP
   - It almost add nothing to the original data
-  - Multiplexing and demultiplexing
+  - Multiplexing and demultiplexing (format of identifier)
     - In UDP, sockets are identified by port numbers.
   - Some light error checking
   - ![image-20190319215655007](assets/image-20190319215655007.png)
