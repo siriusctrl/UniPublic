@@ -1,4 +1,4 @@
-## Lecture 4
+## Lecture 1 and Part of Lecture 2
 
 ### RDT 2.1
 
@@ -55,9 +55,71 @@
   - <u>Buffer</u> now is important to keep the keep the transmitted but not yet acknowledged.
 - TCP
   - Coneection-oriented
+
     - Handshake is needed
+
   - Buffers and variable
+
     - To keep info during three-way handshake
+
   - Full-duplex
-    - Both the two sides can send <u>a stream of data</u> to each other (mutual communication)
-  - Grab data chunks from the send buffer, creates TCP segments and passes the segments to the network layer.
+
+    - Both sides can send <u>a stream of data</u> to each other (mutual communication)
+
+  - Two type of socket on server side
+
+    - Welcoming socket
+      - Inite a connection
+    - Connection socket
+      - After the connection has been built, the connection socket dedicate for a particular client process
+
+  - How to transmit? 
+
+    - Grab data chunks from the send buffer, creates TCP segments and passes the segments to the network layer.
+
+  - Socket identifier
+
+    - Four section tuple
+
+      - (source IP, source port number, destination IP address, destination port number)
+
+      - Why need port number this time?
+
+        - Since the connection requests are primarily handled by <u>welcome socket</u>. However, when building a dedicated connection socket, it must to identify which socket is working for who.
+
+      - Structure (the IP info has been send by the underlying operating system automatically)
+
+        ![image-20190330165415678](assets/image-20190330165415678.png)
+
+      - Sequence number
+
+        - Normally using the first bit of a sequence since TCP does not restrict that each message must in same length
+        - Use in <u>Acknowledgement</u> for identifying missing packets
+
+      - Acknowledgement Number
+
+        - sequence number of the next segment that Host A is expecting from Host B
+        - Only acknowledges bytes up to the first missing byte in the stream. (cumulative acknowledgements)
+        - ![image-20190330165920021](assets/image-20190330165920021.png)
+          - In this case Host a will put 228
+
+      - TCP combines an acknowledgement and a data packet together in a single segment
+
+        - Example
+
+          - Talnet
+
+            ![image-20190330235153339](assets/image-20190330235153339.png)
+
+  - Out-of-order segments
+
+    - Discard the segments, very easy to implement
+    - Buffer the segments and waits for the missing bytes to fill the gap (what we normally used in practice)
+      - More efficient in terms of network bandwidth
+
+## Lecture 2 
+
+### Socket Programming
+
+- Implementation of socket, no need to take notes
+
