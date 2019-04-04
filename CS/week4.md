@@ -69,7 +69,7 @@
   - Two type of socket on server side
 
     - Welcoming socket
-      - Inite a connection
+      - Initiate a connection
     - Connection socket
       - After the connection has been built, the connection socket dedicate for a particular client process
 
@@ -121,5 +121,5 @@
 
 ### Socket Programming
 
-- Implementation of socket, no need to take notes
+- Implementation of socket, no notes.
 
