@@ -12,7 +12,7 @@
 
 
 
-### Things Comparison
+### Comparison
 
 - Similarity
   - Jaccard Similarity
