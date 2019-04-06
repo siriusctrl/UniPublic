@@ -1,77 +1,82 @@
 ## Lecture 1 (Application layer Protocols)
 
 1. The File Transfer Protocol (FTP)
-  - like a client accessing a folder in a remote server
-  - using **TWO** parallel TCP connection
-    - Control Connection
-      - for sending control information, such as user identification, password, command, etc.
-    - Data Connection
-      - for file transformation
-  - Procedures
-    1. Client side initiates a ~TCP control connection~ to the server on port **21**
-       - it is a **persistent** connection since the command and user identification will be sent during the entire session.
-    2. When a file transformation command has been received by the server, it will initiates a ~TCP data connection~ to the client side at port **20**
-       - After exactly on file has been sent, the connection will be closed for saving resources purpose, so it is a **Non-Persistent** connection.
 
-  * The command are transfer over control connection in <u>7-bit ASCII format</u>, each command consists of 4 uppercase ASCII characters. The replies are three-digit numbers
+   - A client accesses a folder on a remote server
+
+   - using **TWO** parallel TCP connection
+
+     1. Control Connection
+        - for sending control information, such as user identification, password, command, etc.
+
+     2. Data Connection
+        - for file transformation
+
+   - Procedures
+
+     1. Client side initiates a <u>TCP control connection</u> to the server on port **21**
+        - it is a **persistent** connection since the command and user identification will be sent during the entire session.
+     2. When a file transformation command has been received by the server, it will initiates a <u>TCP data connection</u> to the client side at port **20**
+        - After exactly on file has been sent, the connection will be closed for saving resources purpose, so it is a **Non-Persistent** connection.
+
+   - The command are transfer over control connection in <u>7-bit ASCII format</u>, each command consists of 4 uppercase ASCII characters. The replies are <u>three-digit number</u>s
 2. Email
 
    - SMTP (simple mail transfer Protocols)
 
      - response for transferring messages from the senders’ mail servers to the recipients’ mail servers
-
      - format
        ![0F35C341-A2F3-4267-A6F8-0D93EABC9366](assets/0F35C341-A2F3-4267-A6F8-0D93EABC9366.png)
+   - Procedures
+     1. Sender specify the recipient email address
+     2. User agent send this email to sender’s mail server
+     3. Sender server opens a **persistent** TCP connection to an SMTP server at port **25** on the recipient’s mail server
+     4. The recipient’s mail server receives the message and places it in the recipient’s mailbox
+     5. Recipient invokes his user agent to obtain the message
+   - Communication between server and client
+     - ![6D6C419A-3A07-41B1-B812-3D2DBBAF88C8](assets/6D6C419A-3A07-41B1-B812-3D2DBBAF88C8.png)
+     - before the connection closed, the client can send another email to the server
+   - Compare with HTTP
+     - Similar
+       - Both of them are used persistent TCP connections to transfer files from one host to another
+     - Difference
+       - one
+         - HTTP is mainly a <u>pull protocol</u>
+           - the TCP connection is initiated by the machine that wants to receive the file
+         - SMTP is primarily a <u>push protocol</u>
+           - the TCP connection is initiated by the machine that wants to send the file
+       - two
+         - SMTP requires each message, including the body of each message to be in <u>7-bit ASCII format</u>
+         - HTTP does not have that kind of restriction
+       - three
+         - HTTP encapsulates each object in its own HTTP response message
+         - SMTP places all of the message’s objects into one message (all in one)
+     - Mail Access Protocols
+       - Post Office Protocol — version 3 (POP3)
+         - very simple, can download all the mail or either delete the message
+       - Internet Mail Access Protocol (IMAP)
+         - very wild used, allow us to download only part of the mail
+       - HTTP
 
-  - Procedures
-    1. Sender specify the recipient email address
-    2. User agent send this email to sender’s mail server
-    3. Sender server opens a **persistent** TCP connection to an SMTP server at port **25** on the recipient’s mail server
-    4. The recipient’s mail server receives the message and places it in the recipient’s mailbox
-    5. Recipient invokes his user agent to obtain the message
-  * Communication between server and client
-    * ![6D6C419A-3A07-41B1-B812-3D2DBBAF88C8](assets/6D6C419A-3A07-41B1-B812-3D2DBBAF88C8.png)
-    * before the connection closed, the client can send another email to the server
-  - Compare with HTTP
-    - Similar
-      - Both of them are used persistent TCP connections to transfer files from one host to another
-    - Difference
-      - one
-        - HTTP is mainly a <u>pull protocol</u>
-          - the TCP connection is initiated by the machine that wants to receive the file
-        - SMTP is primarily a ~push protocol~
-          - the TCP connection is initiated by the machine that wants to send the file
-      - two
-        - SMTP requires each message, including the body of each message to be in <u>7-bit ASCII format</u>
-        - HTTP does not have that kind of restriction
-      - three
-        - HTTP encapsulates each object in its own HTTP response message
-        - SMTP places all of the message’s objects into one message (all in one)
-    - Mail Access Protocols
-      - Post Office Protocol — version 3 (POP3)
-        - very simple, can download all the mail or either delete the message
-      - Internet Mail Access Protocol (IMAP)
-        - very wild used, allow us to download only part of the mail
-      - HTTP
 3. DNS (Domain Name System)
    - A host can be identified in two ways
      - By a <u>hostname</u>
        - www.google.com
        - easy for human to memorize but hard to process for routers
      - By an <u>IP address</u>
-       - 121.7.106.83
+       - 216.58.196.142 (google)
        - Fixed-length, four bytes in total
        - has a rigid hierarchical structure
    - DNS is an application-layer protocol to <u>translate user-supplied hostnames to IP addresses</u>
-     - DNS adds an additional delay
+     - adds an additional delay
      - All DNS query and reply messages are sent with UDP datagrams through port 53, to minimize the server overhead.
    - Additional Service
      - Host aliasing
        - map google.com to www.google.com
      - Email address aliasing
        - map bob@hotmail.com to bob@relay1.west-coast.hotmail.com
-       - load distribution
-         - perform load distribution among replicated servers.
+     - load distribution
+       - perform load distribution among replicated servers.
    - The DNS are distributed and hierarchically database of mapping
      - Root DNS Servers (13 in total)
      - Top-Level Domain

@@ -2,20 +2,19 @@
 
 ### How does information go through end-to-end layers
 
-- **Application Layer**
+- Application Layer
 
   - the message is sent as a whole, only one header will be added.
 
-- Transport-layer protocol provides for <u>logical communication</u> between **application process** running on different hosts
+- Transport Layer 
 
-- **Transport Layer** (provide logical communication between <u>process</u> on different hosts, but actually you need to go through the socket, so it is a <u>process-to-process/socket-to-socket</u> delivery)
-
+  - provide logical communication between <u>process</u> on different hosts, but actually you need to go through the socket, so it is a <u>process-to-process/socket-to-socket</u> delivery
   - the message is split into chunks, each chunks called a **segment**.
-  - <u>Segment</u>
-    1. Each segment will be added a header contains information about transport layer
+  - Each **segment** will be added a header contains information about transport layer
 
-- **Network Layer** (provide logical communication between <u>hosts</u>, therefore, it is a host-to-host delivery)
+- Network Layer
 
+  -  provide logical communication between <u>hosts</u>, therefore, it is a host-to-host delivery
   - This will add another header to the segment, and now it called datagram
 
 - Compare transport layer and network layer
@@ -28,11 +27,11 @@
   - IP provide <u>logical communication</u> between hosts.
   - However, IP is an **unreliable service**
     - Does not guarantee segment <u>delivery</u>
-      - It may lost half way
+      - may lost half way
     - Does not preserve the <u>order</u> of the segment
     - Does not guarantee the <u>integrity</u> of the data in segment
       - The content might be altered
-- In order to extend process-to-process to host to host, we need **transport layer**
+- **transport layer** (from process-to-process to host-to-host)
   - Multiplexing (analogous to  Bill's job)
     - At the <u>receiving end</u>, the <u>transport layer</u> examines the fields in the segment to identify the receiving socket and then directs the segment to the socket.
   - Demultiplexing (analogous to Ann's job)
@@ -48,8 +47,9 @@
 - UDP
   - It almost add nothing to the original data
   - Multiplexing and demultiplexing (format of identifier)
-    - In UDP, sockets are identified by port numbers.
+    - In UDP, sockets are identified by **port numbers**.
   - Some light error checking
+    - checksum
   - ![image-20190319215655007](assets/image-20190319215655007.png)
     - Source port and dest. Port (from … to ...)
     - Length is the total size of the segment, including the header
@@ -57,10 +57,11 @@
   - UDP is <u>connectionless</u> and <u>unreliable</u>
     - Inheriting from IP: No guarantees on <u>delivery</u>, <u>order</u>, and <u>integrity</u>
   - Why we still need UDP?
-    - No congestion-control, data is sent immediately
+    - No **congestion-control**, data is sent immediately
+      - quick
     - Real-time application often:
       - Requires a minimum sending rate,
-      - Do not want to overly delay segment transmission,
+      - Less delay
       - Can tolerate some data loss
     - No connection establishment and no connection state.
       - Low system overhead (no buffer, no parameters)
