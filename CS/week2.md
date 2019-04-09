@@ -105,7 +105,7 @@
 
   - SVN
 
-  - perforce
+  - Perforce
 
 - Distributed Version Control System (DVCS)
   - clients don’t just check out the latest snapshot of the files, rather, they fully mirror the repository, including its fully history
