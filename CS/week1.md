@@ -106,7 +106,7 @@
   - <u>URL (Uniform Resource Locator)</u>
     - Hostname
     - path name
-      ![1B68B60C-3562-4478-9441-9953CD198C65](assets/1B68B60C-3562-4478-9441-9953CD198C65.png)
+      ![image-20190410002725427](assets/image-20190410002725427.png)
   - **TCP** is the transport protocol for HTTP
     - Non-persistent connections
       - each request/response is sent over a separate TCP connection
