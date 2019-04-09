@@ -16,8 +16,12 @@
     - make data more accessible
     - have better insights about data
 
----------------------------------
+
+
 ### LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
+
+---
+
 1. How is data stored and in what formats
     - Structured: Relational databses, CSV
 	- Unstructured: text -- no Structure, harder to organise, lacks regularity and
@@ -137,11 +141,13 @@
   </book>
   ~~~
 13. the purpose of using schemas for XML and JSON data
-	- for JSON is to describe the structure and validation constraints of the JSON file
-    - for XML, its more flexible, which can be user defined, and mianly
-    for describing more complex data structure.
+    - for JSON is to describe the structure and validation constraints of the JSON file
 
---------
+    - for XML, its more flexible, which can be user defined, and mianly
+      for describing more complex data structure.
+
+      
+
 ## LECTURE 4
 
 1. the motivation behind data preprocessing and data cleaning
@@ -185,7 +191,8 @@ mean)
     - imputation (fill in with mean value): can be good for supervised classification, and apply separately for each atrribute. However, it reducces the varience of the feature, it may creates a incorrect view of the distribution for that attributes. Also, the relationships to other features changes.
     - imputation(fill in with category mean): if the survey took by both gender and one of peroson's age is missing, we only compute the age mean for its gender, instead of all gender. Might become more percise, but still hold the similar drawback as fill in with mean value. Eespecially when the dataset is small.
 
---------------------------
+
+
 ## LECTURE 4 AND 5: Outliers
 1. the importance of finding outliers and give concrete examples where this
 would be useful
@@ -203,11 +210,12 @@ would be useful
 4. Tukey Boxplot
     - Outlier(filled black) area: \>3\*IQR above third quartile or \>3\*IQR below 1st quartile (IQR is the distance between first and third quartile).
     - Suspect Outlier(open black) area: \>1.5\*IQR above third quartile or \>1.5\*IQR below 1st quartile.
-5. Histergrams
+5. Histograms
     - advantage: can clearly shows the distribution of the data, and outlier can be found by eyeballing.
     - disadvantages: Hard to choose an appropriate bin size for histograms,too small bin size will results in normal objects in empty or rare bins, false positive. Too big bin size will results in outliers in some frequent bins, false negative.
 
----------------------
+
+
 ## LECTURE 5 AND 6 : RECOMMANDER SYSTEM
 
 1. what is a recommander system
@@ -219,7 +227,7 @@ would be useful
     - Model (matrix) based methods: Solve an optimization problem and identify latent factors
 3. Method 1 and Method 2
     - Method1: compute mean value for each user (2 in total in this example), and then compute and summing Euclidean distance between resulting vector. But it may change the distribution of the data.
-    - Method2:compute and sum Euclidean distance between vectors, summing only pairs without missing values. Scale the result, according to percentage of pairs with a missing value, for example, if 6 results in total but 2 are missing, then the sum should be sacle up by 6/(6-2). when there are a lot of missing value, method 2 won't work.
+    - Method2:compute and sum Euclidean distance between vectors, summing only pairs without missing values. Scale the result, according to percentage of pairs with a missing value, for example, if 6 results in total but 2 are missing, then the sum should be scaled up by $\frac{6}{(6-2)}​$ . when there are a lot of missing value, method 2 won't work.
 4. when performing user-user similarity, understand how to select neighbors and make a prediction of the missing item
     - Use a method to calculate the similarity between you and other users.
     - Then select the top k similar users and find the similarity.
@@ -230,13 +238,15 @@ would be useful
     - all computations can be done offline
     - item-item similarity is more stable than user-user similarity which no need for frequent updates
 6. be able to explain scenarios where recommender systems i) are likely to make incorrect recommendations, ii) over-recommend certain items, ii) under-recommend certain item
-    - a circle, popular items been recommended --> users are more likely to give high rates to those item --> the popularity of these items increse.
+    - a circle, popular items been recommended $\rightarrow $ users are more likely to give high rates to those item $\rightarrow​$  the popularity of these items increse.
     - Recommendar system(RS) has no understanding of the items, over and under recommending naturally occur as the system performing its job.
     - The approaches to address this is adding an extra level to manipulate the results from RS, to ensure the diversity (cover a board range of items) to prevent users get the same recommendation all the time.
 7. online and offline
     - online is more conputational intense, is a real time calculation.
     - offline did the calculation before, which means it will response quicker.
------
+
+
+
 ## LECTURE 6-8: visualisation
 
 1. Motivation for visualisation
@@ -318,7 +328,8 @@ challenges involved
     - disadvantage: can lose much information without care; takes too long for large dataset
     - Second Principal Component: orthogonal to the first, capture as much of the rest variability as possible
 
-------
+
+
 ## LECTURE 11 AND 12: CORRELATION
 
 1. Why is correlation important
@@ -341,7 +352,8 @@ challenges involved
     1) MI can measure non-linear relation
     2) MI is very effective for use with discrete features
 
--------
+
+
 ## LECTURE 13 AND 14: CLASSIFICATION AND REGRESSION TECHNIQUES
 
 1. Classification
@@ -414,7 +426,8 @@ challenges involved
     ii) When at prediction time we encounter a node in the decision tree which tests a variable A, and for that variable we have in our instance a missing value than all the possibilities are explored. 
     - Thus, for each possible sub-node a prediction is made. We keep the distribution for each sub-node and we add them. Finally the class chosen for prediction is the class with the biggest density value. 
 
---------
+
+
 ## LECTURE 16-18: DATA LINKAGE
 
 1. Data linkage problem
@@ -478,7 +491,8 @@ challenges involved
         - Very hard for third party to guess the exact word by only using the bloom filter but still perform similar to exact string compare.
     - notice that chose a proper size of bloom filter and number of hash function is very important, when bloom filter is too small or use too many hash functions the comparison is useless since almost all string has full 1 bits in bloom filter.
 
-------
+
+
 ## LECTURE 19-20 BLOCKCHAIN
 
 1. why blockchain
@@ -507,7 +521,8 @@ challenges involved
 6. how hashing can be used to make information on the blockchain private
     - applies a hash to the fact then adds this hash output to the blockchain along with a digital signiture. No one can reverse the hash function to uncover the fact, and it store on the blockchain but privacy is preserved. Alternatively could encrypt the fact using Alice's public key.
 
----------
+
+
 ## LECTURE 21-22 PRIVACY
 
 1. Individual's privacy may be uncovered by linking to an external dataset or by use of background or external knowledge
@@ -574,7 +589,8 @@ challenges involved
         - depending on G/k, that is, large G and small k allows more noise to be added.
         - but the average value of the noise is 0
 
------------
+
+
 ## LECTURE 23 ETHICAL
 
 1. Stakeholder
