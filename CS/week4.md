@@ -1,4 +1,4 @@
-### RDT 2.1
+### RDT 2.1 (checksums for ACK, 1-bit sequence number)
 
 -  sender
   - ![image-20190327000048872](assets/image-20190327000048872.png)
@@ -6,7 +6,7 @@
 - reciver
   - ![image-20190327000130093](assets/image-20190327000130093.png)
 
-### RDT 2.2
+### RDT 2.2 (duplicate ACK for the last correctly received packet)
 
 - Instead of sending NAK packets, we can simply sends an ACK packet for the last correctly received packet
 - If the last received file has sequence number of 1
@@ -21,7 +21,7 @@
 
 
 
-### RDT 3.0
+### RDT 3.0 (Pipelining)
 
 - The underlying channel can lost packets as well
 

@@ -21,15 +21,15 @@
 
 ### Services
 
-- **Network layer** provides IP(Internet Protocol)
-  - IP provide <u>logical communication</u> between hosts.
+- **Network layer** (Host-to-host)
+  - IP provide <u>logical communication</u> between hosts. 
   - However, IP is an **unreliable service**
     - Does not guarantee segment <u>delivery</u>
       - may lost half way
     - Does not preserve the <u>order</u> of the segment
     - Does not guarantee the <u>integrity</u> of the data in segment
       - The content might be altered
-- **Transport layer** (from process-to-process to host-to-host)
+- **Transport layer** (process-to-process)
   - Multiplexing (analogous to  Bill's job)
     - At the <u>receiving end</u>, the <u>transport layer</u> examines the fields in the segment to identify the receiving socket and then directs the segment to the socket.
   - Demultiplexing (analogous to Ann's job)
@@ -38,7 +38,7 @@
     - Pass the segments to the network layer
   - each socket has a **unique identifier** 
     - and each segment has a set of fields for identifying socket in their header
-    - The **format** of the identifier depends on what transport-layer protocol is used
+    - The **format** of the identifier depends on what transport-layer protocol is used.
 
 ### Transport Layer UDP 
 

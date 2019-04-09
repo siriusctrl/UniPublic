@@ -3,14 +3,17 @@
   - devices $\rightarrow​$ end systems, hosts
   - end system are connected  by  **communication link** 
   - some devices are packet switches (routers, link-layer switches)
-  - **protocol** is the rule that control the sending and receiving of packets, it defines the format and the order of messages exchange.
-    ![3184B04C-094C-40F5-A128-BF07032A223A](assets/3184B04C-094C-40F5-A128-BF07032A223A.png)
+  - protocol
+    -  the rule that control the sending and receiving of packets, it defines the **format** and the **order** of messages exchange.
+    - Also define the **actions** taken on the transmission and/or receipt of a message or other event.
+      ![3184B04C-094C-40F5-A128-BF07032A223A](assets/3184B04C-094C-40F5-A128-BF07032A223A.png)
   - **Layers** are organize protocols, each layer offers its services to the layer directly above it by
     - performing certain actions
     - use the services that provided by the layer directly blow it.
     - pros
       - structural abstraction
       - only focusing on their own jobs
+      - only need to know the API's of the lower layer
     - cons
       - introduces overheads
       - inefficient and has delays
@@ -18,7 +21,7 @@
 
 
 
-### TCP/IP 
+### TCP/IP Model
 
 - 5 layers in total
 - <u>Application layer</u>
@@ -88,6 +91,11 @@
   - the extra two layers can be also implemented in application layer if the developer thinks they are important
 - Socket
   - An API that transport layer provides to application layer
+
+
+
+### Application-Layer Protocols
+
 - HTTP
   - need a client and a server
     - <u>Web browsers</u> are clients, <u>web servers</u> are servers.
@@ -96,7 +104,7 @@
   - <u>Object</u>
     - a file that is addressable by URL, such as a image
   - <u>URL (Uniform Resource Locator)</u>
-    - Hostnamer
+    - Hostname
     - path name
       ![1B68B60C-3562-4478-9441-9953CD198C65](assets/1B68B60C-3562-4478-9441-9953CD198C65.png)
   - **TCP** is the transport protocol for HTTP
@@ -106,7 +114,7 @@
       - memory consuming
         -  since the TCP variable must be kept in buffer during the transmission
       - browser often open <u>parallel</u> TCP connections to fetch referenced objects.
-    - Persistent connections (default option for HTTP)
+    - Persistent connections **(default option)**
       - All the requests and their responses are sent over the same TCP connection.
       - Server leaves connection open after sending response. The connection closes if it is not used for a certain time.
       - sending subsequent HTTP message for the same client/server pair will use this open connection

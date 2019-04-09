@@ -1,4 +1,4 @@
-### Application layer Protocols
+### Application layer Protocols (Cont.)
 
 1. The File Transfer Protocol (FTP)
 
@@ -8,9 +8,12 @@
 
      1. Control Connection
         - for sending control information, such as user identification, password, command, etc.
+        - The command are transfer over control connection in <u>7-bit ASCII format</u>, each command consists of 4 uppercase ASCII characters. The replies are <u>three-digit numbers</u>.
+          - 7-bit ASCII is good enough for human to understand the commands.
 
-     2. Data Connection
-        - for file transformation
+     2. Data Connection (**Non-persistent connection**)
+        - For file transformation
+        - After <u>exactly one file</u> has sent over the data connection, the data connection will be closed.
 
    - Procedures
 
@@ -19,10 +22,9 @@
      2. When a file transformation command has been received by the server, it will initiates a <u>TCP data connection</u> to the client side at port **20**
         - After exactly on file has been sent, the connection will be closed for saving resources purpose, so it is a **Non-Persistent** connection.
 
-   - The command are transfer over control connection in <u>7-bit ASCII format</u>, each command consists of 4 uppercase ASCII characters. The replies are <u>three-digit number</u>s
 2. Email
 
-   - SMTP (simple mail transfer Protocols)
+   - SMTP (simple mail transfer Protocols) use persistent TCP connection by defualt
 
      - response for transferring messages from the senders’ mail servers to the recipients’ mail servers
      - format
@@ -38,19 +40,24 @@
      - before the connection closed, the client can send another email to the server
    - Compare with HTTP
      - Similar
-       - Both of them are used persistent TCP connections to transfer files from one host to another
+
+       - Both of them are used persistent TCP connections.
+       - Both of them are aiming at transferring files from one host to another.
      - Difference
-       - one
-         - HTTP is mainly a <u>pull protocol</u>
-           - the TCP connection is initiated by the machine that wants to receive the file
-         - SMTP is primarily a <u>push protocol</u>
-           - the TCP connection is initiated by the machine that wants to send the file
-       - two
-         - SMTP requires each message, including the body of each message to be in <u>7-bit ASCII format</u>
-         - HTTP does not have that kind of restriction
-       - three
-         - HTTP encapsulates each object in its own HTTP response message
-         - SMTP places all of the message’s objects into one message (all in one)
+       1. One
+          - HTTP is mainly a <u>pull protocol</u>
+            - the TCP connection is initiated by the machine that wants to receive the file
+          - SMTP is primarily a <u>push protocol</u>
+            - the TCP connection is initiated by the machine that wants to send the file
+
+       2. Two
+          - SMTP requires each message, including the body of each message to be in <u>7-bit ASCII format</u>
+          - HTTP does not have that kind of restriction
+       3. Three
+          - HTTP encapsulates each object in its own HTTP response message (**one-in-one)**
+            - Many application layer messages
+          - SMTP places all of the message’s objects into one message (**all in one**)
+            - One application layer message
      - Mail Access Protocols
        - Post Office Protocol — version 3 (POP3)
          - very simple, can download all the mail or either delete the message
@@ -69,7 +76,8 @@
        - has a rigid hierarchical structure
    - DNS is an application-layer protocol to <u>translate user-supplied hostnames to IP addresses</u>
      - adds an additional delay
-     - All DNS query and reply messages are sent with UDP datagrams through port 53, to minimize the server overhead.
+     - All DNS query and reply messages are sent with UDP datagrams through port 53
+       - To minimize the server overhead
    - Additional Service
      - Host aliasing
        - map google.com to www.google.com
@@ -95,6 +103,7 @@
 - It is a system that records changes to a file or a set of files over time, so we can roll back at any time.
 
 - local version control
+
   - basically using duplication
 
 - Centralized Version Control system (CVCS)
