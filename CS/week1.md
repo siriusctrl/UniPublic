@@ -137,8 +137,3 @@
       - Connection-length and type
   - Cookies
     - For allowing Web servers to identify users
-
-
-reference:
-1. [或许这样能帮你了解 OSI 七层模型 - 掘金](https://juejin.im/post/59eb06b1f265da430f313c7f)
-2. [深入理解TCP/IP模型 - 知乎](https://zhuanlan.zhihu.com/p/33797520?utm_source=wechat_session&utm_medium=social&utm_oi=552206198036799488)
