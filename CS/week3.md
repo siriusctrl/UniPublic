@@ -1,5 +1,3 @@
-## Lecture 1 (Transport Layer-Services, Multiplexing & Demultiplexing, UDP)
-
 ### How does information go through end-to-end layers
 
 - Application Layer
@@ -31,7 +29,7 @@
     - Does not preserve the <u>order</u> of the segment
     - Does not guarantee the <u>integrity</u> of the data in segment
       - The content might be altered
-- **transport layer** (from process-to-process to host-to-host)
+- **Transport layer** (from process-to-process to host-to-host)
   - Multiplexing (analogous to  Bill's job)
     - At the <u>receiving end</u>, the <u>transport layer</u> examines the fields in the segment to identify the receiving socket and then directs the segment to the socket.
   - Demultiplexing (analogous to Ann's job)
@@ -82,28 +80,42 @@
 
 
 
-## Lecture 2
-
 ### Principles of Reliable Data Transfer (RDT)
 
 - Problem encountered
-  - IP is provided <u>network layer</u>, but it is a unreliable service
-  - We want a <u>reliable data transfer</u> building on transport layer which is on the top of the <u>unreliable IP</u>
+  - IP provided by <u>network layer</u> is a unreliable service
+  - We want a <u>reliable data transfer</u> building on transport layer (on the top of the <u>unreliable IP</u>)
 
-### RDT 1.0
+### RDT 1.0 (over a perfect reliable channel)
 
-- Suppose there is a <u>perfect reliable channel</u> underneath
-- What only work left for RDT is send/receive and make/extract packet
+- <u>perfect reliable channel</u> underneath assumption
 
-### RDT 2.0 (stop and wait protocols) 
+- RDT only needs to care sending/receiving and making/extracting packets.
 
-- Finite state machine
+- Sending side
+
+  ![image-20190407111241888](assets/image-20190407111241888.png)
+
+- Receiving side
+
+  ![image-20190407111257633](assets/image-20190407111257633.png)
+
+### RDT 2.0 (stop and wait protocols over a channel only has bit error)
+
+- Sending side
 
   ![image-20190326232321041](assets/image-20190326232321041.png)
 
+- Receiving side
+
+  ![image-20190407113303510](assets/image-20190407113303510.png)
+
 - Bits in a packet may be corrupted
+
 - The <u>sequence of file</u> must be kept, otherwise error may occur.
-- The notetaker will send a feedback to the send when receives a message (positive acknowledgements, negative acknowledgements)
+
+- When received a message, ACK or NAK will be feedbacks.
+
 - This retransmission are know as <u>ARQ (Automatic Repeat reQuest)</u>
   - Error detection
     - Allow receiver to detect bit error (checksum)
@@ -113,6 +125,7 @@
   - Retransmission
     - The sender retransmit a packet when it is received in errors
     - When the sender is in the <u>wait-for-ACK-or-NAK state</u>, it cannot get more data from the upper layer
+
 - Bit error
   - Fatal flaw about RDT 2.0
     -  the ACK or NAK packet could be corrupted

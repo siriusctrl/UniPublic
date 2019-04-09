@@ -1,5 +1,3 @@
-## Lecture 1
-
 ### Timer
 
 - There is **only one** timer in sender
@@ -36,22 +34,8 @@
 
     ![image-20190402224949944](assets/image-20190402224949944.png)
 
-
-
-
-
-## Lecture 2
-
-- Exercise about communication and handle missing
-  - ![image-20190405101144471](assets/image-20190405101144471.png)
-  - When receiving a sequence, the last bit is the first byte + length - 1 (13+4-1)
-  - But the ACK is simply the first byte + length (13+4 = 17), which is the first missing byte
-
-
-
-### Flow Control(Cont.)
-
 - Sliding Window
+
   - Out of order segment could be dropped at any time if necessary, therefore, when we response the rwnd size, we don't consider the out-of-order sequence.
 
 - Deadlock
@@ -71,7 +55,19 @@
 
       - Once there are enough buffer, the process will back to normal
 
+        
 
+### A TCP error handling exercise
+
+- Exercise about communication and handle missing
+
+  - ![image-20190405101144471](assets/image-20190405101144471.png)
+
+  - When receiving a sequence, the last bit is the first byte + length - 1 (13+4-1)
+
+  - But the ACK is simply the first byte + length (13+4 = 17), which is the first missing byte
+
+    
 
 ### Congestion Control
 
@@ -87,7 +83,7 @@
 - Questions
   - How does the sender control its traffic send rate?
     - Maintance a congestion window cwnd
-    - LastByteSent - LastByteACKED $\leq​$ min(cwnd, rwnd)
+    - LastByteSent - LastByteACKED $\leq$ min(cwnd, rwnd)
   - How does the sender perceive the network congestion?
     - Segment loss
       - Time out

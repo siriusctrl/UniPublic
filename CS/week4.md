@@ -1,5 +1,3 @@
-## Lecture 1 and Part of Lecture 2
-
 ### RDT 2.1
 
 -  sender
@@ -75,7 +73,7 @@
 
   - How to transmit? 
 
-    - Grab data chunks from the send buffer, creates TCP segments and passes the segments to the network layer.
+    - Grab data chunks from the send buffer, creates TCP segments and passes the segments to the system.
 
   - Socket identifier
 
@@ -93,7 +91,8 @@
 
       - Sequence number
 
-        - Normally using the first bit of a sequence since TCP does not restrict that each message must in same length
+        - Normally using the first bit of a sequence 
+          - since TCP does not restrict that each message must in same length
         - Use in <u>Acknowledgement</u> for identifying missing packets
 
       - Acknowledgement Number
@@ -116,10 +115,3 @@
     - Discard the segments, very easy to implement
     - Buffer the segments and waits for the missing bytes to fill the gap (what we normally used in practice)
       - More efficient in terms of network bandwidth
-
-## Lecture 2 
-
-### Socket Programming
-
-- Implementation of socket, no notes.
-

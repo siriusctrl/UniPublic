@@ -1,4 +1,4 @@
-## Lecture 1 (Application layer Protocols)
+### Application layer Protocols
 
 1. The File Transfer Protocol (FTP)
 
@@ -88,42 +88,45 @@
        - Each ISP  such as uni may hold a local DNS server call default name server, it act as a proxy
        - The query first go to the local DNS server. If the local DNS server does not have the record, it will send the query to root DNS servers to do the job.
 
-## Lecture 2
 
-1. Version Control
 
-   - It is a system that records changes to a file or a set of files over time, so we can roll back at any time.
+### Version Control System
 
-   - <u>local version control</u>
-     - basically using duplication
+- It is a system that records changes to a file or a set of files over time, so we can roll back at any time.
 
-   - <u>Centralized Version Control system (CVCS)</u>
+- local version control
+  - basically using duplication
 
-   - A single server contains all the versioned file, and number of clients that check out files from that central
+- Centralized Version Control system (CVCS)
 
-     - CVS
+- A single server contains all the versioned file, and number of clients that check out files from that central
 
-     - SVN
+  - CVS
 
-     - perforce
+  - SVN
 
-   - <u>Distributed Version Control System (DVCS)</u>
-     - clients don’t just check out the latest snapshot of the files, rather, they fully mirror the repository, including its fully history
-       - Git
+  - perforce
 
-2. Git
+- Distributed Version Control System (DVCS)
+  - clients don’t just check out the latest snapshot of the files, rather, they fully mirror the repository, including its fully history
+    - Git
 
-   - other VCS using delta-based VC which only record the changes, however, git using snapshot-based VC which using pointer to the previous file.
-   - compare the checksums to know whether the  files has been changes
-     - checksums is 40 byte string of SHA-1 hash of content of the file or directory structure
-   - Tree states of file
-     - modified 
-       - the file is changed but have not been committed to the database
-     - staged
-       - the current version of the modified file is marked to be put into the next commit snapshot
-     - committed
-       - the file is safely stored in the local database
+- Git in detail
+  - other VCS using delta-based VC which only record the changes, however, git using snapshot-based VC which using pointer to the previous file.
 
-* Support Branching
+  - compare the checksums to know whether the  files has been changes
 
-  ![image-20190319203854228](assets/image-20190319203854228.png)
+    - checksums is 40 byte string of SHA-1 hash of content of the file or directory structure
+
+  - Tree states of file
+    - modified 
+      - the file is changed but have not been committed to the database
+    - staged
+      - the current version of the modified file is marked to be put into the next commit snapshot
+    - committed
+      - the file is safely stored in the local database
+
+  - Branching
+
+    ![image-20190319203854228](assets/image-20190319203854228.png)
+
