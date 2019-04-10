@@ -30,12 +30,12 @@
     - Does not guarantee the <u>integrity</u> of the data in segment
       - The content might be altered
 - **Transport layer** (process-to-process)
-  - Multiplexing (analogous to  Bill's job)
+  - Demultiplexing (analogous to  Bill's job)
     - At the <u>receiving end</u>, the <u>transport layer</u> examines the fields in the segment to identify the receiving socket and then directs the segment to the socket.
-  - Demultiplexing (analogous to Ann's job)
-    - Gather data chunks at the source host from different sockets
-    - Encapsulate each data chunk with header to create segments
-    - Pass the segments to the network layer
+  - Multiplexing (analogous to Ann's job)
+    - <u>Gather</u> data chunks at the source host from different sockets
+    - <u>Encapsulate</u> each data chunk with header to create segments
+    - <u>Pass</u> the segments to the network layer
   - each socket has a **unique identifier** 
     - and each segment has a set of fields for identifying socket in their header
     - The **format** of the identifier depends on what transport-layer protocol is used.
