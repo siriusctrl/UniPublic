@@ -21,7 +21,7 @@
 
 
 
-### RDT 3.0 (Pipelining)
+### RDT 3.0
 
 - The underlying channel can lost packets as well
 
