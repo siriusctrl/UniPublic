@@ -101,7 +101,7 @@
           - ssthresh = cwnd / 2
           - cwnd = 1MSS
           - Re-run the slow start
-        - If a **fast transmission** event occurs
+        - If **fast retransmission**
           - ssthresh = cwnd / 2
           - Cwnd = ssthresh +3 MSS (since at least 3 segments will be successfully sent)
           - Run fast recovery
@@ -111,20 +111,14 @@
           - cwnd = cwnd + 1MSS * $\frac{\text{MSS}}{\text{cwnd}}$ 
         - In this case, cwnd can only be increased by 1 MSS for each round.
       - If **timeout**
-        - ssthresh = cwnd / 2
-        - cwnd = 1MSS
-        - Re-run the slow start
-      - If a **fast transmission** event occur
-        - ssthresh = cwnd / 2
-        - cwnd = ssthresh + 3 MSS
-        - Run the Fast recovery
+        - Same as slow start
+      - If **fast retransmission**
+        - Same as slow start
     - Fast recovery (recommended but not required part of TCP)
       - For every duplicate ACK:
         - cwnd = cwnd + 1MSS
       - If **timeout**
-        - ssthresh = cwnd / 2
-        - cwnd = 1MSS
-        - Re-run the slow start
-      - If it receives a new ACK
+        - Same as slow start
+      - If it receives a **new ACK**
         - cwnd = ssthresh
-        - Go back to congestion avoidance
+        - Go back to <u>congestion avoidance</u>
