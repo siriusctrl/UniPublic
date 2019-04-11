@@ -1,9 +1,9 @@
 ### RDT 2.1 (checksums for ACK, 1-bit sequence number)
 
--  sender
+-  Sender
   - ![image-20190327000048872](assets/image-20190327000048872.png)
 
-- reciver
+- Receiver
   - ![image-20190327000130093](assets/image-20190327000130093.png)
 
 ### RDT 2.2 (duplicate ACK for the last correctly received packet)
@@ -24,6 +24,10 @@
 ### RDT 3.0
 
 - The underlying channel can lost packets as well
+
+- Sender and Receiver
+
+  - ![image-20190411002040621](assets/image-20190411002040621.png)
 
 - How to detect packet lost?
 
