@@ -51,6 +51,8 @@
     - If LHS << 1,  attribute and class are negatively correlated
   - PMI(A = a, C = c) = $log_2\frac{P(a,c)}{p(a)P(c)}$ 
   - Higher PMI, more correlation with class
+  - Problem
+    - Could not show the case for all case, since one attribute may works well for one class but not the others.
 
 - Contingency table and MI
 
@@ -60,24 +62,23 @@
 
     
 
-- IM
+- MI(mutual information)
 
   - MI(A,C) = $P(a, c)*PMI(a,c) \\+ P(\bar{a},c)*PMI(\bar{a},c) \\+ P(a,\bar{c})*PMI(a,\bar{c}) \\+ P(\bar{a}, \bar{c}* PMI(\bar{a}, \bar{c}))$ 
-    - We still use $0log0 \equiv 0$
+    - We still use $0log0 \equiv 0​$
   - Problems
     - Biased toward common, uninformative features
-    - 
 
 - Chi-square
 
-  - $\chi^2 = \sum^r_{i=1}\sum^c_{j=1} \frac{(O_{i,j}-E_{i,j})^2}{E_{i,j}}$
+  - $\chi^2 = \sum\limits^r_{i=1}\sum\limits^c_{j=1} \frac{(O_{i,j}-E_{i,j})^2}{E_{i,j}}$
 
   - Normally expect value are uniform distribution
 
   - Problems
 
     - Biased toward rare, informative features, since we squaring the difference
-    - If a feature is seen rarely but always with a given class, it will be seen as “good”
+    - If a feature is seen rarely but always with a given class, it will be seen as "good"
 
     
 
