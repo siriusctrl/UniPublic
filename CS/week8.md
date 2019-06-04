@@ -31,8 +31,8 @@
     - ATM (Old one) - Asynchronous Transfer Model
     - MPLS (New one) - MultiProtocol Label Switching
   - Instead of sending a packet directly, they will send a set up request
-    -  Use one digit to represent the circuit #
-    - ==Same set up request will results in same same circuit route but different source==
+    -  Use one digit to represent the circuit number
+    - ==Same setup request will results in the same circuit route but different source==
     - ![image-20190430233231589](assets/image-20190430233231589.png)
     - It may run out of the one bit
 
@@ -59,18 +59,18 @@
     - When you downloading a bulk of file, you don't care what comes first and what comes after that.
     - When you watching a video, you do care about the sequence, since most of the people don't like delay.
   - It easy to prioritise the the services on your own ISP
-  - ==In the case of explicit prioritisation, the differentiated services header can be used to define classes of traffic==
+  - ==In the case of explicit prioritisation, the **differentiated services header** can be used to define classes of traffic==
   - Useful in an office building with a network that carries both internet and telephony traffic
 
 
 
 ## IP
 
-- Things in header
+- Things in header for IPv4
   - version
-    - Normally ipv4 or ipv6
+    - 4
   - IHL
-    - Lenght of the header
+    - Length of the header in 32 bit words
   - Differentiated services
     - 6 bits for service class, 2 bits for congestion control
   - Total length
@@ -83,15 +83,17 @@
     - Transport layer service (TCP/UDP/SCTP/DCCP)
   - Source and destination
   - optional
+    - Rarely used and poorly supported
 
 ### IPv4
 
 - 32-bit number
 - Expressed in decimal notation, separated by a period
-- Start from 0.0.0.0, to 255.255.255.255
+- Range from 0.0.0.0, to 255.255.255.255
 - Allocation sequence: Central $\to$ locally $\to$ ISP $\to$ customer
-- It named interfaces not hosts, if a host with multiple network cards will have multiple IP address.
-- Supply of IPv4 address has basically been exhausted.
+- It named interfaces not hosts
+  - if a host with multiple network cards will have multiple IP address.
+- Supply of IPv4 address has been exhausted. (Scarcity of IPv4)
 - Types of address
   - Unicast: One destination
     - Normal address
@@ -115,16 +117,16 @@
     - drawback
       - Wasteful, network with 260 nodes must be class B with 16,384 address
   - CIDR (classless InterDomain Routing)
-    - Each interface/route explicitly specifies which bits are the “network” field.
-    - Network with 260 nodes only needs 9 bits
-    - Hwo it works?
+    - Each interface/route explicitly specifies which bits are the “network” field by slash.
+    - Network with 260 nodes only needs 9 bits (2^8^ = 256 not enough, 2^9^ = 512)
+    - How it works?
       - Encodes the network and host number
         - Network in top bits (usually)
         - Host in bottom bits
       - Assigned to networks in blocks, the network part will be the same for all hosts on the network
         - As such, a network corresponds to a contiguous block of IP address space, call prefix
-        - Prefixes are written as the lowest IP address followed by a slash and the size of the network portion 
-        - 192.0.2.0/24 
+        - Prefixes are written as the lowest IP address followed by a slash and the size of the network portion
+        - 192.0.2.0/24
     - Why pre-fixing?
       - Make the routing much more efficient
         - Since networks are assigned in blocks, intermediary routers need only maintain routes for the prefixes, not every individual host
@@ -133,7 +135,7 @@
 ### IPv6
 
 - Designed over 20 years ago to address the problem of exhausting the IPv4 address space
-- While solving that problem some other changes were made
+- Other improvements
   - Simpler header
     - Allows faster processing
   - Improved security
@@ -143,15 +145,16 @@
     - Unlikely ever to run out
     - Unless new wasteful allocation schemes are used
 - Header
-  - version
+  - Version
+    - 6
   - Differentiated services
   - Flow label
     - Pseudo-virtual circuit identifier
     - Help to use VC in IP, no need for extra overhead
   - Payload length
-    - Bytes after the 30 byte header
+    - Bytes after the 40 byte header
   - Next header
-    - Type of additional headers, or protocol number
+    - Type of additional headers, or protocol number(TCP/UDP)
   - Hop limit
     - After limit the packets will be discarded (TTL-time to live)
   - Source and destination
@@ -187,26 +190,24 @@
 - Routing tables
 
   - ![image-20190430232313639](assets/image-20190430232313639.png)
-
-  - Inputs
-    - Destination IP address (base)
-      - 203.32.8.0
-    - Subnet mask
+- Triples in routing table
+    - Inputs
+      - Destination IP address (base)
+        - 203.32.8.0
+      - Subnet mask
       - 255.255.255.0
-
   - Output
-    - Outgoing line (either physical or virtual)
-      - Eth 0
-
+      - Outgoing line (either physical or virtual)
+        - Eth 0
   - Problems
-    1. size of the routing table grows too big, it requires a lot of RAM during look up.
+  1. size of the routing table grows too big, it requires a lot of RAM during look up.
     2. It quite hard to do a table exchange
   - Solution
     - Using route aggregation
       - Use multiple prefixed in to a large prefix
       - At the start we only need to know how to transfer the packets to the center, they know how to get to everywhere
       - For those centers, they don't need to know how to get to individual everywhere, they only need to know a bunch of packets goes to somewhere
-      -  Currently if roughly halves the routing table
+      -  roughly halves the routing table
       - Prefixes can overlap, in which case the longest matching prefix is selected
         - ![image-20190506010919569](assets/image-20190506010919569.png)
 
@@ -216,19 +217,16 @@
 
   - ![image-20190506011602650](assets/image-20190506011602650.png)
   - If we block x to x' let A B C send, we will get the best efficiency. However, it is not fair for x. We should allow x send something as well.
-
 - Delay vs. Bandwidth
 
   - Minimise the number of hops a packet has to make
 
     - Trends to reduce per packet bandwidth and improve delay
-    - Hopefully also reduces the distance travelled, but not guaranteed, since crossing the pacific is on IP hop
+    - Hopefully also reduces the distance travelled, but not guaranteed, since crossing the pacific is one IP hop
 
   - Actual algorithms give a cost to each link
 
     - More flexible, but still cannot express all routing preferences.
-
-      
 
 - Adaptivity
 
@@ -242,7 +240,6 @@
     - Adapts to changes in topology and potentially even traffic levels
     - Optimise the path (minimize the cost)
     - May get information from adjacent routers, or all routers in the network
-
 - Flooding (simplest approach)
 
   - It make copy of the packets for each output router
@@ -257,7 +254,6 @@
       - Generates many duplicate packets
     - Need somewhere to discarding packets (TTL)
       - If unknown can be set to diameter of network
-
 - Adaptive routing
 
   - A method could adapt to network topology and changes
@@ -268,24 +264,25 @@
     - If optimal path from I-K does not contains J, that means J-K is not a optimal route
 
     - It's true, but does not always apply (refer to BGP)
-
 - Sink Tree
 
   - The optimality principle means that a set of optimal routes from all sources form a tree rooted at the destination
   - ![image-20190507105558021](assets/image-20190507105558021.png)
-
 - Shortest path algorithms
 
   - Dijkstra's Algorithm (most famous)
     - Too ez, skip the details
-
-- Link State routing
-
-  - All routers connect to each other
-  - Run Dijkstra
-
 - BGP (Border Gateway Protocol)
-
+- Definitions
+  - Autonomous Systems (AS)
+    - Collections of routers under the same administrative control
+    - Bigger than the “network” part of IP address
+  - Each network will have 
+    - A protocol for internal routing
+    - A protocol for external routing between AS
+      - Must be the same for all AS
+      - BGP
   - Communication between different set of internet
   - Companies not willing to have their network used by others
   - Based on customer/provider
+  - Shortest not always be the best
