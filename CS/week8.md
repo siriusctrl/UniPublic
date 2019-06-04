@@ -10,37 +10,48 @@
 
 - In an internet, the source and destination may be in different network
 
+  - A hop is a whole network
+
 - Internet is a network of networks
 
-- Services
+  
 
-  - Connectionless (<u>Datagram network</u>)
+### Services
 
-    - Packet switching (by using IP)
-    - Including sending and receiving packets
-    - We sending each packet (if we have a stream of packets) based on the the routing table**s** (since it might go through multiple routing tables)
-    - ![image-20190430232313639](assets/image-20190430232313639.png)
+- Connectionless (<u>Datagram network</u>)
 
-  - Connection-oriented (Virtual circuit network)
+  - Packet switching (by using IP)
+  - Including sending and receiving packets
+  - We sending each packet (if we have a stream of packets) based on the the routing table**s** (since it might go through multiple routing tables)
+  - ![image-20190430232313639](assets/image-20190430232313639.png)
 
-    - Circuit switching (set up a continuous connection from one point to another)
-      - ATM (Old one)
-      - MPLS (New one)
-    - Instead of sending a packet directly, they will send a set up request
-      -  Use one digit to represent the circuit #
-      - ==Same set up request will results in same same circuit route but different source==
-      - ![image-20190430233231589](assets/image-20190430233231589.png)
-      - It may run out of the one bit
+- Connection-oriented (Virtual circuit network)
 
-  - Why two types?
+  - Circuit switching (set up a continuous connection from one point to another)
+    - ATM (Old one) - Asynchronous Transfer Model
+    - MPLS (New one) - MultiProtocol Label Switching
+  - Instead of sending a packet directly, they will send a set up request
+    -  Use one digit to represent the circuit #
+    - ==Same set up request will results in same same circuit route but different source==
+    - ![image-20190430233231589](assets/image-20190430233231589.png)
+    - It may run out of the one bit
 
-    - | issue              | Datagram Network                                             | Virtual Circuit                                    |
-      | ------------------ | ------------------------------------------------------------ | -------------------------------------------------- |
-      | Addressing         | Full source and dest for each packet                         | Only short VC number                               |
-      | State              | No need to hold state info                                   | Each VC requires router table space per connection |
-      | Routing            | Each packet independently, only depends on route table. <u>The main advantage</u>, which do not care about the route is going down during sending packets. | Defined a set-up                                   |
-      | Quality of Service | Difficult to provide good QoS                                | (Main advantage) Ez if enough resources            |
-      | Congestion Control | Difficult to control                                         | (Main advantage) Ez if enough resources            |
+- Why two types?
+
+  - | issue              | Datagram Network                                             | Virtual Circuit                                    |
+    | ------------------ | ------------------------------------------------------------ | -------------------------------------------------- |
+    | Addressing         | Full source and dest for each packet                         | Only short VC number                               |
+    | State              | No need to hold state info about the connection              | Each VC requires router table space per connection |
+    | Routing            | Each packet independently, only depends on route table. <u>The main advantage</u>, which do not care about the route is going down during sending packets. | Defined a set-up                                   |
+    | Quality of Service | Difficult to provide good QoS                                | (<u>Main advantage</u>) Ez if enough resources     |
+    | Congestion Control | Difficult to control                                         | (<u>Main advantage</u>) Ez if enough resources     |
+  
+- MultiProtocol Label switching
+
+  - Widely deployed virtual circuit network layer protocol below the internet sublayer
+  - Primary purpose is quality of service
+  - Popular with businesses that want to connect multiple sites and phone companies carrying voice traffic
+  - But expensive
 
 - QoS (Quality of Service)
 
@@ -50,13 +61,6 @@
   - It easy to prioritise the the services on your own ISP
   - ==In the case of explicit prioritisation, the differentiated services header can be used to define classes of traffic==
   - Useful in an office building with a network that carries both internet and telephony traffic
-
-- MultiProtocol Label switching
-
-  - Widely deployed virtual circuit network layer protocol below the internet sublayer
-  - Primary purpose is quality of service
-  - Popular with businesses that want to connect multiple sites and phone companies carrying voice traffic
-  - But expensive
 
 
 
@@ -72,7 +76,7 @@
   - Total length
     - Including the payload
   - Identification, DF, MF, fragment offset
-    - Used for fragmenting packets too long for a link layer protocol
+    - Fragmentation related
   - Time to live
     - Countdown of hops, discard the packet when reach 0
   - Protocol
