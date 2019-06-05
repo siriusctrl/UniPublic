@@ -284,5 +284,6 @@
       - BGP
   - Communication between different set of internet
   - Companies not willing to have their network used by others
+    - Customer only advertises routes for their network or the anyone paid for the traffic and to avoid transiting other traffic.
   - Based on customer/provider
   - Shortest not always be the best
