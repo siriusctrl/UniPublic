@@ -8,7 +8,6 @@
 - Are we going to remember all the micro ops?
 - Week 10 tutorial
   - 1d, what is the value for the offset?
-  - 3, does not quite understand the tutorial results about this question for application layer proxy
   - 4 answer
     - What is hidden terminal problem?
     - Why it  not capable of transmitting and receiving at the same time?
