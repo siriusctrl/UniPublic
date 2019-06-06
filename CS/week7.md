@@ -36,8 +36,8 @@
     - One of the cipher suites
     - Certificate
     - Request the client send its certificate
-  - Client confirms 
-    - validity of certificate
+  - Client
+    - Validate the certificate
   - Client generates
     - Session key
       1. It could pick a random key and encrypt it with public key of the server

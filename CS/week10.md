@@ -289,4 +289,3 @@
   - CISC good for backward compatibility
     - Microcode hides the details of architectural changes
   - “Micro-engine” of CISC is similar to RISC
-
