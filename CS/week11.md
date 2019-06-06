@@ -217,9 +217,12 @@
     - Including local variables
   - Priorities
   - Those features depend on <u>implementation of OS</u>
+- But share other resources
+  -  the address space
+  - file descriptors
+  - current directory
 - Threads are often used in event-driven programs
   - When a GUI element is activated (clicked) a new thread is created to process the event
-- The threads of one process share the address space, file descriptors, current directory
 - Advantages over processes
   - Threads are much “lighter” than processes, since
     - No need to copy the address space
