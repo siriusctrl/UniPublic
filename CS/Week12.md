@@ -13,9 +13,11 @@
 
 ### Side channels
 
-- I give up
-- Know a brief idea sounds good to me
-- GG
+- Way of communicating that was not intended for communication
+  - Typically not controlled 
+  - Used for smuggling data into or out of systems
+- It is possible to use the ill-gotten data to make a change to the “micro-architectural state”
+  - All register in CPU
 
 
 
