@@ -6,7 +6,7 @@
 
    - using **TWO** parallel TCP connection
 
-     1. Control Connection
+     1. Control Connection (**persistent connection**)
         - for sending control information, such as user identification, password, command, etc.
         - The command are transfer over control connection in <u>7-bit ASCII format</u>, each command consists of 4 uppercase ASCII characters. The replies are <u>three-digit numbers</u>.
           - 7-bit ASCII is good enough for human to understand the commands.
@@ -89,7 +89,7 @@
      - Root DNS Servers (13 in total)
      - Top-Level Domain
        - handle different top-level domain such as com, org, net, edu
-       - handle country top-level domain such as au, uk, an, jp
+       - handle country top-level domain such as au, uk, cn, jp
      - Authoritative DNS
        - every public accessible organization must provide a recode map the names of those host to a IP address
      - Local DNS server (<u>not strictly part of the DNS architecture</u> )
