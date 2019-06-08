@@ -36,8 +36,6 @@
 - Switch is a bridge connect many lands instead of only two
   - It could also connect with only one host
 
-
-
 ### Switched Ethernet
 
 - ![image-20190605132843742](assets/image-20190605132843742.png)
@@ -94,8 +92,6 @@
 - Selecting channels other than those 2 is likely to lead to a negative impact on performance of your and other networks.
   - Works better with CSMA/CD
 
-
-
 ### 802.11 Frames
 
 - There are three addresses
@@ -123,7 +119,7 @@
         - Open, WEP, MAP, MAP2...
       - Channel
         - Which channel the SSID is operating on
-      - Beacon interval 
+      - Beacon interval
         - How often the AP sends out beacon frames
       - The Traffic Indication Map (TIM) and Delivery Traffic Indication Map (DTIM)
         - Technique for improved power management on devices, the devices can sleep and only wake up at intervals to find out if there is any data waiting for them , the AP buffers it until they are awake.
@@ -156,15 +152,14 @@
 - RAM is a huge 1-D array of bytes
   - We need to keep track of where in RAM each variable is kept
 - Assembly language has its own named variables, not in RAM
-  - Registers
-    - Special registers
-      - Program counter
-        - Location of the currently executing command
-          - What command we are up to
-      - Flags
-        - Many binary values like “last operation produced zero”
-          - It is zero or none-zero output
-          - Do we have a carry?
+  - Registers (only list some special one)
+    - Program counter
+      - Location of the currently executing command
+        - What command we are up to
+    - Flags
+      - Many binary values like “last operation produced zero”
+        - It is zero or none-zero output.
+        - Do we have a carry?
 - Stack
   - Why?
     - We would like a specific place to store C local variable apart from global variable
@@ -173,9 +168,7 @@
 - Von Neuman architecture
   - Code and data are both store in memory
   - Why dangers?
-    - Code could edit code
-
-
+    - Code could edit other codes
 
 ### Executing an operation
 
@@ -190,12 +183,10 @@
   - What if we required some information from a unfinished instruction?
     - We stall the pipeline and wait until the previous instruction finished.
     - Or the compiler could help us to optimize our code (resolve the dependency and give those lines a bit more time to run)
-    - Or modern CPU could optimize it in micro-operation level
+    - Or modern CPU could also optimize it in micro-operation level
 - Complex instructions
   - Sometimes execute a complex instruction may take longer time
   - What we do is to stall the pipeline and wait until this execution finish
-
-
 
 ### Compatibility and Microcode
 
@@ -206,23 +197,18 @@
   - The microarchitecture is new for each new processor
   - But invisible to software
 
-
-
 ### Micro-operations
 
 - Each instructions are divided into micro-operations
-  - It does something very simple
-    - e.g. present two register to arithmetic logic unit
+  - It does something very simple, e.g. present two register to arithmetic logic unit
 - Microcode is stored in ROM on the CPU
 - For machine language
   - Difference instructions take different amounts of time
     - Hard to pipeline
   - Different instructions have different lengths
-    - Can't fetch next before decode of this one
+    - Can't fetch next before starting to decode of this one
 - For micro-operations
   - It is designed to be simple enough to fit into a cpu clock cycle
-
-
 
 ### Speculative execution
 
@@ -230,9 +216,9 @@
   - Don't know which byte to fetch until previous command is executed
   - Cheapest option
     - stall
-    - But not so efficient
+      - But not so efficient
   - Fastest option
-    - Guess which will occur
+    - Guess which will occur, which is **branch prediction**
 - Guess which branch could be executed next and then do that one
   - Could guess randomly
   - Or we have a branch predictor to predict which branch is the most likely one and we execute that one
@@ -240,14 +226,12 @@
   - Affect the cache
   - Exploited by the Spectre attack
 
-
-
 ### Call Subroutine - create stack frame
 
 - When a subroutine is called,
   - Program counter is pushed
   - Stack pointer (RSP) decreased to create a new stack frame
-- Stack frame contians
+- Stack frame contains
   - Local variable 
   - Registered to be preserved
   - Return address
@@ -260,7 +244,7 @@
 ### Buffer overflow
 
 - Common cause of pointer related crashes
-- worse
+- Worse Case
   - Can overwrite security-related variables like crypto keys
   - Can overwrite the return address
     - Causes process to execute arbitrary code
@@ -270,21 +254,27 @@
   - Execution of code that wasn't even written!
     - Since op codes and data are both are just bytes
       - Von Neuman architecture
-    - Can be sued for force the victim code to perform a sequence of operations the attacker wants
-
-
+    - Can be used for force the victim code to perform a sequence of operations that attacker wants
 
 ### RISC v.s. CISC
 
-- Many of these problems are avoided by Reduced Instruction Set Computers(RISC)
-- Each instruction has a fixed size, format and duration
-- No operation does more than one of: load, store, arithmetic
-- Easy to pipeline
-  - Due to fix size
-- Less complex $\to$ less circuitry $\to$ lower power consumption
-- Universal in mobile phones (ARM CPUs)
-- Needs more operations, because each is simpler
-  - More and faster RAM needed since we need to use more simpler instruction to achieve the goal
+- Where RISC better
+  - Many of these problems are avoided by Reduced Instruction Set Computers(RISC)
+  - Each instruction has a fixed size, format and duration
+    - No operation does more than one of
+      - load
+      - store
+      - arithmetic
+  - Easier to pipeline
+    - Due to fix size
+  - Less complex $\to$ less circuitry $\to$ lower power consumption
+  - Popular in mobile phones (ARM CPUs)
+- Drawback
+  - Needs more operations, because each is simpler
+    - More and faster RAM needed since we need to use more simpler instruction to achieve the goal, therefore, more things need to be stored.
+    - Deeper pipeline (refer to the tutorial question)
+      - More likely to be interrupted
+      - More likely to suffer from wrong branch prediction
 - Comparison
   - RISC good for low-power
     - Compare mobile phone size and share life to notebook
