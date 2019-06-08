@@ -7,11 +7,9 @@
     - Correct bit errors, or discard error frames
   - Flow control
     - Stop sender sending if the receiver is not ready to receive
-- Similar as transport layers 
+- Different with transport layers
   - point to point (two sides of a link)
   - **Not** end-to-end (over the whole network)
-
-
 
 ## Ethernet
 
@@ -45,20 +43,18 @@
 - ![image-20190605132843742](assets/image-20190605132843742.png)
 
 - It could learn MAC address by monitoring incoming frame source address
-  - Build a spanning tree and only routing on this tree to prevent form a ring which does not have “side” idea.
+  - Build a spanning tree and only routing on this tree to prevent form a ring which does not have a “side” idea.
 - Received frames are only sent out on the relevant port for the destination
   - If destination unknown, in which case it is broadcast to all ports
 - There are many links inside a switch which could help us to transfer frame between different ports quickly (in Gbps)
   - Called backplane
-
-
 
 ### Hubs v.s. Switches
 
 - Hubs have to manage collisions
   - If two ports want to send a frame at the same time they must use CSMA/CD to schedule transmissions to avoid a collision
     - Collision domain remains the entire network
-  - In a switch each part is its own collision domain
+- In a switch each part is its own collision domain
   - Provided the cable is full duplex, collisions are impossible
     - If half-duplex reverts to CSMA/CD
 
@@ -74,7 +70,7 @@
   - No CSMA/CD required which we could make a much longer segment sizes
     - The propagation delay could be much longer than packet duration (related to tutorial question 5)
 - Security benefits
-  - Prevents interfaces seeing other hots' traffic
+  - Prevents interfaces seeing other hosts' traffic
 
 
 
@@ -84,13 +80,11 @@
 - Main standard is 802.11 (a,g,n,ac)
 - 2 modes
   - Infrastructure Mode
-    - Access points - nearly always
+    - Access points (nearly always)
     - ![image-20190605153533311](assets/image-20190605153533311.png)
   - Ad hoc Mode
     - Direct connection between computers
     - ![image-20190605153523166](assets/image-20190605153523166.png)
-
-
 
 ### 802.11 Channels
 
@@ -119,31 +113,39 @@
 - Network discovery is either Passive or Active
   - Passive
     - Listens for beacon frames
-      - A full scan will take several seconds, which may need to be repeated at least every minute, becoming a significant power drain
-      - Active (commonly used today)
-        - Device sends out a probe request
+    - A full scan will take several seconds, which may need to be repeated at least every minute, becoming a significant power drain
+    - contains
+      - SSID
+        - Network name
+      - BSSID
+        - Mac address of the AP
+      - Security setting
+        - Open, WEP, MAP, MAP2...
+      - Channel
+        - Which channel the SSID is operating on
+      - Beacon interval 
+        - How often the AP sends out beacon frames
+      - The Traffic Indication Map (TIM) and Delivery Traffic Indication Map (DTIM)
+        - Technique for improved power management on devices, the devices can sleep and only wake up at intervals to find out if there is any data waiting for them , the AP buffers it until they are awake.
+  - Active (commonly used today)
+    - Device sends out a probe request
+      - The AP response the same request as above
+    - Contents
+      - BSSID
+        - Broadcast MAC address
+      - SSID
+        - Zero length or SSID the device has previously connected to
+      - MAC
+        - The device MAC address
+      - Security setting
+        - Available
+      - Channel
+        - Available
 - If an AP sees a general probe request, or one for itself, it responds with a Prob response, similar in content to a beacon frame.
 
 
 
-
-
-
-
 ## CPU architecture
-
-- Specture security violation
-
-- Memory
-  - stack
-    - Von Neuman architecture
-- Pipeline
-- Microcode
-  - Micro-Architecture
-  - micro-ops
-- Branch prediction
-  - Speculatively execute
-  - Training the branch predictor
 
 
 

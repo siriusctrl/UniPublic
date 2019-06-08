@@ -26,7 +26,7 @@
       - Up to 65,536
       - Each entry contains private IP and original source port
     - IP and TCP checksums are recalculated
-    - When a packet arrives from the internet at the NAT box,
+    - When a packet arrives from the internet at the NAT box
       - it looks up the destination port from the TCP header in the translation table
       - Retrieves original source port and source IP address, updates headers and checksums and sends to the internal host.
   - Problems
@@ -35,8 +35,8 @@
     -  **Layering** violation 
       - Initially only worked for TCP and UDP. Must edit FTP messages, because they mention port numbers, which are changed.
     - Violates **IP architectural** model
-      - Which every interface on the internet has a unique IP address
-      - Millions of interfaces connecting to the internet have 10.0.0.1
+      - Which every interface on the internet should has a unique IP address
+      - But now million of connection on the internet has IP 10.0.0.1
     - When NAT crashes, all connections are lost
     - Limits number of outgoing connection, since port numbers are 16 bits. (Up to 65535)
   - Advantages
@@ -70,11 +70,11 @@
 - Terminology
 
   - MTU (Maximum Transmission Unit)
-    - Maximum packets that a particular network could carry
+    - Maximum size of packets that a particular network could carry
   - Path MTU
     - Maximum size for the path through the network
   - Why not just set the Path MTU at the sender?
-    - Connectionless network with dynamic routing both route and link MTU can change
+    - Connectionless network with **dynamic routing** both route and link MTU can change
 
 - Problems
 
