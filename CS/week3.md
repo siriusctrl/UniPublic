@@ -6,14 +6,17 @@
 
 - Transport Layer 
 
-  - provide logical communication between <u>process</u> on different hosts, but actually you need to go through the socket, so it is a <u>process-to-process/socket-to-socket</u> delivery
+  - provide logical communication between <u>process</u> on different hosts
+    -  but actually you need to go through the socket, so it is a <u>process-to-process/socket-to-socket</u> delivery
   - the message is split into chunks, each chunks called a **segment**.
   - Each **segment** will be added a header contains information about transport layer
 
 - Network Layer
 
-  -  provide logical communication between <u>hosts</u>, therefore, it is a host-to-host delivery
-  - This will add another header to the segment, and now it called datagram
+  -  provide <u>logical communication</u> between <u>hosts</u>
+     -  Therefore it is a host-to-host delivery.
+  - This will **add another header** to the segment
+  - Called datagram
 
 - Compare transport layer and network layer
 
@@ -22,7 +25,7 @@
 ### Services
 
 - **Network layer** (Host-to-host)
-  - IP provide <u>logical communication</u> between hosts. 
+  - IP provide <u>logical communication</u> between hosts.
   - However, IP is an **unreliable service**
     - Does not guarantee segment <u>delivery</u>
       - may lost half way

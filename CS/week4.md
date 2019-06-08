@@ -54,7 +54,7 @@
 
 - Send multiple packets without waiting for acknowledgements
   -  1-bit sequence is no longer sufficient, it needs <u>unique sequence number</u>
-  - <u>Buffer</u> now is important to keep the keep the transmitted but not yet acknowledged.
+  - <u>Buffer</u> now is important to keep the transmitted but not yet acknowledged packets.
 - TCP
   - Coneection-oriented
 
@@ -75,7 +75,7 @@
     - Connection socket
       - After the connection has been built, the connection socket dedicate for a particular client process
 
-  - How to transmit? 
+  - How to transmit?
 
     - Grab data chunks from the send buffer, creates TCP segments and passes the segments to the system.
 
@@ -89,13 +89,13 @@
 
         - Since the connection requests are primarily handled by <u>welcome socket</u>. However, when building a dedicated connection socket, it must to identify which socket is working for who.
 
-      - Structure (the IP info has been send by the underlying operating system automatically)
+      - Structure (the IP info has been sent by the underlying operating system automatically)
 
         ![image-20190330165415678](assets/image-20190330165415678.png)
 
       - Sequence number
 
-        - Normally using the first bit of a sequence 
+        - Normally using the first bit of a sequence
           - since TCP does not restrict that each message must in same length
         - Use in <u>Acknowledgement</u> for identifying missing packets
 

@@ -28,6 +28,7 @@
 - Handshake procedure
 
   - Establish TCP connection
+  
   - Client sends 
     - ClientHello to server asking for secure connection
     - listing its supported “cipher suites”
@@ -35,15 +36,15 @@
     - ServerHello
     - One of the cipher suites
     - Certificate
-    - Request the client send its certificate
+    - Request the client send its certificate (manual checking)
   - Client
     - Validate the certificate
   - Client generates
     - Session key
       1. It could pick a random key and encrypt it with public key of the server
       2. Run Diffie-Hellman
-  - Handshake concludes and both parties share a key that is then used for encrypting/decrypting messages
-
+- Handshake concludes and both parties share a key that is then used for encrypting/decrypting messages
+  
   
 
 ### Cryptography
@@ -75,18 +76,18 @@
 - ECB (Electronic Codebook)
   - Simple use the key to encrypt each block
   - It is simple, parallelisable
-  - Does not provide diffusion
+  - Does not provide **diffusion**
     - when one block has been changed, the other block should also be changed as well
     - Same plaintext encrypts to the same cipher text (no diffusion)
       - ![image-20190422165301599](assets/image-20190422165301599.png)
     - Reprtition of patterns will be evident, though the pattern itself is not.
   - may not even provide confidentiality.
-    - Where make sure that nobody in between site A and B is able to read what data or information is sent between the to sites.
+    - Where make sure that nobody in between site A and B is able to read what data or information is sent between these two sites.
   - Generally should never be used.
 - CBC (Cipher Block chaining)
   - Primarily use an initialization vector to encode the plain text. For the following text, simply using the previous cipher text to encode.
-    - Simlar as add salt to each encryption, so that the pattern won't be easily found.
-  - Encryption must b e done sequentially
+    - Similar as add salt to each encryption, so that the pattern won't be easily found.
+  - Encryption must be done sequentially
   - Decryption can be done in parallel since we only need previous cipher text.
   - Loss of a block or corrupt initial vector prevents decryption of next block.
   - Changing in any of the block will results in failing to decryption of the following blocks. (**Diffusion**)
