@@ -38,13 +38,13 @@
 
 - Why two types?
 
-  - | issue              | Datagram Network                                             | Virtual Circuit                                    |
-    | ------------------ | ------------------------------------------------------------ | -------------------------------------------------- |
-    | Addressing         | Full source and dest for each packet                         | Only short VC number                               |
-    | State              | No need to hold state info about the connection              | Each VC requires router table space per connection |
-    | Routing            | Each packet independently, only depends on route table. <u>The main advantage</u>, which do not care about the route is going down during sending packets. | Defined a set-up                                   |
-    | Quality of Service | Difficult to provide good QoS                                | (<u>Main advantage</u>) Ez if enough resources     |
-    | Congestion Control | Difficult to control                                         | (<u>Main advantage</u>) Ez if enough resources     |
+  - |       issue        |                       Datagram Network                       |                  Virtual Circuit                   |
+    | :----------------: | :----------------------------------------------------------: | :------------------------------------------------: |
+    |     Addressing     |             Full source and dest for each packet             |                Only short VC number                |
+    |       State        |       No need to hold state info about the connection        | Each VC requires router table space per connection |
+    |      Routing       | Each packet independently, only depends on route table. <u>The main advantage</u>, which do not care about the route is going down during sending packets. |                 Defined at set-up                  |
+    | Quality of Service |                Difficult to provide good QoS                 |   (<u>Main advantage</u>) Ez if enough resources   |
+    | Congestion Control |                     Difficult to control                     |   (<u>Main advantage</u>) Ez if enough resources   |
   
 - MultiProtocol Label switching
 
@@ -85,7 +85,7 @@
   - optional
     - Rarely used and poorly supported
 
-### IPv4
+### IPv4 address
 
 - 32-bit number
 - Expressed in decimal notation, separated by a period
@@ -159,15 +159,14 @@
     - After limit the packets will be discarded (TTL-time to live)
   - Source and destination
     - 16 bytes IPv6 address
-  - 8 groups of 4 hex digits
-    - 8000:0000:0000:0000:0123:4567:89AB:CDEF
-  - Can be optimised by stripping one group of consecutive 0's
-    - 8000::123:4567:89AB:CDEF
-  - Backwards compatibility with IPv4 is achieved with
-    - ::ffff:192.31.2.46
-    - Mix hex with decimal
-  - Still not widely deployed
-  - Fairly widely supported
+    - 8 groups of 4 hex digits
+      - 8000:0000:0000:0000:0123:4567:89AB:CDEF
+    - Can be optimised by stripping one group of consecutive 0's
+      - 8000::123:4567:89AB:CDEF
+    - Backwards compatibility with IPv4 is achieved with
+      - ::ffff:192.31.2.46
+      - Mix hex with decimal
+- Still not widely deployed, but fairly well supported
 
 
 
@@ -195,13 +194,13 @@
       - Destination IP address (base)
         - 203.32.8.0
       - Subnet mask
-      - 255.255.255.0
+        - 255.255.255.0
   - Output
       - Outgoing line (either physical or virtual)
         - Eth 0
   - Problems
-  1. size of the routing table grows too big, it requires a lot of RAM during look up.
-    2. It quite hard to do a table exchange
+      1. size of the routing table grows too big, it requires a lot of RAM during look up.
+        - It quite hard to do a table exchange
   - Solution
     - Using route aggregation
       - Use multiple prefixed in to a large prefix
@@ -273,10 +272,8 @@
   - Dijkstra's Algorithm (most famous)
     - Too ez, skip the details
 - BGP (Border Gateway Protocol)
-- Definitions
   - Autonomous Systems (AS)
     - Collections of routers under the same administrative control
-    - Bigger than the “network” part of IP address
   - Each network will have 
     - A protocol for internal routing
     - A protocol for external routing between AS
