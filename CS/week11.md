@@ -12,24 +12,22 @@
 
 - Swapping
 
-  - The total size of all process may exceed the size of main memory. He memory images of some processes may have to be kept on disk (swap space).
-  - The kernel keep swap out a process to swap space.
-  - By doing this, it allows another process to be swapped in, have its image brought into memory from swap space.
+  - The total size of all process may exceed the size of main memory. Therefore, the kernel keep swap out a process to swap space.
+    - it allows another process to be swapped in
   - Requires “position independent” code
     - Setup a base register point to the program pointer, it will shift with the program in memory
-  - Causes “external” fragmentation
+  - Causes **external fragmentation**
+    - Assumption of external fragmentation
+      - All the code and data of a program has to be in main memory when the program is running.
+      - This code and data has to be stored in contiguous locations.
 
 - Explicit memory management
-
-  - External fragmentation problem assumption
-    - All the code and data of a program has to be in main memory when the program is running
-    - This code and data has to be stored in contiguous locations
 
   - Programmers began to write code to swap out only portions of their code and data
   - When they need a function or data structure that is not in memory, they evict one that they don't currently need and load the one they do
   - pros
-    - The program knows what it needs and what it doesn't
-
+  - The program knows what it needs and what it doesn't
+  
   - cons
     - Extra complexity, replicated in every large program
 
@@ -42,9 +40,9 @@
 - “Virtual” because programs used address are different from physical address.
 - Only the parts needed by the program now are in main memory without the program having to be aware of this.
 - Different parts of the program can be loaded into different parts of memory
-- Therefore, size of a program including its data **can exceed** the amount of available main memory.
+  - Therefore, size of a program including its data **can exceed** the amount of available main memory.
 
-#### Paging
+### Paging
 
 - Memory is divided into small pages of contiguous memory
   - Each page is either all in RAM or not in RAM.
@@ -65,28 +63,28 @@
 
 - Address spaces
   - Physical address space of a machine contains one address for each memory cell.
-    - It store byte per cell
+    - It store bits per cell
   - Virtual address space of a machine is the set of addresses that programs on that machine may generate
     - Instead of storing byte, it storing page.
-    - Each process has its own virtual address space.
+    - Each process has its **own** virtual address space and page table.
     - Same number in different virtual address does not map to the same place.
   - The virtual address space may be bigger than its physical address space.
   - The number of bits in virtual address is virtually always a power of two
     - Most PCs now use 64 bit virtual addresses
-  - Each process has its own **virtual address space** and **page table**.
 - Implementing
   - Both virtual and physical address spaces split into fixed size pages
     - MMU can map any virtual page onto any physical page
-    - Physical pages are also called page frames
+    - Physical pages are also called **page frames**
   - Pages may move between disk and memory any number of times during the life of a process
     - Pages notionally all start out on disk
-    - When a virtual page is moved to disk and back again, it may be put in a **different page frame** than before.
+    - it may be put in a **different page frame** after move back from memory.
   - Each process is always allocated a whole number of pages
-  - The amount of memory a process needs is rarely an exact multiple of the page size
+  - However, the amount of memory a process needs is rarely an exact multiple of the page size
     - Paging wastes a fraction of a page for each process
-    - “Internal fragmentation” 
+    - **Internal fragmentation**
       - Little chuck of space inside the process's address space that does not been filled in data.
       - When malloc, for example, 8 bytes, we need a page but does not fill it up.
+        - If malloc could fit in a page which are not full occupied, it will fill in that one first.
 - Page table
   - Page table has one entry for each virtual page number used by the process. A page table entry (PTE) contains:
     - A physical page number
@@ -94,7 +92,8 @@
     - A valid bit
       - In main memory or not
     - A referenced bit
-      - May be pre-fetch, will be free first.
+      - May be pre-fetch, but haven't used.
+        - Will be free first if we need more space.
     - A modified bit
     - Read, write, and execute permission bits
 - Operation
@@ -154,7 +153,6 @@
     - Close to where they used
     - 0.25MB relatively small
     - On chip
-      - 
     - Not von Neuman
   - L2 cache
     - Larger on-chip cache
@@ -174,16 +172,14 @@
 - A program is static, but process is dynamic
 - Each program could have multiple process
 - Process consists of 
-  - code
-  - Values of variables in memory and registers
-  - Its own address space
-    - text
-      - Program, usually read only
-    - data
-      - Constant data strings, global vars
-      - Heap if <u>malloc</u> or <u>new</u> are used
-    - stack
-      - Local variable
+  - text
+    - Program, usually read only
+  - data
+    - Constant data strings, global vars
+    - Heap if <u>malloc</u> or <u>new</u> are used
+  - stack
+    - Local variable
+  
   - Handles to system objects
     - File descriptors
     - sockets
@@ -240,8 +236,6 @@
 - The degree of benefit depends on the application
   - Often slower than without hyperthreading
 
-
-
 ### User, Root, System
 
 - Most processes that a typical user deals with it own data (user processes)
@@ -258,8 +252,6 @@
 - Sandbox user < regular user < root < kernel < hypervisor
   - A sandbox is a restricted environment for running untrusted code, like js in a browser.
   - A hypervisor is what controls VMs. To it, a VM is like a process.
-
-
 
 ### Kernel
 
@@ -278,8 +270,6 @@
       - Can access all memory
   - The user mode / kernel mode distinction is the foundation needed by kernel for the building of its security mechanisms.
   - ![image-20190606190248093](assets/image-20190606190248093.png)
-
-
 
 ### System Call
 
