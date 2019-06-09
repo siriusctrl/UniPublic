@@ -1,7 +1,7 @@
 # EODP STUDY GUIDE SUMMARY
 ##### a full summary for the question that list on study guide
 
-### LECTURE 1 ( concept of data wrangling)
+## LECTURE 1 ( concept of data wrangling)
 1. what is data wrangling?
     - The process of organising, converting, mapping data from one format into another
 2. what activities it encompasses(include)
@@ -18,9 +18,7 @@
 
 
 
-### LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
-
----
+## LECTURE 2 AND LECTURE 3 (re, XML, HTML, JSON)
 
 1. How is data stored and in what formats
     - Structured: Relational databses, CSV
