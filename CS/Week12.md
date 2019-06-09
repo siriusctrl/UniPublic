@@ -4,7 +4,7 @@
 - Kernel memory is in process address space
 - Javascript is executed in a “sandbox” within a browser’s process; it is not allowed to access the main process’s data
 - Techniques
-    - Control branch prediction
+    - Misleading branch prediction
     - Speculatively execute illegal code in victim process
     - Observe impact on cache in spectre process
         - Side channel: Way of communicating that was not intended for communication
