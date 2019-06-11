@@ -13,7 +13,7 @@
 
 - Network Layer
 
-  -  provide <u>logical communication</u> between <u>hosts</u>
+  -  provide logical communication between <u>hosts</u>
      -  Therefore it is a host-to-host delivery.
   - This will **add another header** to the segment
   - Called datagram

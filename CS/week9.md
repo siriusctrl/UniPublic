@@ -8,18 +8,19 @@
     - Private subnets 192.168.0.0/16
     - Can be reused
       - Only require unique address within organisation, instead of globally
-  - solutioin
+  - Solution
     - Application layer proxies
+      - HTTP proxy
     - Network layer proxies
       - NAT
 - NAT (Network Address Translation)
-  - network layer port forwarding
+  - network layer **<u>port forwarding</u>**
   - Each customer/home share **one public IP address** but with a **unique private IP address**
   - Internal IP addresses are used for communicating amongst hosts in the Local Area Network (LAN)
-  - They must never be used on the public internet
+    - they must never be used on the public internet
   - When a packet is handing out of the network (to ISP), the internal address is translated to the public IP address.
   - ![image-20190509140004546](assets/image-20190509140004546.png)
-  - procedures
+  - Procedures
     - Assumes locations of source and destination port fields are specified
     - NAT box replace source address with public IP address
     - TCP source port replaced with index of entry in NAT **translation table**
@@ -44,29 +45,28 @@
     - Significant **security** advantage
       - Since packets can only be received once an outgoing connection has been created, the internal network is greatly shielded from the attacks from incoming unsolicited packets.
       - But it should not replace firewalls
-  - Likely to remain in use even after IPv6 is widely deployed and there is no longer a scarcity of IP address
+  - Likely to remain in use even after IPv6 is widely deployed
 
 
 
 ## Fragmentation
 
-- What
+- What is it?
 
   - The action that the network breaks the large packets into smaller packets
 
 - Why we need this?
 
-  - Smaller packets, much easier to find the problem and doing re-transimission
   - Most network links cannot handle a full IP packets with size 65535.
+  - Smaller packets, much easier to find the problem and doing re-transimission
 
 - Why we don't send small packets at the very beginning?
 
   - we want to minimize number of packets we sent
   - Reduce overhead
-    - Reduce the number of packets be sent
   - Reduce process time
     - Big packets has the same process time as smaller packets
-
+  
 - Terminology
 
   - MTU (Maximum Transmission Unit)
@@ -74,7 +74,7 @@
   - Path MTU
     - Maximum size for the path through the network
   - Why not just set the Path MTU at the sender?
-    - Connectionless network with **dynamic routing** both route and link MTU can change
+    - Connectionless network with **<u>dynamic routing</u>** both route and link MTU can change
 
 - Problems
 
@@ -101,7 +101,8 @@
       - 13 bits - max offset $(2^{13} -1) * 8 = 65528$
       - If the first one has length n, the offset for the next one is n
   - In real world, we could store the offset in a 8 bytes boundary, which ignore last 20 bytes in every blocks
-    - (185*8 = 1480 +20 = header_size 1500)
+    - (185*8 = 1480 +20 = header size 1500)
+    - Notice that the offset exclude the header size
     - ![image-20190512204718126](assets/image-20190512204718126.png)
   - Problems
     - The offset is smaller than we want to use
@@ -124,9 +125,9 @@
 
 - Fragmentation in IPv4 vs IPv6
 
-  - IPv4 allows for either nontransparent fragmentation, or path MTU discovery
+  - IPv4 allows for either **<u>nontransparent fragmentation</u>**, or **<u>path MTU discovery</u>**
     - Minimum accept size 576 bytes
-  - IPv6 expects hosts to discover the optimal path MTU, routers will not perform fragmentation in IPv6
+  - IPv6 expects hosts to discover the optimal path MTU, **and do not support fragmentations** (that means we cannot break the packets and assemble them up) , routers will not perform fragmentation in IPv6
     - Minimum accept size 1280 bytes
   - ICMP message are sometimes dropped by networks, causing Path MTU discovery to fail
     - Connection will only work for low volume
@@ -141,6 +142,8 @@
   - ![image-20190605105211602](assets/image-20190605105211602.png)
 
   - ![image-20190605105221830](assets/image-20190605105221830.png)
+  
+    
 
 
 
@@ -168,7 +171,7 @@
   - Measure sum of my signal + theirs (only for ethernet)
     - If that exceeds a threshold, a collision occurred
   - Could not be used in wireless collisions
-    - Since there is a big difference in size between transmit power and receive power
+    - Since there is a significant difference in size between transmit power and receive power
 - CSMA/CA - WiFi MAC
   - Wait until other transmission finished
     - Time = sending time + ack time + backoff
@@ -196,7 +199,7 @@
     - Dynamic time division
     - Still need a way to make reservations
   - Polling
-    - Central controller asks each slave whether they have data to transmit
+    - Central controller asks each one whether they have data to transmit
   - Token passing
     - One node at a time has permission to transmit
     - After transmission, there permission is passed to the next node

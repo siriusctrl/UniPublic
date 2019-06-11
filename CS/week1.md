@@ -2,9 +2,9 @@
 
 - a computer network that connect billions of computers and some devices throughout the world
 - devices $\rightarrow$ end systems, hosts
-- end system are connected  by  **communication link** 
+- end system are connected  by  **communication link**
 - some devices are packet switches (routers, link-layer switches)
-- protocol
+- What is protocol?
   -  The rule that control the sending and receiving of packets.
   -  It defines the **format** and the **order** of messages exchange.
   - Also define the **actions** taken on the transmission and/or receipt of a message or other event.
@@ -33,7 +33,7 @@
     - HTTP
     - SMTP for email
     - FTP
-  - protocols define
+  - Those protocols define
     - type of message exchanged
     - syntax of the various message types
     - semantics of the fields
@@ -41,6 +41,7 @@
     - **distributed over multiple end systems**
     - can be used to **exchange packets of information** between different end system.
 - <u>Transport Layer</u>
+  
   - provides a reliable byte stream between two nodes on a network
   - congestion control (week 5)
   - flow control (week 5)
@@ -55,6 +56,7 @@
       - unreliable
       - e.g. publishing something to LED board that does not need responds.
 - <u>Network Layer</u>
+  
   - provides **routing** (using IP address).
   - find a best way from source to destination.
   - IP protocol
@@ -64,6 +66,7 @@
   - Routing protocol
     - determine a series of routes that packets take between sources and destination
 - <u>Link layer</u>
+  
   - pack data segments into frames
   - focusing on transfer data from one node to another node.
   - protocol to chose depends on how the two nodes are connected
@@ -71,14 +74,20 @@
     - WIFI
   - link dependent
 - <u>Physical layer</u>
+  
   - in charge of transform the byte stream into electrical signal and pulse depends on the media.
 - <u>application layer and  transport layer</u> are end-to-end
+  
   - which means they don’t care about how the information has delivered. They only focus on the source and destination.
 - <u>network layer</u> is a **mix** of end-to-end and point-to-point. 
+  
   - From the IP address perspective, it is from one IP to another, thus, it is an end-to-end. 
   - From routing perspective, it has to decide transfer from which route to which node, thus, it is point-to-point.
 - <u>Link layer and Physical layer</u> are point to point
+  
   - since they are link dependent. For example, using WIFI will use the different protocol comparing with using Ethernet.
+  
+  
 
 ### OSI Model
 

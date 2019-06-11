@@ -1,4 +1,4 @@
-## Internet (network) layer
+## Network(Internet) layer
 
 - Why we need it?
   
@@ -6,9 +6,9 @@
   
 - Traffic must be routed efficiently
 
-- Each node on the internet must have a name (addressing)
+- Each node on the internet must have a name (IP addressing)
 
-- In an internet, the source and destination may be in different network
+- In an internet, the source and destination may be in different network (hop)
 
   - A hop is a whole network
 
@@ -20,35 +20,32 @@
 
 - Connectionless (<u>Datagram network</u>)
 
-  - Packet switching (by using IP)
-  - Including sending and receiving packets
-  - We sending each packet (if we have a stream of packets) based on the the routing table**s** (since it might go through multiple routing tables)
+  - The routing strategy also called dynamic routing
+  - We sending/receiving each packet (if we have a stream of packets) based on the the routing table**s** (since it might go through multiple routing tables)
   - ![image-20190430232313639](assets/image-20190430232313639.png)
-
-- Connection-oriented (Virtual circuit network)
+  
+- Connection-oriented (<u>Virtual circuit network</u>)
 
   - Circuit switching (set up a continuous connection from one point to another)
     - ATM (Old one) - Asynchronous Transfer Model
     - MPLS (New one) - MultiProtocol Label Switching
   - Instead of sending a packet directly, they will send a set up request
-    -  Use one digit to represent the circuit number
-    - ==Same setup request will results in the same circuit route but different source==
+    -  Use one digit to represent the circuit number, but it may run out of one bits
     - ![image-20190430233231589](assets/image-20190430233231589.png)
-    - It may run out of the one bit
-
+  
 - Why two types?
 
   - |       issue        |                       Datagram Network                       |                  Virtual Circuit                   |
     | :----------------: | :----------------------------------------------------------: | :------------------------------------------------: |
     |     Addressing     |             Full source and dest for each packet             |                Only short VC number                |
-    |       State        |       No need to hold state info about the connection        | Each VC requires router table space per connection |
-    |      Routing       | Each packet independently, only depends on route table. <u>The main advantage</u>, which do not care about the route is going down during sending packets. |                 Defined at set-up                  |
+    |  Connection State  |       No need to hold state info about the connection        | Each VC requires router table space per connection |
+    |    Routing Path    | Each packet independently, only depends on route table at that moment. <u>The main advantage</u>, which do not care about the route is going down during sending packets. |                 Defined at set-up                  |
     | Quality of Service |                Difficult to provide good QoS                 |   (<u>Main advantage</u>) Ez if enough resources   |
     | Congestion Control |                     Difficult to control                     |   (<u>Main advantage</u>) Ez if enough resources   |
   
 - MultiProtocol Label switching
 
-  - Widely deployed virtual circuit network layer protocol below the internet sublayer
+  - Widely deployed VC network protocol below the internet sublayer
   - Primary purpose is quality of service
   - Popular with businesses that want to connect multiple sites and phone companies carrying voice traffic
   - But expensive
@@ -59,7 +56,7 @@
     - When you downloading a bulk of file, you don't care what comes first and what comes after that.
     - When you watching a video, you do care about the sequence, since most of the people don't like delay.
   - It easy to prioritise the the services on your own ISP
-  - ==In the case of explicit prioritisation, the **differentiated services header** can be used to define classes of traffic==
+  - ==In the case of explicit prioritisation, the **differentiated services header in IP packets** can be used to define classes of traffic==
   - Useful in an office building with a network that carries both internet and telephony traffic
 
 
@@ -72,10 +69,10 @@
   - IHL
     - Length of the header in 32 bit words
   - Differentiated services
-    - 6 bits for service class, 2 bits for congestion control
+    - In charge of **<u>service class</u>** (6 bits), and **<u>congestion control</u>** (2 bits)
   - Total length
     - Including the payload
-  - Identification, DF, MF, fragment offset
+  - Identification, DF,  MF, fragment offset
     - Fragmentation related
   - Time to live
     - Countdown of hops, discard the packet when reach 0
@@ -84,15 +81,15 @@
   - Source and destination
   - optional
     - Rarely used and poorly supported
+      
 
-### IPv4 address
+### IPv4 address (0.0.0.0 - 255.255.255.255)
 
 - 32-bit number
 - Expressed in decimal notation, separated by a period
-- Range from 0.0.0.0, to 255.255.255.255
 - Allocation sequence: Central $\to$ locally $\to$ ISP $\to$ customer
-- It named interfaces not hosts
-  - if a host with multiple network cards will have multiple IP address.
+- It named **<u>interfaces</u>** not hosts
+  - Hosts with multiple interface can have multiple IP address.
 - Supply of IPv4 address has been exhausted. (Scarcity of IPv4)
 - Types of address
   - Unicast: One destination
@@ -108,7 +105,7 @@
     - Send ad to those in store
     - Send warning to those near a hazard
 - IP addresses
-  - Classes
+  - Classes (old fashion)
     - IP addresses were allocated based on classes
     - Routing was performed based on the class, which could be derived from the first part of the address
       - ![image-20190502205126735](assets/image-20190502205126735.png)
@@ -116,6 +113,7 @@
     - Size of “network” field is implicit in the address
     - drawback
       - Wasteful, network with 260 nodes must be class B with 16,384 address
+    - Only multicast address has been reserved when we starting to use CIDR
   - CIDR (classless InterDomain Routing)
     - Each interface/route explicitly specifies which bits are the “network” field by slash.
     - Network with 260 nodes only needs 9 bits (2^8^ = 256 not enough, 2^9^ = 512)
@@ -131,6 +129,7 @@
       - Make the routing much more efficient
         - Since networks are assigned in blocks, intermediary routers need only maintain routes for the prefixes, not every individual host
       - Only when the packet arrives at the destination network does the host portion need to be read
+        
 
 ### IPv6
 
@@ -150,7 +149,7 @@
   - Differentiated services
   - Flow label
     - Pseudo-virtual circuit identifier
-    - Help to use VC in IP, no need for extra overhead
+    - Help to use VC in IP, no need for extra overhead for router
   - Payload length
     - Bytes after the 40 byte header
   - Next header
@@ -176,7 +175,7 @@
 
 - This maps destination address to outgoing interfaces.
 
-- Repeat until reach the destination: 
+- Repeat until reach the destination:
 
   1. the destination IP address in the header
 
@@ -184,7 +183,7 @@
 
   3. Determine the outgoing interface
 
-  4. Forward the packet out that interface
+  4. Forward the packet out to that interface
 
 - Routing tables
 
@@ -205,10 +204,11 @@
     - Using route aggregation
       - Use multiple prefixed in to a large prefix
       - At the start we only need to know how to transfer the packets to the center, they know how to get to everywhere
-      - For those centers, they don't need to know how to get to individual everywhere, they only need to know a bunch of packets goes to somewhere
+      - Central routers need only maintain routes for the prefixes, not every individual host
       -  roughly halves the routing table
       - Prefixes can overlap, in which case the longest matching prefix is selected
         - ![image-20190506010919569](assets/image-20190506010919569.png)
+          
 
 ### Routing Algorithm
 
@@ -226,7 +226,6 @@
   - Actual algorithms give a cost to each link
 
     - More flexible, but still cannot express all routing preferences.
-
 - Adaptivity
 
   - Non-adaptive (<u>static routing</u>)
@@ -264,8 +263,8 @@
 
     - It's true, but does not always apply (refer to BGP)
 - Sink Tree
-
-  - The optimality principle means that a set of optimal routes from all sources form a tree rooted at the destination
+- It is a type of spanning tree
+  - Shortest path we could get from any node to another node.
   - ![image-20190507105558021](assets/image-20190507105558021.png)
 - Shortest path algorithms
 
@@ -284,3 +283,4 @@
     - Customer only advertises routes for their network or the anyone paid for the traffic and to avoid transiting other traffic.
   - Based on customer/provider
   - Shortest not always be the best
+

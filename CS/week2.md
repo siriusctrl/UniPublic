@@ -86,7 +86,8 @@
      - load distribution
        - perform load distribution among replicated servers.
    - The DNS are distributed and hierarchically database of mapping
-     - Root DNS Servers (13 in total)
+     - Root DNS Servers 
+       - 13 in total among the world
      - Top-Level Domain
        - handle different top-level domain such as com, org, net, edu
        - handle country top-level domain such as au, uk, cn, jp
@@ -125,10 +126,10 @@
 
   - compare the checksums to know whether the  files has been changes
 
-    - checksums is 40 byte string of SHA-1 hash of content of the file or directory structure
+    - checksums is <u>40 byte</u> string of SHA-1 hash of content of the file or directory structure
 
   - Tree states of file
-    - modified 
+    - modified
       - the file is changed but have not been committed to the database
     - staged
       - the current version of the modified file is marked to be put into the next commit snapshot

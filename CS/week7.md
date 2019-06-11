@@ -21,7 +21,8 @@
         - Provides confidence the server is who it says it is
       - Restoration of interrupted session
         - You close your laptop when downloading, if you open your laptop later, it don't need to download from the very beginning.
-  - HTTPS uses port 443 instead of 80
+  - HTTPS use different port number than HTTP
+    -  It uses port 443 instead of 80
     - Only way to identify what being sent is TLS
   - TLS is not a transport layer protocol, it is blow HTTP (might belongs to application layer)
   
@@ -31,10 +32,10 @@
   
   - Client sends 
     - ClientHello to server asking for secure connection
-    - listing its supported “cipher suites”
+    - listing its supported <u>cipher suites</u>
   - Server responds
     - ServerHello
-    - One of the cipher suites
+    - One of the available cipher suites
     - Certificate
     - Request the client send its certificate (manual checking)
   - Client
@@ -43,7 +44,13 @@
     - Session key
       1. It could pick a random key and encrypt it with public key of the server
       2. Run Diffie-Hellman
+  
 - Handshake concludes and both parties share a key that is then used for encrypting/decrypting messages
+  
+- But TLS is not perfect
+  
+  - Man in the middle attack, for CA
+  - Multiple end system share a server, which you don't know which one is ACTUALLY talking to you.
   
   
 
@@ -51,7 +58,7 @@
 
 - Definitions
   - Encryption
-    - Hide data and generate a cipher text based on some method. (Like RSA, factorising the product of 2 large primes)
+    - Hide data and generate a cipher text based on some method. 
   - Decryption
     - Recovering the original data from the cipher text using the key
   - Premise: secret key that is unknown to eavesdropper.
@@ -80,16 +87,18 @@
     - when one block has been changed, the other block should also be changed as well
     - Same plaintext encrypts to the same cipher text (no diffusion)
       - ![image-20190422165301599](assets/image-20190422165301599.png)
-    - Reprtition of patterns will be evident, though the pattern itself is not.
-  - may not even provide confidentiality.
+    - Repetition of patterns will be evident, though the pattern itself is not.
+  - not provide confidentiality.
     - Where make sure that nobody in between site A and B is able to read what data or information is sent between these two sites.
   - Generally should never be used.
 - CBC (Cipher Block chaining)
-  - Primarily use an initialization vector to encode the plain text. For the following text, simply using the previous cipher text to encode.
+  - Primarily use an initialization vector as salt to encode the plain text. For the following text, simply using the previous cipher text as salt to encode.
     - Similar as add salt to each encryption, so that the pattern won't be easily found.
-  - Encryption must be done sequentially
+    - ![image-20190611213547244](assets/image-20190611213547244.png)
+    - Encryption must be done sequentially
   - Decryption can be done in parallel since we only need previous cipher text.
-  - Loss of a block or corrupt initial vector prevents decryption of next block.
+    - ![image-20190611213615960](assets/image-20190611213615960.png)
+  - **<u>Loss of a block</u>** or **<u>corrupt initial vector</u>** prevents decryption of next block.
   - Changing in any of the block will results in failing to decryption of the following blocks. (**Diffusion**)
 
 
@@ -112,7 +121,7 @@
 
 - Properties
   - It is symmetric way to generate secret key at both end
-  - Provide forward secrecy
+  - Provide **<u>forward secrecy</u>**
     - Even if long-term key (private key in the key pair) was compromised, and an attacker had recorded all traffic, they would still not be able to decrypt the messages.
   - Limit to conventional compromise
     - Can be break by a quantum computer
@@ -152,18 +161,20 @@
 
   - Cannot deny having signed the document
 
-- Encrypt a message with the privateKey, anyone else can decrypt with the public key and verify that the message was signed by the private key holder.
+- Encrypt a message with the private key, anyone else can decrypt with the public key and verify that the message was signed by the private key holder.
 
 - For large documents
 
   - Use a cryptographic hash function
     - e.g. SHA256
-    - Takes a near arbitrary length input and fixed length outputs
+    - Takes a nearly arbitrary length input which gives a fixed length outputs
 
   - Why hash?
     - Easy and fast to calculate
     - Infeasible to reverse
-    - Extremely unlikely two slightly different documents produce the same hash
+    - Two slightly different documents are extremely unlikely producing the same hash.
+  
+  
 
 ### Salt
 
@@ -181,8 +192,8 @@
 - Digitally signed documents that provide proof of identity or ownership
 - The signer is a Certificate Authority (CA) pre-trusted by your browser/OS
   - Their work is to verify whether the website are who they said they are
+- Common practice for anti-virus/web protection software
 - But not perfect
-  - Create own local certificate authority and install certificate into root stores
+  - Some one could maliciously create customised local certificate authority and install certificate into root stores
   - Local proxy can intercept TLS connections
     - Not robust to man in the middle attack
-  - Common practice for anti-virus/web protection software

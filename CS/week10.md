@@ -21,16 +21,16 @@
   - Particularly around the hub
   - Even though the cable was considerably thinner
 - Hub acts as if all cables are soldered together, every frame that comes in is sent out along all other lines
+- The message will be broadcasted to all other ports.
 - Problems
-  - Fixed capacity that is being shared by all hosts
+  - Fixed capacity that is being shared by all hosts.
   - As the number of host increase their share of the network capacity is reduced dramatically.
-  - The alternative was switched Ethernet
 
 ### Bridges
 
 - A bridge connects two LANs with the same “link-layer” protocol
   - Ethernet with ethernet
-  - Wifi with wifi
+  - Wifi with WiFi
 - Each side of a bridge is a separate “medium” and so bridges increase capacity
   - Each side could wait until other side finish the transmission
 - Switch is a bridge connect many lands instead of only two
@@ -41,11 +41,12 @@
 - ![image-20190605132843742](assets/image-20190605132843742.png)
 
 - It could learn MAC address by monitoring incoming frame source address
-  - Build a spanning tree and only routing on this tree to prevent form a ring which does not have a “side” idea.
+  - Build a spanning tree and only routing on this tree to prevent form a ring.
 - Received frames are only sent out on the relevant port for the destination
   - If destination unknown, in which case it is broadcast to all ports
-- There are many links inside a switch which could help us to transfer frame between different ports quickly (in Gbps)
+- There are many links inside a switch which could help us to transfer frame between different ports really quickly (in Gbps)
   - Called backplane
+    
 
 ### Hubs v.s. Switches
 
@@ -83,24 +84,29 @@
   - Ad hoc Mode
     - Direct connection between computers
     - ![image-20190605153523166](assets/image-20190605153523166.png)
+    
+    
 
 ### 802.11 Channels
 
-- 2.4 GHz Channels sharing  100 MHz of space
+- 2.4 GHz Channels sharing 100 MHz of space
 - Each channel is 20/22 MHz in width, with a 5 MHz divide between channels.
 - Channels overlap, whit only 3 channels that do not (e.g. 1, 6, 11)
 - Selecting channels other than those 2 is likely to lead to a negative impact on performance of your and other networks.
+  
   - Works better with CSMA/CD
+  
+  
 
 ### 802.11 Frames
 
 - There are three addresses
-  - sender
-  - receiver
+  - Sender
+  - Receiver
   - Network ID (BSSID)
   - The sequence are depends on the mode
-
-
+  
+  
 
 ### Network discovery and Power Usage
 
@@ -150,6 +156,7 @@
 - C variables are stored in RAM
 
 - RAM is a huge 1-D array of bytes
+  
   - We need to keep track of where in RAM each variable is kept
 - Assembly language has its own named variables, not in RAM
   - Registers (only list some special one)
@@ -168,7 +175,10 @@
 - Von Neuman architecture
   - Code and data are both store in memory
   - Why dangers?
+    
     - Code could edit other codes
+    
+      
 
 ### Executing an operation
 
@@ -237,7 +247,7 @@
   - Return address
 - To return from a subroutine
   - Undo the adjustment to RSP
-  - Pop PC from the stack
+  - Pop program counter from the stack
 
 
 
@@ -255,6 +265,8 @@
     - Since op codes and data are both are just bytes
       - Von Neuman architecture
     - Can be used for force the victim code to perform a sequence of operations that attacker wants
+  
+  
 
 ### RISC v.s. CISC
 
@@ -271,7 +283,7 @@
   - Popular in mobile phones (ARM CPUs)
 - Drawback
   - Needs more operations, because each is simpler
-    - More and faster RAM needed since we need to use more simpler instruction to achieve the goal, therefore, more things need to be stored.
+    - More and faster RAM needed, more things need to be stored.
     - Deeper pipeline (refer to the tutorial question)
       - More likely to be interrupted
       - More likely to suffer from wrong branch prediction

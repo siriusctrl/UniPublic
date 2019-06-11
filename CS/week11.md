@@ -26,7 +26,7 @@
   - Programmers began to write code to swap out only portions of their code and data
   - When they need a function or data structure that is not in memory, they evict one that they don't currently need and load the one they do
   - pros
-  - The program knows what it needs and what it doesn't
+    - The program knows what it needs and what it doesn't
   
   - cons
     - Extra complexity, replicated in every large program
@@ -36,11 +36,15 @@
 ### Virtual Memory
 
 - It allows programs to assume the program and data is always in fixed locations in memory and contiguous, but actually not
+  
   - Provide a clean interface to a complex subsystem
 - “Virtual” because programs used address are different from physical address.
 - Only the parts needed by the program now are in main memory without the program having to be aware of this.
 - Different parts of the program can be loaded into different parts of memory
+  
   - Therefore, size of a program including its data **can exceed** the amount of available main memory.
+  
+  
 
 ### Paging
 
@@ -61,7 +65,7 @@
 - Whenever the CPU accesses memory, the MMU transforms the addresses according to the mapping
   - ![image-20190605230136412](assets/image-20190605230136412.png)
 
-- Address spaces
+- Address Spaces
   - Physical address space of a machine contains one address for each memory cell.
     - It store bits per cell
   - Virtual address space of a machine is the set of addresses that programs on that machine may generate
@@ -75,9 +79,9 @@
   - Both virtual and physical address spaces split into fixed size pages
     - MMU can map any virtual page onto any physical page
     - Physical pages are also called **page frames**
-  - Pages may move between disk and memory any number of times during the life of a process
+  - Pages may move between disk and memory any number of times during the life of a process.
     - Pages notionally all start out on disk
-    - it may be put in a **different page frame** after move back from memory.
+    - It may be put in a **different page frame** after move back from memory.
   - Each process is always allocated a whole number of pages
   - However, the amount of memory a process needs is rarely an exact multiple of the page size
     - Paging wastes a fraction of a page for each process
@@ -117,6 +121,7 @@
     - Load the required virtual page from the swap space into a free page frame
     - Cause the MMU to map the virtual page onto the physical page
     - Restart the process at same instruction.
+      
 
 ### Cache
 
@@ -171,21 +176,21 @@
 - A program in execution
 - A program is static, but process is dynamic
 - Each program could have multiple process
-- Process consists of 
-  - text
+- Process consists of
+  - Text
     - Program, usually read only
-  - data
+  - Data
     - Constant data strings, global vars
     - Heap if <u>malloc</u> or <u>new</u> are used
-  - stack
+  - Stack
     - Local variable
   
   - Handles to system objects
     - File descriptors
-    - sockets
+    - Sockets
   - Security context
-    - user
-    - group
+    - User
+    - Group
   - Current directory
   - Environment variable
   - Priority
@@ -227,6 +232,7 @@
     - ez cooperation
     - Processes require explicit communication, or a specially-allocated block of shared memory
   - Multi-threading is a natural way to exploit multiple cores or CPUs to achieve a single task.
+    
 
 ### Hyperthreading (Simultaneous Multi-Threading)
 
@@ -235,6 +241,7 @@
   - Better utilization of the pipeline and multiple execution units
 - The degree of benefit depends on the application
   - Often slower than without hyperthreading
+    
 
 ### User, Root, System
 
@@ -252,11 +259,13 @@
 - Sandbox user < regular user < root < kernel < hypervisor
   - A sandbox is a restricted environment for running untrusted code, like js in a browser.
   - A hypervisor is what controls VMs. To it, a VM is like a process.
+    
 
 ### Kernel
 
 - If several processes are to be active at the “same” time, kernel has to ensure that they do not get in each other's way.
 - It also provides services such as “read N bytes from this file”.
+  
   - These services are used by **application programs**, **utilities**, and by the **non-privileged parts of the operating system**.
 - The kernel is not itself a process
 - User-Kernel Distinction
@@ -268,8 +277,12 @@
     - **Kernel mode (System mode, supervisor mode)**
       - Can issue all instructions
       - Can access all memory
+    
   - The user mode / kernel mode distinction is the foundation needed by kernel for the building of its security mechanisms.
+  
   - ![image-20190606190248093](assets/image-20190606190248093.png)
+  
+    
 
 ### System Call
 

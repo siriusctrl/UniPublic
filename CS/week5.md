@@ -30,7 +30,7 @@
 
   - Let the sender know how much **free buffer space** is available at the receiver.
 
-  - 16 bits number in header
+  - 16 bits number in header (notice that 32 means 32 bits **for each line**!!!!)
 
     ![image-20190402224949944](assets/image-20190402224949944.png)
 
@@ -39,7 +39,7 @@
   - Out of order segment could be dropped at any time if necessary, therefore, when we response the rwnd size, we don't consider the out-of-order sequence.
 
 - Deadlock
-  - Once the rcwd becomes 0, the sender won't send and receiver won't receive.
+  - Once the rwnd becomes 0, the sender won't send and receiver won't receive.
 
     - Sender starts persist timer, periodically send **ZeroWindowProbe** segments.
 
@@ -74,7 +74,7 @@
 - Definition
   - The sender needs to control its send rate according to the congestion state of the network
   - Maximum Segment Size(MSS)
-    - The maximum allowable size of the data field in a segment
+    - Maximum number of segments that you could send.
   - Round-trip Time (RTT)
     - The time that a segment is sent to the receiver and its ACK is sent back to the sender.
   - Transmission Round
@@ -82,7 +82,7 @@
       - In pipeline transmission, we can assume RTT = Transmission Round
   - ssthread = slow-start threshold
 - Questions
-  - How does the sender control its traffic send rate?
+  - How does the sender control its traffic sending rate?
     - Maintance a congestion window cwnd
     - LastByteSent - LastByteACKED $\leq$ min(cwnd, rwnd)
   - How does the sender perceive the network congestion?
@@ -93,9 +93,12 @@
     - Slow start
       - Set cwnd = 1MSS
       - For each transmission round:
-        - <u>**For each**</u> ACK for a not-yet-acknowledged segment:
-          - cwnd = cwnd + 1 MSS
-          - Which is double the cwnd in each round
+        - **<u>For each ACK</u>**:
+          - If it is a not-yet-acknowledged segment
+            - cwnd = cwnd + 1 MSS
+            - Which is double the cwnd in each round
+          - To make it simple
+            - when received a new ACK (which not ACK of duplicate thing), cwnd increase by 1 and send out 2 new packets.
         - If cwnd reach the threshold ($\text{cwnd} == \text{ssthresh}$)
           - run the <u>Congestion Avoidance</u> algorithms
         - If **timeout**
@@ -109,7 +112,7 @@
     - Congestion avoidance
       - For each transmission round
         - For each ACK for a not-yet-acknowledged statement
-          - cwnd = cwnd + 1MSS * $\frac{\text{MSS}}{\text{cwnd}}$ 
+          - cwnd = cwnd + 1MSS * $\frac{\text{MSS}}{\text{cwnd}}$
         - In this case, cwnd can only be increased by 1 MSS for each round.
       - If **timeout**
         - Same as slow start
