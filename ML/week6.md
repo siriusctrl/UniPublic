@@ -33,9 +33,10 @@
     - $P(A|x) = P(C|x) * exp(\beta_A *x)$
     - Similar for $P(B|x)$
     - $P(A|x) + P(B|x) + P(C|x) = 1$
-    - $P(A|x) = \frac{1}{1+\sum\limits_{k \in A,B} -e^{\beta*x}}$
-
-  - Probability of all class sum to 1
+      - Probability of all class sum to 1
+- $P(A|x) = \frac{1}{1+\sum\limits_{k \in A,B} -e^{\beta*x}}$
+    
   - Therefore, we could express all other class in terms of all other class.
 
 - 
+
