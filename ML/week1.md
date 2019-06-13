@@ -1,8 +1,10 @@
 ### Definitions
 
-> **Instance** : A real world examples of a concept
-> **Attributes** : measuring aspects of an instance
-> **Concepts** : What we want to learn in the form of labels or classes
+> **Instance** : A real world examples of a concept 
+>
+> **Attributes** : measuring aspects of an instance 
+>
+> **Concepts** : What we want to learn in the form of labels or classes 
 
 
 

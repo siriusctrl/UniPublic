@@ -1,6 +1,4 @@
-## Lecture 1
-
-### classification evaluation
+### Classification Evaluation
 
 - Basic evaluation metric: Accuracy
   - $\frac{\text{number of correctly labelled test instances}}{\text{Total number of test instances}}$ 
@@ -8,7 +6,7 @@
 - Need to split dataset
   - Training set
   - Test set
-  - Evaluation set (not mentioned, but most of the case, we need this)
+  - Evaluation set (not mentioned in lecture, but we need this)
   - Testing on training set tends to grossly over-estimate
 - Methods
   - Holdout
@@ -18,7 +16,7 @@
     - cons
       - Size of the split affects estimate of the classifier's behaviour
         - Too many testing instances results in the learner does not have enough instance to learn the pattern.
-        - Too many training instances results in the evaluation might not be representative. (The estimation can be too high or too low)
+        - Too many training instances results in the evaluation might not be representative. (High variance in estimation)
   - Repeated Random Subsampling
     - Like holdout but iterated multiple times. New training set and test are chosen each time but relative size of training-test is fixed across iteration
     - pros
@@ -51,7 +49,7 @@
   - False Positive (FP)
   - False Negative (FN)
 - Some useful figures
-  - ACC = $\frac{\text{TP + TN}}{\text{TP + FP +FN + TN}}​$
+  - ACC = $\frac{\text{TP + TN}}{\text{TP + FP +FN + TN}}$
   - ER = 1 - ACC
   - Precision: How often are we correct ,w.r.t the class that we are interested in
     - $\frac{\text{TP}}{\text{TP + FP}}$ 
@@ -65,7 +63,7 @@
     - ![image-20190325222555379](assets/image-20190325222555379.png)
   - Macro-averaging (mean of each class)
     - $Precison_M = \frac{\sum^c_{i=1} Precision(i)}{c}$
-    - $Recall_M = \frac{\sum^c_{i=1} Recall(i)}{c}​$
+    - $Recall_M = \frac{\sum^c_{i=1} Recall(i)}{c}$
   - Weighted-averaging (based on the proportion of instances in that class)
     - $Precison_W = \sum^c_{i=1}(\frac{n_i}{N}) Precision(i)$
     - $Recall_W = \sum^c_{i=1}(\frac{n_i}{N}) Recall(i)$
