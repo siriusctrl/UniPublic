@@ -1,40 +1,45 @@
-## lecture 1
-What is ML, differences between ML and Data mining or AI.
+### Definitions
 
-## lecture 2
-> **Instance** : A real world examples of a concept  
-> **Attributes** : measuring aspects of an instance  
-> **Concepts** : What we want to learn in the form of labels or classes    
+> **Instance** : A real world examples of a concept
+> **Attributes** : measuring aspects of an instance
+> **Concepts** : What we want to learn in the form of labels or classes
 
-#### Style  of concept (different kinds of task) 
-- Classification 
-  - **supervised** : prior knowledge of the relationship between instance and labels required
+
+
+### Type of Task in ML
+- Classification
+  - **<u>Supervised</u>** : prior knowledge of the relationship between instance and labels required
   - Learning predicting which class does the new object belonging
   - provide with set of classified training data for learning, need to give predictions about which class does the test instance in
     ![FF057575-BF1B-44D4-86EF-D180A001F9CA](assets/FF057575-BF1B-44D4-86EF-D180A001F9CA.png)
 
 - Clustering
-  - **Unsupervised** : not prior knowledge required
-  - grouping similar instances together without giving the labels of all the instances.
+  - **Unsupervised** 
+  - No prior knowledge required
+  - Grouping similar instances together without giving the labels of all the instances.
 - Regression
   - **Supervised**
-  - predicting a numeric quantity
-  - a good regression is acceptably close to the true value
+  - Predicting a numeric quantity
+  - A good regression is acceptably close to the true value
 - Association Learning
-  - detecting useful associations or structures between attribute values
-  - we can use the new rule to infer an attributes values based on another
+  - Detecting useful associations or structures between attribute values
+  
+  - We can use the new rule to infer an attributes values based on another
+  
+    
 
-#### Different type of attribute
+### Different Type of Attribute
 1. Nominal Quantities (**Categorical**, discrete)
 
    - values are distinct symbols, theirs no relation between them
 
    - can only perform equality tests
-   - **one-hot** is the most salient method to process categorical data
+   - **<u>one-hot</u>** is the most salient method to process categorical data
 
 2. Ordinal Quantities
-   - explicit order in-between possible values but **no** numerical distances are defined
-
+   
+- explicit order in-between possible values but **no** numerical distances are defined
+   
 3. Continuous Quantities
 
    - real-valued attributes with well-defined zero point and no upper bound
@@ -42,8 +47,10 @@ What is ML, differences between ML and Data mining or AI.
    - numerical distances are defined between values
 
    - allow all mathematical operations
+   
+     
 
-#### real world problem and world flow
+### Real world problem and world flow
 1. Data Wrangling
 2. Different Data Representations
    - e.g.  CSV, RAFF, etc 
