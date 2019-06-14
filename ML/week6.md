@@ -30,11 +30,12 @@
   - Chose any class to be pivot, so that we can conclude linear relation between different class
   - Which is
     - $log\frac{P(A|x)}{P(C|x)} = \beta_A*x$
+      - The larger the fraction, the more likely the instance belongs to non-pivot (Class A), the smaller the value, the more likely the instance belongs to pivot (Class B).
     - $P(A|x) = P(C|x) * exp(\beta_A *x)$
     - Similar for $P(B|x)$
     - $P(A|x) + P(B|x) + P(C|x) = 1$
-      - Probability of all class sum to 1
-- $P(A|x) = \frac{1}{1+\sum\limits_{k \in A,B} -e^{\beta*x}}$
+    - Probability of all class sum to 1
+    - $P(A|x) = \frac{1}{1+\sum\limits_{k \in A,B} -e^{\beta*x}}$
     
   - Therefore, we could express all other class in terms of all other class.
 
