@@ -73,17 +73,17 @@
   - Larger values of K $\to$ performance to 0-R
 - Pros
   - Simple
-    - Can handle arbitrarily many classes
-    - incremental (can add extra data to the classifier on the fly)
-  - Weaknesses
-    - Need 
-      - a useful distance function
-      - An averaging function for combining the labels of multiple training examples
-    - Expensive
-      - In terms of index accesses
-    - Everything is done at run time
-      - Lazy learner
-    - Hard to choose K, lead to bias
+  - Can handle arbitrarily many classes
+  - incremental (can add extra data to the classifier on the fly)
+- Weaknesses
+  - Need 
+    - a useful distance function
+    - An averaging function for combining the labels of multiple training examples
+  - Expensive
+    - In terms of index accesses
+  - Everything is done at run time
+    - Lazy learner
+  - Hard to choose K, lead to bias
 
 
 
