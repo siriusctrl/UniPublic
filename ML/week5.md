@@ -122,7 +122,7 @@
         - Also assumes independence of attributes
         - Actually does take $O(m^2)$ time, cycles are slower with more attributes
         - ==Not feasible on non-trivial data sets.==
-          - What does this mean?
+          - Non-trivial = complex
 - Embedded
   - Some models actually perform feature selection
     - SVM and Logistic Regression

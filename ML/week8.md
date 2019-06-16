@@ -1,0 +1,74 @@
+### Interpreting Models
+
+- Error analysis
+  - Identify different classes of error
+  - guess what has caused the different errors, and feedback to model for improvement
+- Model interpretability
+  - We can interpret the basis of a given model classifying an instance the way it does
+  - Hyperparameters
+    - Parameters which define/bias/constrain the learning process
+  - Parameters
+    - What is learned when a given learner with a given set of hyperparameters is applied to a particular training dataset
+- Nearest Neighbour
+  - Hyper
+    - k (neighbourhood size)
+    - Distance/similarity metric
+    - Feature weighting/selection
+  - Parameters
+    - None, lazy model
+  - Interpretation
+    - Relative to the training instances that vie rise to a given classification, and their geometric distribution.
+- Nearest Prototype
+  - Hyper 
+    - distance/similarity metric
+    - feature weighting/selection
+  - Param 
+    - prototype
+    - size = $O(|C|*|F|)$
+      - C = set of classes
+      - F = set of features
+  - Interpretation 
+    - relative to the geometric distribution of the prototypes, and distance to each for a given test instance
+- Naive Bayes
+  - Hyper 
+    - smoothing method
+    - choice of distribution (MNB, BNB...)
+  - Param 
+    - class priors and conditional probability
+    - size = O(|C| + |C| * |FV|) 
+      - C = set of class
+      - FV = set of feature–value pairs
+  - Interpretation 
+    - most positively-weighted features associated with a given instance
+- Decision Trees
+  - Hyper 
+    - choice of function used for attribute selection
+    - convergence criterion
+  - Param 
+    - decision tree itself
+    - size = O(|FV|), worst case size = O(V|Tr|)
+      - V = average branching factor
+      - Tr = set of training instances
+      - FV = set of feature-value pairs
+  - Interpretation 
+    - based on path
+- Support Vector Machines
+  - Hyper 
+    - penalty term C/$\epsilon $ for soft-margin
+    - feature value scaling
+    - choice of kernel
+  - Param 
+    - vector of feature weights + bias term
+    - one-vs-rest SVM - size = O(|C|*|F|)
+      - C = set of classes
+      - F = set of features
+  - Interpretation 
+    - absolute value of the weight associated with each non-zero feature in a given instance provides an indication of its relative importance in classification
+
+
+
+### Dimensionality reduction
+
+- Reduce features space to 2 or 3 dimension so that it could be more easily  visualised.
+- Principal Component Analysis (PCA)
+  - Reduce the dimensionality consisting of a large number of interrelated variables, while retaining as much as possible of the variation.
