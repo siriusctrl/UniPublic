@@ -92,8 +92,7 @@
 - How to calculate?
   1. We calculate the **<u>centroid</u>** of each class
      - Averaging the numeric values along each axis $\to $ centroid
-  2. Classify each test instance according to the each class
-  3. Classify each test instance according to the class of the centroid it is nearest to
+  2. Classify each test instance according to the class of the centroid it is nearest to
 - Classification is then simply based on euclidean distance
 
 

@@ -78,7 +78,7 @@
   - No need of exactly value of $P(Y=c_k|X_i=x_i)$, since we only care about which one is better.
   - Relative robust to two common type of errors:
     - ==Over-estimated some $P(Y=c_k|X_i=x_i)$, but we have under-estimated others. Overall, we tends to under-estimate overall probability.==
-    - ==Some marginally-relevant attributes are correlated==
+    - Some marginally-relevant attributes are correlated
 - In practical
   - To prevent under-flow, we can use the log-transformation, which the final equation becomes
     - $argmax\ P(Y=c_k)\prod_i P(X_i=x_i|Y=c_k) = argmax[log(P(Y=c_k)) + \sum_ilog(P(X_i=x_i|Y=c_k))]$
