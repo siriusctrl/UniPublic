@@ -41,7 +41,7 @@
 2. Ordinal Quantities
    
 - explicit order in-between possible values but **no** numerical distances are defined
-   
+  
 3. Continuous Quantities
 
    - real-valued attributes with well-defined zero point and no upper bound

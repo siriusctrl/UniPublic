@@ -53,9 +53,10 @@
   - Each tree is built using a different **<u>bagged training dataset</u>**
   - Idea
     - Minimise overall model variance without introducing model bias
-- Hypter-parameters
-  - Number of trees B
-    - Tuned based on out-of-bag error rate
+- Hyper-parameters
+  - Number of trees
+    - Tuned based on **<u>out-of-bag error rate</u>**
+    - For each bootstrap sample taken from the training data, there will be samples left behind were not included. These samples are called Out-Of-Bag samples or OOB.
   - Feature sub-sample size
 - Pros
   - Strong performer
