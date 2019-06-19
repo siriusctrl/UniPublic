@@ -10,7 +10,7 @@
 ### Voting
 
 - Run multiple base classifiers over the test data and select the class predicted by the most base classifiers
-- Contiuous data could use average
+- Continuous data could use average
 
 
 
@@ -33,7 +33,7 @@
   - Randomly sample the original dataset N times, **<u>with replacement</u>**
   - We get a new dataset of the same size, where any individual is absent with probability $(1 - \frac{1}{N})^N$
   - Construct k random datasets fro k base classifiers
-  - Predicitoin made by voting
+  - Prediction made by voting
 - Pros
   - Simple
   - Possibility to parallelise computation of individual base classifiers
@@ -57,7 +57,8 @@
   - Number of trees
     - Tuned based on **<u>out-of-bag error rate</u>**
     - For each bootstrap sample taken from the training data, there will be samples left behind were not included. These samples are called Out-Of-Bag samples or OOB.
-  - Feature sub-sample size
+  - ==Feature sub-sample size==
+    - Bootstrape maybe (similar as bagging)
 - Pros
   - Strong performer
   - Parallelisable
