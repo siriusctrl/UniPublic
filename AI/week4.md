@@ -1,5 +1,3 @@
-## Lecture 1 (Game Playing and Adversarial Search)
-
 ### Real World Game
 
 - It has lots of limitations
@@ -18,7 +16,7 @@
 ### Representing a game as a search problem
 
 - Need to consider
-  - Inital state
+  - Initial state
     - How do we start the game
   - actions
     - How can one player move in the environment
@@ -47,11 +45,11 @@
       - Space complexity (DFS exploration)
         - $O(bm)$
     - Resource limits 
-      - Cutoff test
+      - Cutoff Test
         - Depth limit
         - Quiescence search
-          - If there is no significant move in successor, we stop searching, otherwise, keep searching deeper for a little bit
-      - Evaluation function
+          - If there is no significant move in successor, we stop searching, otherwise, keep searching deeper
+      - Evaluation Function
         - Estimated desirability of position
           - Like alphaZero using residual-CNN to estimate how likely we are going to move to that state
         - Typically linear weighted sum of features depends on how important they are
@@ -74,9 +72,15 @@
     - How?
       - Using iteratively deepening
       - Using heuristic to search the better node first
-
-  - Improvement
+- Improvement
     - <u>Utility of a node expansion</u> , which we tend to expand the node which is higher in utility results, hopefully it may lead us to a better decision. 
       - A extension on those abilities would be using <u>goal-directed reasoning</u>
-    - 
 
+
+
+### Non-deterministic Game
+
+- Which path to take depends on chance
+  - ![image-20190619161618966](assets/image-20190619161618966.png)
+
+- We have to handle the all the expectations, therefore, $\alpha-\beta$ pruning does not so well.

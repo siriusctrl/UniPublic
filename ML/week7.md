@@ -117,7 +117,7 @@
       - **<u>E</u>** : calculated the expected log-likelihood based on the current estimate of the parameters
       - **<u>M</u>**: compute the new parameter distribution that maximise the log-likelihood
     - Measure Convergence
-      - Since we have the log likelihood for a given finite mixture, once the measure below a certain level, we can consider the estimate to have converged.
+      - Once the relative difference in log likelihood from one iteration to the next below a certain level, we can consider the estimate to have converged.
     - Advantages
       - Guaranteed “positive” hill climbing behaviour
       - Fast to converge
