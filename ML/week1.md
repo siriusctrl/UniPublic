@@ -9,18 +9,22 @@
 
 
 ### Type of Task in ML
-- Classification
-  - **<u>Supervised</u>** : prior knowledge of the relationship between instance and labels required
-  - Learning predicting which class does the new object belonging
-  - provide with set of classified training data for learning, need to give predictions about which class does the test instance in
-    ![FF057575-BF1B-44D4-86EF-D180A001F9CA](assets/FF057575-BF1B-44D4-86EF-D180A001F9CA.png)
 
+>**<u>Supervised</u>** : prior knowledge of the relationship between instance and labels required
+>
+>**<u>Unsupervised</u>**: no external label required
+
+- Classification
+  - **<u>Supervised</u>**
+  - Learning predicting which class does the new object belonging
+    ![FF057575-BF1B-44D4-86EF-D180A001F9CA](assets/FF057575-BF1B-44D4-86EF-D180A001F9CA.png)
+  
 - Clustering
-  - **Unsupervised** 
+  - **<u>Unsupervised</u>**
   - No prior knowledge required
   - Grouping similar instances together without giving the labels of all the instances.
 - Regression
-  - **Supervised**
+  - **<u>Supervised</u>**
   - Predicting a numeric quantity
   - A good regression is acceptably close to the true value
 - Association Learning
@@ -40,16 +44,16 @@
 
 2. Ordinal Quantities
    
-- explicit order in-between possible values but **no** numerical distances are defined
-  
+   - Explicit order in-between possible values but **<u>no</u>** numerical distances are defined
+   
 3. Continuous Quantities
 
-   - real-valued attributes with well-defined zero point and no upper bound
+   - Real-valued attributes with well-defined zero point and no upper bound
 
-   - numerical distances are defined between values
+   - Numerical distances are defined between values
 
-   - allow all mathematical operations
-   
+   - Allow all mathematical operations
+
      
 
 ### Real world problem and world flow

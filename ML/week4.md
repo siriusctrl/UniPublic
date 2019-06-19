@@ -18,7 +18,7 @@
   - $sim(A, B) = \frac{2|A\cap B|}{|A|+|B|}$
   - Since there are 2 intersection part in $|A| + |B|$
 - Similarity v.s. Dissimilarity
-  - Similarity often falls in range [0,1], whereas dissimilarity does not have a upper bound.
+  - Similarity often falls in range [0,1], whereas dissimilarity does not have an upper bound.
 
 
 
@@ -46,7 +46,7 @@
 
 
 
-### Nearest Neighbours 
+### Nearest Neighbours
 
 - Different Form
   - K-NN
@@ -74,10 +74,10 @@
 - Pros
   - Simple
   - Can handle arbitrarily many classes
-  - incremental (can add extra data to the classifier on the fly)
+  - Incremental (can add extra data to the classifier on the fly)
 - Weaknesses
-  - Need 
-    - a useful distance function
+  - Need
+    - A useful distance function
     - An averaging function for combining the labels of multiple training examples
   - Expensive
     - In terms of index accesses
@@ -106,9 +106,9 @@
 
   - Which means maximizes the distance between the hyperplane and unconfident point close to decision boundary.
   - Intuition
-    - If there are no points near the decision surface, then there are no very **<u>uncertain</u>** classification decisions.
+    - If there are no points near the decision boundary/surface, then there are no very **<u>uncertain</u>** classification decisions.
 
-- SVM-based classfication
+- SVM-based Classification
 
   - Associate one class as positive(+1) and one as negative(-1)
   - Find the best hyperplane $w$ and $b$, which maximizes the margin between the positive and negative training instances
@@ -126,11 +126,11 @@
 
     4. Repeat steps 2-3 until the algorithm converge
 
-- Soft margins allow some data points to violate the separating hyperplane but the model remains robust.
+- **<u>Soft margins</u>** allow some data points to violate the separating hyperplane but the model remains robust.
 
 - A kernel function can be used to allow the SVM to find a non-linear separating boundary between tow classes.
 
-- Math perspective
+- Mathematical Perspective
 
   - Objective is to find the data points that act as the boundaries of the two classes
   - They called the “support vectors”

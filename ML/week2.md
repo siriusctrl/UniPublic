@@ -23,25 +23,25 @@
 
 - Abstract representation of data
 
-- probability model
+- Probability Model
   - we normally don’t know the probability so we have to estimate based on the incoming informations
 
 
 
-### Naive Bayes 
+### Naive Bayes
 
-- supervised machine learning algorithms
-- Based on the bayes rule, for a given instance X with features $x^i$ ($i$ = 1…n)
+- Supervised machine learning algorithms
+- Based on the Bayes Rule, for a given instance X with features $x^i$ ($i$ = 1…n)
   - We want
     -  $argmax\ P(Y=c_k|X=x^i) $ 
   - Now we have
     -  $P(Y=c_k|X_1=x_1, X_2=x_2…)$ 
-  - Based on bayes rule
+  - Based on Bayes rule
     -  $P(Y=c_k|X_1=x_1, X_2=x_2…)=\frac{P(X_1=x_1,X_2=x_2…|Y=c_k) P(Y=c_k)}{P(X_1=x_1,X_2=x_2…)}$ 
   - The denominator won't affect our result (since we only care who is the largest one), we can simply ignore that, then the equation becomes
-    - $P(Y=c_k|X_1=x_1, X_2=x_2…) \propto P(X_1=x_1,X_2=x_2…|Y=c_k) P(Y=c_k)$ 
-  - Assumption 
-    - all of the features are independent. 
+    - $P(Y=c_k|X_1=x_1, X_2=x_2…) \propto P(X_1=x_1,X_2=x_2…|Y=c_k) P(Y=c_k)$
+  - Assumption
+    - All of the features are independent.
       - We might increase our error rate, but we reduce the complexity of the problem dramatically.
       - If the features are connected really closely, the premise for NB does not exist. Thus, the result will have a high error rate.
     - $P(Y=c_k)$ can be estimated using MLE or Bayesian estimate.
@@ -56,9 +56,9 @@
       - Replace all the 0 with a $\epsilon$ which is a number which greater than 0 but smaller than $\frac{1}{n}$ (preferably).
       - Assume $1+\epsilon \approx 1$
       - Reduce the problem to the cardinality of $\epsilon$ 
-    - Laplace smoothing
+    - Laplace smoothing (add 1 smoothing)
       - $\hat{P}(X_i=x_i|Y=c_k) = \frac{\sum_i I(X_i=x_i,Y=c_k) + \lambda}{\sum I(Y=c_k) + n\lambda}$ Where n is the number of different attributes.
-      - This equation comes from the combination of beta distribution (prior) and binomial distribution (posterior) which use the idea of bayes estimation.
+      - This equation comes from the combination of beta distribution (prior) and binomial distribution (posterior) which use the idea of Bayes estimation.
       - Normally we set $\lambda$ to 1, but it actually can be any number.
       - It is known to systematically over-estimate the likelihood of unseen events, creating bias in certain circumstances.
         - When the training set are small.
@@ -78,8 +78,7 @@
   - No need of exactly value of $P(Y=c_k|X_i=x_i)$, since we only care about which one is better.
   - Relative robust to two common type of errors:
     - ==Over-estimated some $P(Y=c_k|X_i=x_i)$, but we have under-estimated others. Overall, we tends to under-estimate overall probability.==
-    - Some marginally-relevant attributes are correlated
+    - ==Some marginally-relevant attributes are correlated==
 - In practical
   - To prevent under-flow, we can use the log-transformation, which the final equation becomes
     - $argmax\ P(Y=c_k)\prod_i P(X_i=x_i|Y=c_k) = argmax[log(P(Y=c_k)) + \sum_ilog(P(X_i=x_i|Y=c_k))]$
-

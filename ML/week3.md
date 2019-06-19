@@ -46,9 +46,9 @@
       - Most common choice k = 10 (occasionally, 5)
       - Best choice is k = \# of instances (leave-one-out cross-validation) but too slow in practice
 - Stratification (inductive bias)
-  - We assume the distribution in bot seen and unseen data are the same
-  - When doing holdout and cross validation, need to make sure that the distribution in both class are the same.
-    - Also called <u>vertical sampling</u>
+  - We assume the distribution in both seen and unseen data are the same
+  - When doing hold-out and cross validation, need to make sure that the distribution in both class are the same.
+    - Also called **<u>vertical sampling</u>**
 
 
 
@@ -72,8 +72,10 @@
 - Expand to multi-class scenario
   - Confusion matrix
     - ![image-20190325222555379](assets/image-20190325222555379.png)
+  - Micro-averaging
+    - Sum of all nominator / sum of all denominator
   - Macro-averaging (mean of each class)
-    - $Precison_M = \frac{\sum\limits^c_{i=1} Precision(i)}{c}$
+    - $Precison_M = \frac{\sum\limits^c_{i=1}Precision(i)}{c}$
     - $Recall_M = \frac{\sum\limits^c_{i=1} Recall(i)}{c}$
   - Weighted-averaging (based on the proportion of instances in that class)
     - $Precison_W = \sum\limits^c_{i=1}(\frac{n_i}{N}) Precision(i)$
@@ -90,16 +92,17 @@
     - Randomly assign a class $c_k$ to each test instance, weighting the class assignment according to P($c_k $)
   - Zero-R (most commonly used baseline)
     - Classify all instances according to the most common class in the training data
-    - <u>Inappropriate</u> if the majority class is FALSE and the learning task is to identify needles in the haystack
+    - <u>Inappropriate</u> if the majority class is <u>FALSE</u> and the learning task is to identify needles in the haystack
   - One-R
-    - Create a **<u>decision stamp</u>** in the training data with branches for each values, and populate the leaf with the majority class at that leaf. Finally, select the decision stump which leads to the lowest error rate over the training data
+    - Making predictions using only one attributes. **<u>Decision Stamp</u>** is created for each attribute but only the one with least error rate will be kept.
     - Pros
       - Simple to understand and implement
       - Simple to comprehend the results
       - Surprisingly good results
     - Cons
       - Unable to capture attribute interactions
-      - Bias when attributes with many possible values 
+      - ==Bias when attributes with many possible values==
+        - Why it is the case?
 - Benchmark
   - Established trivial technique which we are pitching our method against it.
 

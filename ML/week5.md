@@ -16,7 +16,7 @@
 
   - Type of NB
     - Multivariate NB
-      - attributes are nominal, and can take any (fixed) number of values
+      - Attributes are nominal, and can take any (fixed) number of values
       - Counts for a feature occur or not
     - Binomial (Bernoulli) NB
       - attributes are binary (special case of MV)
