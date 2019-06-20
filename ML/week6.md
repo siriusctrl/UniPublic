@@ -37,7 +37,7 @@
   - Mean squared error
     - $MSE =\frac1N\sum\limits_i(\hat{y_i}-y_i)^2$
   - Root mean-squared error (RMSE)
-    - RMSE=\sqrt{MSE}
+    - RMSE=$\sqrt{MSE}$
   - Root relative squared error (RRSE)
     - $RRSE=\sqrt{\frac{\sum_i(\hat{y_i}-y_i)^2}{\sum_i(y_i-\bar{y})^2}},\text{where }\bar{y}=\frac{\sum_i{y_i}}N $
   - Person's correlation (statistical correlation between predicted and actual values)
@@ -71,7 +71,7 @@
   - In NB, we are trying to maximize $P(x_i|c_j)$
   - In logistic regression we model $P(c_j|x_1,x_2,…,x_D)$ directly
 
-- Using gradient descent to learn the $\beta$ 
+- Using gradient descent to learn the $\beta$
 
   - We want the probability belongs to one class to be 1 and the other to be 0
   - In this case, we have the likelihood function
@@ -82,7 +82,7 @@
 
 - LR for multi-class problem
 
-  - Chose any class to be pivot, so that we can conclude linear relation between different class
+  - Chose any class to be pivot, so that we can conclude linear relation between different class.
   - Which is
     - $log\frac{P(A|x)}{P(C|x)} = \beta_A*x$
       - The larger the fraction, the more likely the instance belongs to non-pivot (Class A), the smaller the value, the more likely the instance belongs to pivot (Class B).

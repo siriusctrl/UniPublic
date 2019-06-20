@@ -18,12 +18,12 @@
     - Multivariate NB
       - Attributes are nominal, and can take any (fixed) number of values
       - Counts for a feature occur or not
-    - Binomial (Bernoulli) NB
-      - attributes are binary (special case of MV)
+    - Binomial(Bernoulli) NB
+      - Attributes are binary (special case of MV)
     - Multinomial NB
       - attributes are natural numbers
       - usually corresponding to frequencies
-      - Count how many times that features occur
+      - Count how many times each feature occur
     - Gaussian NB
       - Attributes are real numbers
       - Can approximate use PDF
@@ -31,7 +31,7 @@
     - Use **<u>binarisation</u>** to split the tree
       - Two branch are created $a_k \leq m \text{ and }a_k>m$
       - IG/GR must be calculated for split which count each unique attribute value in the dataset
-    - downside
+    - Downside
       - It leads to arbitrarily large trees
     - Sometimes the data suggests a richer representation
       - Use ranges
@@ -121,7 +121,7 @@
       - Cons
         - Also assumes independence of attributes
         - Actually does take $O(m^2)$ time, cycles are slower with more attributes
-        - ==Not feasible on non-trivial data sets.==
+        - Not feasible on non-trivial data sets.
           - Non-trivial = complex
 - Embedded
   - Some models actually perform feature selection
@@ -160,11 +160,11 @@
 
   - $MI(O,C)=\sum_{i\in{s,o,r}}\sum_{j\in{c,\bar{c}}}P(i,j)log_2{\frac{P(i,j)}{P(i)P(j)}}$
   - MI(A,C) = $P(a, c)*PMI(a,c) \\+ P(\bar{a},c)*PMI(\bar{a},c) \\+ P(a,\bar{c})*PMI(a,\bar{c}) \\+ P(\bar{a}, \bar{c}) * PMI(\bar{a}, \bar{c})$ 
-    - We still use $0log0 \equiv 0$
+    - Assume $0log0 \equiv 0$
   - Problems
     - Biased toward common, uninformative features
 
-- Chi-square
+- Chi-Square
 
   - $\chi^2 = \sum\limits^r_{i=1}\sum\limits^c_{j=1} \frac{(O_{i,j}-E_{i,j})^2}{E_{i,j}}$
 
@@ -192,8 +192,7 @@
   - Fit the empirical data by using normal distribution
   - Discretised the values
 - Ordinal attributes (low, med, high or 1,2,3,4)
-  - Treat as binary
-    - Count frequency
+  - Treat as count frequency
   - Treat as continuous
   - Treat as nominal
     - Throw away ordering

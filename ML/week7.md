@@ -110,7 +110,7 @@
       - $\mu_i^{t+1}=\frac{\sum_jz_{ij}x_j}{\sum_jz_{ij}}$
   - Clustering via Finite Mixture
     - A finite mixture is a mixed distribution with k component distributions
-  - Use EM(expectation maximisation) to solve the k-mean problem
+  - Use EM(Expectation Maximisation) to solve the k-mean problem
     - Quasi-Newton parameter estimation method with guaranteed “positive” hill-climbing
     - Used to estimate (hidden) parameter values or cluster membership
     - Basic idea

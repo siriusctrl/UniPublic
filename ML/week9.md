@@ -47,6 +47,8 @@
   - Our estimate of effectiveness of a model is systematically to high/low
 - Evaluation variance
   - Our estimate of the effectiveness of a model changes a lot as we alter the instances in the evaluation set.
+- Difference between evaluation bias and model bias
+  - Whether we need to compare with external labeled data.
 - Control evaluation basis and variance
   - Holdout partition size 
     - More training data: less model variance, more evaluation variance
