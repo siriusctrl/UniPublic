@@ -1,4 +1,4 @@
-### Instance-based learning (IBL)
+### Instance-Based Learning (IBL)
 
 - IBL algorithms are **<u>supervised</u>** learning algorithms
 - Require labelled data
@@ -60,7 +60,7 @@
 - Weighting Strategies
   - equal weight to all instances
     - Majority class rule
-  - inverse linear distance (ILD)
+  - Inverse linear distance (ILD)
     - $w_j=\begin{cases}\frac{d_k-d_j}{d_k-d_1},& \text{if } d_j\neq d_1\\     1,& \text{if }d_j=d_1 \end{cases}\\ \text{where } d_1 \text{ is the nearest neighbour, and } d_k \text{ is the furthest neighbour}$
   - inverse distance (ID)
     - $w_j = \frac{1}{d_j + \epsilon}$
@@ -99,7 +99,7 @@
 
 ### Support Vector Machine (SVM)
 
-- A linear classifier looks like
+- A **<u>linear classifier</u>** looks like
   - $f(x) = w^Tx + b$
 
 - Optimal solution: find the hyperplane which maximize the margin

@@ -130,11 +130,14 @@
 
   - The hypothesis space is the set of possible decision trees.
 
-- Highly regarded among basic supervised learners
+- Pros
 
-- Fast to train, even faster to classify
+  - Highly regarded among basic supervised learners
+  - Fast to train, even faster to classify
 
-- Susceptible to the effects of irrelevant features
+- Cons
+
+  - Susceptible to the effects of irrelevant features
 
 
 

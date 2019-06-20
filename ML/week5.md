@@ -6,8 +6,8 @@
     - $d_H(A,B)=\sum_i\begin{cases}0,& \text{if } a_i=b_i\\     1,& \text{if }a_i\neq b_i \end{cases}\\ $
   - Randomly assign numbers to attribute values
     - If scale is constant between attributes, but still undesirable
-    - ==Worse with attributes with many values==
-      - But why?
+    - Worse with attributes with many values
+      - If there are many values, there are no difference with simply use ID to classify the instance
     - Imposes an attribute ordering which may not exist
   - One-hot encoding (most common ML solution)
     - If nominal attribute takes m values, replace it with m booleans
@@ -27,7 +27,7 @@
     - Gaussian NB
       - Attributes are real numbers
       - Can approximate use PDF
-  - Decision
+  - Decision Tree
     - Use **<u>binarisation</u>** to split the tree
       - Two branch are created $a_k \leq m \text{ and }a_k>m$
       - IG/GR must be calculated for split which count each unique attribute value in the dataset

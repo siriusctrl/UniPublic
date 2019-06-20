@@ -33,7 +33,7 @@
   - Randomly sample the original dataset N times, **<u>with replacement</u>**
   - We get a new dataset of the same size, where any individual is absent with probability $(1 - \frac{1}{N})^N$
   - Construct k random datasets fro k base classifiers
-  - Prediction made by voting
+  - Prediction made by **<u>voting</u>**
 - Pros
   - Simple
   - Possibility to parallelise computation of individual base classifiers
@@ -150,7 +150,7 @@
   - ![image-20190615164524229](assets/image-20190615164524229.png)
     - Where 0.67 = max(8,4) / 12
 - Semi-supervised Learning
-  - Training data = $I$ labelled instance $\{(x_i, y_i)\}$
+  - Training data = $i$ labelled instance $\{(x_i, y_i)\}$
   - And $u$ unlabelled instances {$x_j$}, often u $\gg$ I
   - Goal
     - We want learn a better classifier $f$ from I and u rather than I alone

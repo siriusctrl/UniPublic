@@ -13,7 +13,7 @@
 
 - Hidden Markov Models (HMM)
 
-  - Different possibilities attached to each observation, rather than unique observation per state, which is we only see observations, but we want to know hidden states.
+  - Different possibilities attached to each observation, rather than unique observation per state, which is we only see observations, but we want to evaluate hidden states.
 
   - ![image-20190616183252663](assets/image-20190616183252663.png)
 
@@ -56,7 +56,7 @@
 
     - Decoding
 
-      - Given an HMM $\mu$ and observation sequence $\Omega $, determine the most probable hidden stat sequence Q
+      - Given an HMM $\mu$ and observation sequence $\Omega $, determine the most probable hidden state sequence Q
       - Example: given 3-Solos, 3-Solos, 1-Solo, what is the most probable weather sequence?
       - **<u>Viterbi Algorithm</u>**
         - ![image-20190616192949382](assets/image-20190616192949382.png)

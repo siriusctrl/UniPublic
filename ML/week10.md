@@ -17,10 +17,10 @@
     - Possible to extend to multiclass classification problems in a similar manner to logistic regression
       - NN with single neuron and a sigmoid activation is equivalent to logistic regression
 - Activation Function
-  - sigmoid
+  - Sigmoid
     - $f(x)=\frac1{1+e^{-x}}$
     - Range = [0,1]
-  - tanh
+  - Tanh
     - $f(x)=\frac{e^{2x}-1}{e^{2x}+1}$
     - Range = [-1,1]
   - Rectified linear unit (ReLU)
