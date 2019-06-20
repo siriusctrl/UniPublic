@@ -27,8 +27,6 @@
 
 - Model bias
   - Classifier makes systematically wrong predictions
-- Evaluation bias
-  - Evaluation strategy to over or under estimate the effectiveness of our classifier
 - Sampling bias
   - Training or evaluation dataset isn't representative of the population
 - Model variance
@@ -40,17 +38,17 @@
 
 
 
-### Evaluation bias and variance
+### Evaluation Bias and Variance
 
 - Evaluation bias
   - Similar logic to model bias
-  - Our estimate of effectiveness of a model is systematically to high/low
+  - Evaluation strategy to over or under estimate the effectiveness of our classifier
 - Evaluation variance
   - Our estimate of the effectiveness of a model changes a lot as we alter the instances in the evaluation set.
 - Difference between evaluation bias and model bias
   - Whether we need to compare with external labeled data.
 - Control evaluation basis and variance
-  - Holdout partition size 
+  - Holdout partition size
     - More training data: less model variance, more evaluation variance
   - Repeated random subsampling and K-fold Cross-Validation
   - Stratification
