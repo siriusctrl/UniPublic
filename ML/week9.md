@@ -31,20 +31,20 @@
   - Training or evaluation dataset isn't representative of the population
 - Model variance
   - Different training sets to produce different model/predictions with the same learner
-  - Different randomly sampled training set leads to very different predictions on the evaluation set
 - High bias and high variance are often bad, but low bias and low variance are no guarantee of good
-  - Weighted random classifier is low bias
-  - 0-R is low variance (zero variance)
+  - Low bias
+    - Weighted random classifier
+  - Low variance (zero variance)
+    - 0-R
 
 
 
 ### Evaluation Bias and Variance
 
 - Evaluation bias
-  - Similar logic to model bias
-  - Evaluation strategy to over or under estimate the effectiveness of our classifier
+  - Evaluation strategy to over or under estimate the **<u>effectiveness</u>** of our classifier
 - Evaluation variance
-  - Our estimate of the effectiveness of a model changes a lot as we alter the instances in the evaluation set.
+  - Our estimate of the **<u>effectiveness</u>** of a model changes a lot as we alter the instances in the evaluation set.
 - Difference between evaluation bias and model bias
   - Whether we need to compare with external labeled data.
 - Control evaluation basis and variance

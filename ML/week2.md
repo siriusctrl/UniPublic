@@ -61,7 +61,7 @@
       - This equation comes from the combination of beta distribution (prior) and binomial distribution (posterior) which use the idea of Bayes estimation.
       - Normally we set $\lambda$ to 1, but it actually can be any number.
       - It is known to systematically over-estimate the likelihood of unseen events, creating bias in certain circumstances.
-        - When the training set are small.
+        - When the training set are **<u>small</u>**.
     - Other choice
       - Add-k smoothing: set $\lambda$ to any integer which larger than one.
       - Regression
@@ -71,8 +71,8 @@
 - Missing value
   - Ignore it in both training and testing dataset.
 - Advantages of NB
-  - Very simple to build, and run extremely fast to make decisions
-  - <u>Works well in many application areas</u>, since it does not have a hash restriction of the data type.
+  - Simple, fast prediction.
+  - <u>Works well in many application areas</u>, no hash restriction
   - <u>Scales easily</u> for large number of dimensions and data size
   - Decent interpretability
   - No need of exactly value of $P(Y=c_k|X_i=x_i)$, since we only care about which one is better.
