@@ -31,7 +31,7 @@
 - Method
   - Minimax
     - Assumption: our opponent is rational and won't let us always do the best decision.
-    - Deterministic perfect-information games
+    - Perfect play in deterministic ,perfect-information games
     - Maximise the minimal value in successor (we should chose A1 to go in the following example)
     - ![image-20190326164402568](assets/image-20190326164402568.png)
     - Properties
