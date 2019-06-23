@@ -1,17 +1,25 @@
-### what is AI?
+### What is AI?
 
 - Thinking 
-  - like a human
-    - Turing test, but not reproducible, constructive or amenable to mathematical analysis
-  - rationally
-    - If A $\implies$ B, and B $\implies$ C, then A $\implies$ C
+  - Like a human
+    - Cognitive modelling
+  - Rationally
+    - Study of logic
+      - If A $\implies $ B, and B $\implies$ C, then A $\implies$ C
 - Acting
   - Like a human
-  - rationally
-
-
-
-
+  
+    - Turing test, where
+      - not reproducible
+      - constructive or amenable to mathematical analysis
+  
+  - Rationally
+  
+    - Perform actions which will (most likely) achieve one's goal
+    - Knowledge may not be perfect
+      - Go beyond strict rational thought in general
+  
+    
 
 ### Intelligent Agents
 
@@ -23,10 +31,22 @@
 >
 > **<u>Performance measure</u>** of the desirability of environment states
 
-
+- Agent model examples
+  - Automated taxi
+    - Percepts
+      - video
+      - GPS
+    - Actions
+      - steer
+      - accelerate
+    - Environment
+      - City streets
+    - Performance measure
+      - Safety
+      - Reach destination
 
 - Agent as functions
-  - Agent is a function from percept sequences to actions
+  - Agent is a function from <u>percept sequences</u> to actions
   - Ideal rational agent would pick actions which are expected to maximise its **<u>performance measure</u>**
     - Based on the percept sequence and its build-in knowledge
 
@@ -36,23 +56,23 @@
 
 - Simple reflex agents
   - ![image-20190619102459841](assets/image-20190619102459841.png)
-  - These agents select actions on the basis of the **<u>current percept</u>**, ignoring the rest of the percept history.
-  - It is simple but very useful in some cases.
-  - pseudocode translation
+  - These agents select actions on the basis of the **<u>current percept</u>**, ignoring the rest of the percept history
+  - It is simple but very useful in some cases
+  - Procedures
     1. Find the current state
     2. Find the matched rule
     3. Return the action defined by the matched rule
   - Limitations
-    - Works on if the environment is fully observable.
-    - Since it does not have memory, it is very hard to tell, for example, the car is turning right or left.
+    - Works on if the environment is **<u>fully observable</u>**
+    - Since it does not have memory, it is very hard to tell the current situation, for example, the car is turning right or left
 - Model-based reflex agents
   - ![image-20190619112916296](assets/image-20190619112916296.png)
   - Keep track of the part of the world it can't see now.
-    - Agent should maintain some sort of internal state that depends on the percept history reflects at least some of the unobserved aspects of the current state.
+    - maintain some internal state that depends on the percept history reflects at least some of the unobserved aspects of the current state.
   - We need
     1. Some information about how the world evolves independently of the agent
-    2. Some information about how the agent's own actions affect the world
-  - Pseudocode translation
+    2. Some information about how the agent's actions affect the world
+  - Procedures
     1. Use the most recent state info and action it does, combining with the current percept and model it has to determine the current state.
     2. Find the rule based on current state
     3. Return the action defined by the current rule
