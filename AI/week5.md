@@ -1,9 +1,3 @@
-## Machine Learning in Game Search
-
-- We want to automatically tune these decisions for game
-
-
-
 ### Learning Strategy
 
 - Book Learning
@@ -59,7 +53,8 @@
     - Compute temporal difference between successive states
       - $d_i = r(s^l_{i+1}, w) - r(s^l_i,w)$
     - Then update each weight accordingly with learning rate $\eta$
-    - ![image-20190619170941427](assets/image-20190619170941427.png)
+    - $w_j \leftarrow w_j + \eta\sum\limits^{N-1}_{i=1}\frac{\part r(s^l_i,w)}{\part w_j}[\sum\limits^{N-1}_{m=i}\lambda^{m-i}d_m]$
+    
     - $\lambda$ Control the the how far the influence of a action propagate
       - $\lambda = 1$ Look towards the final true reward
-      - $\lambda = 0$ Look towards the next move 
+      - $\lambda = 0$ Look towards the next move

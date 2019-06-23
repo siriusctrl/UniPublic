@@ -1,13 +1,27 @@
 ### Problem Solving Agents
 
-- ==Online v.s Offline problems==
-  - Difference?
+- Online
+  
+  - You have to explore the environment while make decision
+  
+- Offline
+
+  - More like a search problem where you have the information of the environment and rule of the environment
+
+- Evaluate problems from
+
+  - states
+  - actions
+  - Goal test
+  - Path cost
+
+  
 
 ### Uninformative Search
 
 - Evaluate using
   - Completeness
-    - Does it always find a solution if on exist
+    - Does it always find a solution if one exist
   - Time complexity
     - Number of nodes generated/expanded
   - Space complexity
