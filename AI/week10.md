@@ -4,7 +4,7 @@
 - Example
   - ![image-20190621230616254](assets/image-20190621230616254.png)
 - Compactness
-  - Growth linear with n $O(n*2^k)$, comparing to $O(2^n)$ for the full joint distribution.
+  - Growth linear with n $O(n*2^k)$, where $k$ is the number of comparing to $O(2^n)$ for the full joint distribution.
 - Global Semantics
   - Full joint distribution as product of the local conditional distributions
   - ![image-20190621231259631](assets/image-20190621231259631.png)
@@ -23,9 +23,7 @@
 - Simple queries — Computer posterior marginal $P(X_I|E=e)$
 
   - $P(NoGas|Gauge=empty,Lights=on, starts=false)$
-  - Example
-    - 
-
+  
 - Conjuncive queries
 
   - $P(X_i,X_j|E=e) = P(X_i|E=e)P(X_j|X_i,E=e)$
