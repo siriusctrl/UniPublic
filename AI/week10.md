@@ -1,6 +1,6 @@
 ### Bayesian Network
 
--  A simple, graphical notation for conditional independence assertions and hence for compact specification of full joint distribution
+-  A **<u>simple</u>**, **<u>graphical notation</u>** for conditional independence assertions and hence for **<u>compact specification of full joint distribution</u>**
 - Example
   - ![image-20190621230616254](assets/image-20190621230616254.png)
 - Compactness

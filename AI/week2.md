@@ -37,12 +37,13 @@
     - Maximum depth of the state space (may be $\infty$)
   - $\epsilon $ 
     - A arbitrary positive integer
-- BFS (uniform-cost search with all cost = 1)
+- BFS (Uniform-cost search with all cost = 1)
   - Time
     - $1+b^2+b^3+…+b^d = O(b^d)$
     - Exponential growth in d
   - space
-    - $O(b^d )$ Keeps every node in memory
+    - $O(b^d )$ 
+    - keeps every node in memory
 - Uniform-cost search (general form for BFS)
   - Optimality
     - Yes, since will always expand the less cost node first

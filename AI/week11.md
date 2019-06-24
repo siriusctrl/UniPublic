@@ -12,16 +12,14 @@
 
 
 
-
-
 ### Localization and Mapping
 
 - Localization
   - Given **<u>map</u>** and **<u>observed landmarks</u>**, update position distribution
   - Sensor model
-    - Use observation $h(x_t)$ of landmark $x_i,y_i$ to estimate state $x_t$ of robot.
+    - Use observation $h(x_t)$ of landmark $x_i,y_i$ to estimate state $x_t$ of robot
   - Motion Model
-    - Update states using its movements $v_t \triangle_t$ and $\mathcal{w}_t\triangle t$
+    - Update states using its movements $v_t \triangle_t$ and $\mathcal{w}_t\triangle_t$
   - Can use particle filtering to produce approximate position estimate, starting with random samples from uniform prior distribution for robot position. Update likelihood of each sample using sensor measurements. Resample according to the updated likelihood.
   - Uncertainty of the robot's state grows as it moves until we find a landmark
     - Assume that landmarks are identifiable

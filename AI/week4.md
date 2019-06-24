@@ -2,7 +2,7 @@
 
 - It has lots of limitations
   - Unpredictable opponent
-  - Time limitations
+  - Time Limitations
     - Unlikely to find a goal, must approximate
 - Some of the game are only have **<u>imperfect information</u>**, and depends on **<u>chance</u>**
   - Poker (cannot see the card of our opponents)
@@ -36,12 +36,12 @@
     - Maximise the minimal value in successor (chose A1)
     - ![image-20190326164402568](assets/image-20190326164402568.png)
     - Properties
-      - Complete
+      - Completeness
         - Yes, if the tree is finite
-      - Optimal
+      - Optimality
         - Yes, if against an optimal opponent
         - Otherwise, no
-      - Time complexity 
+      - Time complexity
         - $O(b^m)$
       - Space complexity (DFS exploration)
         - $O(bm)$
@@ -51,13 +51,13 @@
         - Quiescence Search
           - If only small improvement, we stop, otherwise keep searching deeper
       - Evaluation Function
-        - Estimated desirability of position
+        - Estimated desirability of positions
           - Like alphaZero using residual-CNN to estimate how likely we are going to move to that state
         - **<u>Typically</u>** linear weighted sum of features depends on how important they are
           - $eval(s) = w_1f_1(s) + w_2f_2(s) + … + w_nf_n(s)$
   - Minimax cutoff
     - A cutoff strategy of when we stop stop the minimax searching
-    - Replace 
+    - Replace
       - <u>terminal state</u> by <u>cutoff</u>
         - We can terminate the search when there is no significant changes
     - <u>Utility</u> by <u>eval</u>

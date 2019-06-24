@@ -41,10 +41,10 @@
 
 ### Value that Affecting Mechanism Design
 
-- Common value
-  - The worth of the good is the same for all bidders, but that worth is unknown a priori, and must be estimated by each bidder.
+- Common Value
+  - The worth of the good is the same for all bidders, but that worth is unknown and must be estimated by each bidder.
   - e.g. an ounce of gold
-- Private value
+- Private Value
   - Each bidder has a utility value that reflects the worth of the good to the bidder
   - A golden earring
 

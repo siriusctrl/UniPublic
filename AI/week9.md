@@ -1,4 +1,4 @@
-### Uncrtainty
+### Uncertainty
 
 - How
 

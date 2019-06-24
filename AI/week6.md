@@ -36,7 +36,7 @@
 - $b = d$ and there are $d^n$ leaves
 - How to speed up the backtrace search
 - Minimum remaining values (MRV)
-    - Choose the variable with the fewest legal values
+    - Choose the variable with the **<u>fewest legal values</u>**
   - Use degree heuristic (can act like a tie-breaker)
     - Choose the variable with the most constraints on remaining variables.
     - Variable ordering and value selection help significantly
@@ -65,7 +65,7 @@
 
     - Turn graph to tree
 
-      - Use topological sort and then start the AC(arc consistency) check from the bottom node and its parent(s).
+      - Use topological sort and then start the AC(arc consistency) check from the bottom node and its parent(s)
   - Can be solved in $O(nd^2)$
     - Actually are $O(d^c (n-c)d^2)$
     - Very fast for small c
