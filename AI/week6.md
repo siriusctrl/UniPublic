@@ -67,15 +67,14 @@
 
       - Use topological sort and then start the AC(arc consistency) check from the bottom node and its parent(s).
   - Can be solved in $O(nd^2)$
-        - Actually are $O(d^c (n-c)d^2)$
-        - Very fast for small c
+    - Actually are $O(d^c (n-c)d^2)$
+    - Very fast for small c
       - How to form a tree from a graph?
         - Cut-set conditioning
         - Initiate a point and cut it from the graph, then we can get a tree
       - ![image-20190413180850355](assets/image-20190413180850355.png)
         - But find the minimal set of point is a NP-hard problem
-
-    - Local Search
+- Local Search
     
       - Using hill-climbing and min-conflicts heuristic which make selection with the least number of violation
       - Tries to change one variable assignment at a time.

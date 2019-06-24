@@ -1,8 +1,24 @@
+### Uncrtainty
+
+- How
+
+  - Partial observability
+    - Road state
+    - Ohter drivers' plans
+  - Noisy sensors
+    - Radio traffic reports
+  - Uncertainty in action outcomes
+    - Flat tyre
+  - Immense complexity of modelling and predicting traffic
+
+  
+
 ### Inference by enumeration
 
 - Use hidden variable
-  - ![image-20190621221706911](assets/image-20190621221706911.png)
-
+  
+- ![image-20190621221706911](assets/image-20190621221706911.png)
+  
 - Problem
 
   - Worst case time complexity $O(d^n)$ where d is the largest arity

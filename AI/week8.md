@@ -46,7 +46,7 @@
   - e.g. an ounce of gold
 - Private value
   - Each bidder has a utility value that reflects the worth of the good to the bidder
-  - A gold earring
+  - A golden earring
 
 
 
@@ -71,6 +71,7 @@
   - First-price, open-cry, ascending
   - Properties
     - There is a **<u>dominant strategy</u>**
+      - Bid higher than others, but smaller than your value
     - Efficient
       - Too high
         - Bidder who values good may not bid
