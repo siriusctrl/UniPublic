@@ -80,3 +80,12 @@
 - Cons
   - More complex
 
+
+
+
+
+### PCA
+
+- Reduce from n-dimension to k-dimension
+  - Find $k$ vectors onto which to project the data, so as to minimize the **projection error**.
+  - Whereas, Linear Regression is trying to minimise the distance between the prediction and real value.
