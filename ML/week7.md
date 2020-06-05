@@ -58,7 +58,7 @@
     - Tuned based on **<u>out-of-bag error rate</u>**
     - For each bootstrap sample taken from the training data, there will be samples left behind were not included. These samples are called Out-Of-Bag samples or OOB.
   - ==Feature sub-sample size==
-    - Bootstrape maybe (similar as bagging)
+    - Bootstrap maybe (similar as bagging)
 - Pros
   - Strong performer
   - Parallelisable
