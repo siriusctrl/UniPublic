@@ -99,12 +99,16 @@
 ### CouchDB Cluster
 
 - ![image-20200608000121707](assets/image-20200608000121707.png)
-
 - All nodes answer requests (read or write) at the same time
 - Sharding (splitting of data across nodes) is done on every node
 - When a node does not contain a document, the node requests it from another node and returns it to the client
 - Nodes can be added/removed easily, and their shards are re-balanced automatically upon addition/deletion of nodes
 - The graph contains 3 nodes, 4 shards and a replica number of 2
+- Quorums
+  - Write
+    - Can only complete successfully if the document is committed to a quorum of replicas, usually a simple majority
+  - Read
+    - Can only complete successfully only if a quorum of replicas return matching documents
 
 
 
