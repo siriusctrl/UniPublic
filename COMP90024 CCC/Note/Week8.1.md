@@ -93,7 +93,7 @@
     - Typically achieved by running GuestOS at a lower hardware priority level than VMM
   - Problem
     - Problematic on some architectures where privileged instructions do not trap when executed at de-privileged level
-- Primary/shadow structures
+- Primary/Shadow structures
   - What is?
     - VMM maintains shadow copies of critical structures whose primary versions are manipulated by the GuestOS
     - Primary copies needed to insure correct versions are visible to GuestOS
@@ -108,13 +108,13 @@
 
 ### Aspects of VMM
 
-
-
 #### Full virtualisation
 
 - What is?
   - allow an unmodified guest OS to run in isolation by simulating full hardware (e.g. VMWare)
   - Guest OS has no idea it is not on physical machine
+  - ![image-20200608182903922](assets/image-20200608182903922.png)
+  - OS code will be trapped by VMM
 
 - Pros
   - Guest is unaware it is executing within a VM
@@ -131,6 +131,8 @@
 - What is?
   - VMM/Hypervisor exposes special interface to guest OS for better performance. Requires a modified/hypervisor-aware Guest OS (e.g. Xen)
   - Can optimise systems to use this interface since not all instructions need to be trapped/dealt with
+  - ![image-20200608183029109](assets/image-20200608183029109.png)
+  - OS instruction call directly to VMM layer and be replaced there
 - Pros
   - Lower virtualisation overheads, so better performance, e.g. Xen
 - Cons
@@ -219,9 +221,11 @@
 
 - Conventionally page tables store the logical page number and physical page number mappings
   - ![image-20200608181037953](assets/image-20200608181037953.png)
+  - ![image-20200608185909067](assets/image-20200608185909067.png)
 
 - In VMM case, VMM maintains shadow page tables in lock-step with the page tables. 
   - ![image-20200608181441391](assets/image-20200608181441391.png)
+    - In this case, one OS represent in blue, the other in green
   - Additional management overhead is added.
 
 #### Live migration
