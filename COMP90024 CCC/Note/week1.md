@@ -59,3 +59,25 @@
   - Security
     - Public key infrasturctures
 
+
+
+## Comparison between Grid/Cluster/Cloud Computing
+
+## Grid computing
+
+- Refer to the top
+
+
+
+### Cluster Computing
+
+- Clusters tend to be tightly coupled, e.g. a bunch of servers in a rack with high speed interconnects
+- Example
+  - Super computer
+
+
+
+### Cloud Computing
+
+- Refer to week 5
+- Cloud computing is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources(networks, servers, storage, applications, services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.
