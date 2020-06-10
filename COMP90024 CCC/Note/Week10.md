@@ -105,20 +105,30 @@
 
 ## Other Challenges
 
-### Single sign-on (==TODO== add more detail from the lecture)
+### Single sign-on
+
+- Define
+  - When you login The university of Melbourne Cloud, you could also access the amazon cloud
 
 - The Grid model needed
 - Currently not solved for Cloud-based IaaS
-- Non-Cloud developers to define/support this
+- Non-Cloud developers to define/support this, does not auto support out of the box.
 
 
 
 ### Auditing
 
+- Logging the actions by each user
+  - When bad thing happen, we have the record
+
 - Logging, intrusion detection, auditing of security in external computer facilities
   - Well established in theory and practice and for local systems
     - Less mature in Cloud environments
   - Tools to support generation of diagnostic trails
+- Problem
+  - The record are distributed most of time
+- Solution
+  - Use block-chain ledger to provide confidentiality of the log
 
 
 
@@ -135,7 +145,7 @@
 
 ### Liability
 
-
+- Using contract to state the risk
 
 
 
