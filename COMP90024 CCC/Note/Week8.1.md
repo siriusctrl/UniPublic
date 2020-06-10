@@ -231,3 +231,6 @@
 #### Live migration
 
 - Have continuity of service during data moving
+- Steps
+  - ![image-20200610160541581](assets/image-20200610160541581.png)
+
