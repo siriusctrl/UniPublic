@@ -219,7 +219,7 @@
 
 - Decomposition of the original task into smaller one
 - Strategies
-  - Master-worker
+  - Master-worker/task farming
     - Master decomposes the problem into small tasks, distributes to workers and gathers partial results to produce the final result
     - ![image-20200606224408873](assets/image-20200606224408873.png)
   - Single-Program Multiple-Data (SPMD)

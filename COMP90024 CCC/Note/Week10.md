@@ -32,6 +32,20 @@
 - Not checking what user is allowed to do, only that we know (can check) who they are
 - Masquerading always a danger
 - Public key infrastructures (PKI) underpins many systems
+- Federated authentication
+  - Try to access a resources but authenticate your identity somewhere else
+  - You login credential shared by the federation
+- Shibboleth model (Decentralised Authentication)
+  - ![image-20200610161324054](assets/image-20200610161324054.png)
+  - Trust is the essential part
+  - Pros
+    - Powerful and convenient since you only need on username and password to login and access many resources
+  - Cons
+    - Protocols are static and not dynamic
+      - You can’t assign a random role to someone that let him to get access to the cancer database. (Example provided by Rich in Week 12 Zoom lecture2)
+  - Why don’t we this to access many other cloud-based system
+    - They may not ***Trust*** each other to do the authentication
+    - Since different organisation have different CA mechanisms.
 
 
 
@@ -62,6 +76,7 @@
   - Issuing certificates
     - Often need to delegate to local **<u>Registration Authority</u>**
       - Prove who you are
+      - **<u>RA</u>** is the individual organization who responsible for checking someone’s identity
   - Revoking certificates
     - Certificate Revocation List (CRL) for expired/compromised certificates
   - Storing, archiving
@@ -87,6 +102,10 @@
   - Provide conceptual framework for rules and regulations for resources to be offered/shared between VO members.
   - Different domains place greater/lesser emphasis on expression and enforcement of rules and regulations
 
+- Identity Provider
+  - The place you got authenticated
+  - ![image-20200610161324054](assets/image-20200610161324054.png)
+
 
 
 ### Technologies
@@ -108,6 +127,7 @@
 ### Single sign-on
 
 - Define
+  - Login once, but can access many more resources that potentially provided by other providers
   - When you login The university of Melbourne Cloud, you could also access the amazon cloud
 
 - The Grid model needed

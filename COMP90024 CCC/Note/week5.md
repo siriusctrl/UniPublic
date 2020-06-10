@@ -97,12 +97,12 @@
 
 ## Auto-Deployment -- Ansible
 
-- Reason for auto-deployment
+- Reason for auto-deployment (**comparison**)
   - We are easy to forget what software we installed, and what steps we took to configure the system
   - Manual process is error-prone, can be non-repeatable
   - Snapshots are monolithic
   - Manual deployment provides no record of what has changed
-- Automation provides
+- Automation provides (**advantages**)
   - A record of what you did
   - Knowledge about the system in code
   - Making the process repeatable

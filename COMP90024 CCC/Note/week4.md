@@ -30,3 +30,16 @@
 - Readability of code and hardware documentation
 - Compatibility of code and hardware
 
+### Terms from the exam
+
+- Data parallelization
+  - Split data into chunk and process each chunk in parallel (just like assignment 1)
+- Compute parallelization
+  - Computation is not bound by data, for example, you have a for loop that create thousands and thousands of threads but each of them should run independently
+- Wall-time
+  - The limit you say how long your program will run
+  - If too long
+    - Then others may suffer from resource starvation
+  - If too short
+    - The job may not finish in this short period
+
