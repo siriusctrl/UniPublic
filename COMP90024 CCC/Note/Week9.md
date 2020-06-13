@@ -208,7 +208,9 @@
 
   b. Apache Hadoop Distributed File System (HDFS) [3]
 
-  c. Apache Spark [3] Your answer should include the way in which these solutions implement MapReduce.
+  c. Apache Spark [3] 
+
+  Your answer should include the way in which these solutions implement MapReduce.
 
 - CouchDB
   - Advantages

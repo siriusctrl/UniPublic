@@ -115,7 +115,6 @@
   - Guest OS has no idea it is not on physical machine
   - ![image-20200608182903922](assets/image-20200608182903922.png)
   - OS code will be trapped by VMM
-
 - Pros
   - Guest is unaware it is executing within a VM
   - Guest OS need not be modified
@@ -123,6 +122,8 @@
   - Can run legacy OS
 - Cons
   - Can be less efficient
+- Example
+  - VMWare Workstation
 
 
 
@@ -139,6 +140,8 @@
   - Need to modify guest OS
   - Less portable
   - Less compatibility
+- Example
+  - Xen
 
 
 
@@ -154,6 +157,8 @@
   - Advanced implementation supports hardware assisted DMA, memory virtualisation
 - Cons
   - Needs hardware support
+- Example
+  - KVM
 
 
 
@@ -183,6 +188,8 @@
   - VMM runs directly on actual hardware (e.g. WMWare ESX server)
   - Boots up and runs on actual physical machine
   - VMM has to support device drivers, all HW
+- Example
+  - WMWare ESX Server
 
 
 
