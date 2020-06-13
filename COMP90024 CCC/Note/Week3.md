@@ -47,33 +47,64 @@
 - $S(N) = \frac{T(1)}{T(N)} \text{ which is the speed up}$ 
 - Proportion of speed up depends on parts of program that cannot be parallelised
 
+
+
 ### Amdahl’s Law
 
 - Basic Terms
   - $\sigma: \text{The time that costs by non-parallelisable part}$
   - $\pi :\text{The time that costs by parallelisable part}$
   - $N: \text{The number of processors}$
+  
 - $T(1) = \sigma + \pi: \text{Time for serial computation without enhanced by parallelism}$  
+
 - $T(N) = \sigma + \frac{\pi}{N}: \text{Time for N parallel computations with max enhanced by parallelism}$
+
 - $S = \frac{T(1)}{T(N)} = \frac{\sigma + \pi}{\sigma + \pi/N} = \frac{1 + \pi/\sigma}{1+(\pi/\sigma)\times(1/N)}$
+
 - $\pi/\sigma = \frac{1-\alpha}{\alpha} \text{: Time proportion between cost on parallelisable part and unparallelisable part}$ 
+  
   - $\alpha$ is the fraction of running time that sequential program spends on non-parallel parts of a computation 
+  
 - $S = \frac{1 + (1-\alpha)/\alpha}{1+(1-\alpha)/(N\alpha)} = \frac{1}{a + (1-\alpha)/N}\approx \frac{1}{\alpha}$ When $N$ is large
+
 - That is, if 95% of the program can be parallelized, the theoretical maximum speedup using parallel computing would be 20$\times$, no matter how many processors are used.
+
 - If the non-parallelisable part takes 1H, then no matter how many cores are used, it won’t complete in < 1H
+
 - Over-simplified real world scenario
+
+  - As it assumes a fixed problem size
+
+  
 
 ### Gustafson-Barsis’s Law
 
 - Different Terminologies
-  - $\pi :\text{The time that costs by parallelisable part for a single process}$
+  - $\pi :\text{Fixed parallel time per process}$
 - $T(1) = \sigma + N\pi: \text{Time for serial computation without enhanced by parallelism}$
 - $T(N) = \sigma + \pi: \text{Time for N parallel computations with max enhanced by parallelism}$
 - $S(N) = \frac{T(1)}{T(N)} = \frac{\sigma+N\pi}{\sigma+\pi} = \frac{\sigma}{\sigma+\pi}+\frac{N\pi}{\sigma + \pi}$
 - $\pi/\sigma = \frac{1-\alpha}{\alpha} \text{: Time proportion between cost on parallelisable part and unparallelisable part}$
 - $S(N) = \alpha+N(1-\alpha)=N-\alpha(N-1)$
 - Speed up S using N processes is given as a linear formula dependent on the number of processes and the fraction of time to run sequential parts
-- Faster (more parallel equipment available, larger problems can be solved in the same time)
+- It does not assume a fixed size problem, which conclude, 
+  - More parallel equipment available, larger problems can be solved in the similar time
+
+
+
+### Past Exam
+
+- [2016 Q2 B] A parallel program takes 120 seconds to run on 8 processors. The total time spent in the sequential part of the program is 12 seconds. What is the scaled speedup? [2]
+  - $\sigma = 12 \text{ and } \pi=120-12=108$
+  - $S(N) = \frac{12+8*108}{12+108}=7.3$
+  - Scaled speedup is 7.3
+- [... Q2 C]
+  -  $\frac{1-\alpha}{\alpha} = \frac{108}{12} = 9$
+  - $\alpha = 0.1$
+  - $S(N) = 0.1+8*(1-0.1)$ = 7.3
+
+
 
 ### Comparison
 
@@ -160,7 +191,7 @@
 
 
 
-## Problem of Distributed Systems
+## Problem of Distributed Systems (Challenges)
 
 ### Reliability
 
@@ -210,6 +241,24 @@
 ### Time is not the same for everyone
 
 - NTP synchronizes participating computers to within a few milliseconds of Coordinated Universal Time(UTC).
+
+
+
+### Past Exams
+
+- [2016 Q1] Cloud computing does not solve the fundamental challenges associated with large-scale distributed systems. Discuss. [8]
+  1. We still cannot have a global clock for each individual servers
+  2. Network latency still exist
+  3. Data transport still costly
+  4. No global clock (time ubiquitous)
+  5. We need to have a open interface for illegitimate user interact with us but the network is still insecure, namely network security and reliability problem still exist.
+  6. Bandwidth is still a limited resource, we can’t send request and get responds as quick as we want in some cases from the user perspective.
+  7. Network is heterogeneous
+- What are the problem that does solved by Cloud computing?
+  1. Scalability and elastic scaling
+  2. Easier software deployment process through snapshots/scripted deployments
+  3. More tools has been offered, including load balancer.
+  4. Geospatially distributed and easy to migrate applications 
 
 
 

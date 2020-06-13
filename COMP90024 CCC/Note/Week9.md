@@ -198,3 +198,38 @@
     - When RDD has to be written to a file
     - **Not** during transformations
 
+
+
+## Past Exam
+
+- [2016 Q3 A]  Big data is often associated with data having a range of properties including high volume, high velocity and high variety (heterogeneity). Discuss the advantages, disadvantages and suitability more generally of the following data solutions with regards to these big data properties:
+
+  a. CouchDB [3]
+
+  b. Apache Hadoop Distributed File System (HDFS) [3]
+
+  c. Apache Spark [3] Your answer should include the way in which these solutions implement MapReduce.
+
+- CouchDB
+  - Advantages
+    - NoSQL document-based database, suitable for high variety big data
+    - Can use shards and replicates to prevent single point of failure.
+    - MVCC for high availability even there is a network partition, which suit the data come at high velocity.
+  - Disadvantages
+    - MapReduce are used to generate view of data, not suitable for heavily data processing and analysis.
+- Hadoop
+  - Advantages
+    - It allows for the distributed processing of large data sets across clusters of computers using simple programming models which can easily process large amount of data.
+    - Apart from parallelism, Hadoop can quickly locate the place where data store and usually process the data at where it store. In this case, it could greatly reducing network traffic.
+    - Business organisations can make use of Hadoop MapReduce programming to have access to various new sources of data and also operate on different types of data, whether they are structured or unstructured. This allows them to generate value from all of the data that can be accessed by them. This suit the high variety of the big data.
+  - Disadvantages
+    - It does not have fine-grained control for each job and not good for complicated job such as big data machine learning
+- Spark
+  - Advantages
+    - Can perform complicated job using MapReduce which suit the need of big data analysis
+    - Reduce the latency inherent in the Hadoop approach for the execution of MapReduce job
+    - Lazy evaluated RDD during computation where could reduce cost of the job dramatically.
+    - Can have fine-grained control of the job perform comparing to the MapReduce in Hadoop.
+  - Disadvantages
+    - Not good for permanently storing the data, maintaining data consistency when the data are modified rapidly.
+

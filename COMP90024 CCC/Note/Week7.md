@@ -212,6 +212,12 @@
 - Reduce
   - Summarizes them until the result is obtained.
 
+### Advantages
+
+- Naturally parallel processing
+- Moving the process to where data are, greatly reducing network traffic as the data will usually be processed at the place it store.
+- Good scalability which you could expand the job to thousands of nodes
+
 
 
 

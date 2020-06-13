@@ -14,7 +14,7 @@
   - Project membership
   - firewall rules
 - Generic authorization system
-  - More refer to week10 ==TODO==
+  - More refer to week10 
 
 
 

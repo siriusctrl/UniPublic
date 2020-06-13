@@ -2,7 +2,7 @@
 
 ## Service-oriented Architectures
 
-### Service-oriented Architectures
+### Service-oriented Architectures(SoA)
 
 - A architecture is just the way different software components are distributed on computers, and the way in which they interact with each other.
 - When an architecture is completely contained within the same machine. Components can communicate directly. However, when components are distributed such a direct approach typically can not be used.
@@ -14,10 +14,17 @@
 
 - A set of externally facing services that a business wants to provide to external collaborators
 - An architectural pattern based on service providers, one of more brokers, and service requestors based on agreed service descriptions.
-
 - A set of architectural principles, patterns and criteria that support modularity, encapsulation, loose coupling, separation of concerns, reuse and composability.
 - A programming model complete with standards, tools and technologies that supports development and support of services
 - A middleware solution optimized for service assembly, orchestration, monitoring and management.
+
+
+
+### Past Exam
+
+- [2016 Q1 B] How has the evolution of service-oriented architectures supported Cloud computing?
+  - SoA is a set of architectural principles that support modularity, encapsulation, loose coupling, separation of concerns, reuse and composability which just suit cloud computing and can server as a design principle for breaking down the large services into small pieces and deploy on different computer but working as an integrity. 
+  - It is also a middleware solution optimized for service assembly, orchestration, monitoring and managements which suit the need for cloud computing.
 
 
 
@@ -35,7 +42,7 @@
 - Service reusability
   - Logic is divided into services with the intention of promoting reuse
   - Breaking big logic into small service that good for reuse
--  Service autonomy
+- Service autonomy
   - Services have control over the logic the encapsulate
 - Service statelessness
   - Services minimize resource consumption by deferring the management of stat information when necessary
@@ -128,13 +135,14 @@
     - or perform other operations on it
 
 - |      Action       |               HTTP METHOD                |
-     | :---------------: | :--------------------------------------: |
-     |  Create Resource  | PUT to a new URI POST to an existing URI |
-     | Retrieve Resource |                   GET                    |
-     |  Update Resource  |         POST to an existing URI          |
-     |  Delete Resource  |                  DELETE                  |
+  | :---------------: | :--------------------------------------: |
+  |  Create Resource  | PUT to a new URI POST to an existing URI |
+  | Retrieve Resource |                   GET                    |
+  |  Update Resource  |         POST to an existing URI          |
+  |  Delete Resource  |                  DELETE                  |
 
 - **PUT** should be used when target resource URL is known by the client.
+
 - **POST** should be used when target resource URL is server generated
 
 
@@ -148,40 +156,36 @@
     - Each resource can have one or more representations. Such as application/xml, application/json, text/html, etc. Clients and servers negotiate to select representation.
   - Self-descriptive messages
     - Requests and responses contain not only data but additional headers describing how the content should be handled.
+  - HATEOAS
+    - Hyper Media as the Engine of Application State
+    - Resource representations contain links to identified resources
+    - Resources and state can be used by navigating links
+      - links make interconnected resources navigable
+      - without navigation, identifying new resources is service-specific
+    - RESTful applications **<u>navigate</u>** instead of **<u>calling</u>**
+      - Representations contain information about possible traversals
+      - application navigates to the next resource depending on link semantics
+      - navigation can be delegated since all links use identifiers
+    - Making resources navigable is essential for HATEOAS
+      - RPC-oriented systems need to expose the available functions
+        - functions are essential for interacting with a service
+        - introspection or interface descriptions make functions discoverable
+      - ReSTful systems use a Uniform Interface
+        - no need to learn about functions
+        - To find resources
+          - find them by following links from other resources
+          - learn about them by using URI Templates
+          - understand them by recognizing representations
 
 - HTTP Methods can be 
   - **Safe**
     - Do not change, repeating a call is equivalent to not making a call at all 
     - GET , OPTION, HEAD
-  -  **Idempotent**
+  - **Idempotent**
     - Effect of repeating a call is equivalent to making a single call
     - *PUT*, *DELETE*
   - **Neither**
     - POST
-
-
-
-### ReST - HATEOAS
-
-- HATEOAS
-  - Hyper Media as the Engine of Application State
-- Resource representations contain links to identified resources
-- Resources and state can be used by navigating links
-  - links make interconnected resources navigable
-  - without navigation, identifying new resources is service-specific
-- RESTful applications **<u>navigate</u>** instead of **<u>calling</u>**
-  - Representations contain information about possible traversals
-  - application navigates to the next resource depending on link semantics
-  - navigation can be delegated since all links use identifiers
-- RPC-oriented systems need to expose the available functions
-  - functions are essential for interacting with a service
-  - introspection or interface descriptions make functions discoverable
-- ReSTful systems use a Uniform Interface
-  - no need to learn about functions
-  - To find resources
-    - find them by following links from other resources
-    - learn about them by using URI Templates
-    - understand them by recognizing representations
 
 
 
@@ -215,8 +219,11 @@
   | Storage       | Large                                                        | Small (most are reusable)                     |
 
 - In real world they can, however, co-exist
+
   - When deploying applications on the cloud, the base computation unit is a Virtual Machine. Usually Docker containers are deployed on top of VMs.
+
 - Containers not always better
+
   - ![image-20200607190603447](assets/image-20200607190603447.png)
 
 
@@ -277,4 +284,4 @@
     - consists of one or more replica tasks which are specified by users when first creating the service.
   - Task
     - A task in Docker Swarm mode refers to the combination of a single docker container and commands of how it will be run. 
-  - <img src="assets/image-20200607192935563.png" alt="image-20200607192935563"  />
+  - More parallel equipment available, larger problems can be solved in the similar time
