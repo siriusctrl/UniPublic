@@ -69,6 +69,7 @@
   - Including
     - Read data
     - Add two numbers
+
 - Popek and Goldgberg Theorem
 
 > For any conventional third generation computer, a virtual machine monitor may be constructed if the set of **<u>sensitive instructions</u>** for that computer is a subset of the set of **<u>privileged instruction</u>**.
@@ -81,6 +82,7 @@
   - Intel and AMD introduced extensions to make x86 virtualisable
     - AMD SVM (Secure Virtual Machine)
     - Intel VT (Virtualisation Technology)
+- All sensitive/privileged instructions have to be dealt with. Some will need to be emulated/translated, others can just happen depending on the mode and/or whether para-virtualisation is supported.
 
 
 

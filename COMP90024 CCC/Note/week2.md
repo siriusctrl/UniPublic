@@ -6,7 +6,11 @@
   - Mapping the sky with data from tele-scope
 - Cloud Computing in Different Domains
   - **High energy physics**
-    - 
+    - volume
+      - ~25 PB data per year
+    - volcity
+      - Basic filtering from 40 million events per second to 0.1 million events per second
+    - Two-stage data re-processing is performed several times a year on all data acquired since the LHC start-up
   - Astrophysics
   - **Macro-micro simulations**
   - Electronics

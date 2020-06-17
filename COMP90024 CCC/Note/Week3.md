@@ -195,7 +195,7 @@
 
 
 
-## Problem of Distributed Systems (Challenges)
+## Problem of Distributed Systems (Challenges/Wrong assumptions)
 
 ### Reliability
 
