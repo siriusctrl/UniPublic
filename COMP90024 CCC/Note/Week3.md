@@ -100,9 +100,13 @@
   - $S(N) = \frac{12+8*108}{12+108}=7.3$
   - Scaled speedup is 7.3
 - [... Q2 C]
-  -  $\frac{1-\alpha}{\alpha} = \frac{108}{12} = 9$
-  - $\alpha = 0.1$
-  - $S(N) = 0.1+8*(1-0.1)$ = 7.3
+  -  7.3 times faster, or
+  - $(7.3*120) - 120 = 6.3*120 = 756$ Seconds faster
+- [... Q2 D] why theoretical?
+  - Since extra overhead are introduced due to parallelisation, including
+    - Communications
+    - Extra variables introduced to deal with parallel aspects
+    - loops in parallisim
 
 
 
