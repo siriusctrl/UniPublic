@@ -216,22 +216,25 @@
   - Advantages
     - NoSQL document-based database, suitable for high variety big data
     - Can use shards and replicates to prevent single point of failure.
-    - MVCC for high availability even there is a network partition, which suit the data come at high velocity.
+    - Support unique index which helps to improve storage space when there is data duplication for high volume challenge
+    - The use of MapReduce in couchDB parallelise data processing from huge amount into a small amount way which can also helps to solve the high volume challenge
   - Disadvantages
-    - MapReduce are used to generate view of data, not suitable for heavily data processing and analysis.
+    - MapReduce is used to generate view of data, not suitable for heavily data processing and analysis.
 - Hadoop
   - Advantages
     - It allows for the distributed processing of large data sets across clusters of computers using simple programming models which can easily process large amount of data.
-    - Apart from parallelism, Hadoop can quickly locate the place where data store and usually process the data at where it store. In this case, it could greatly reducing network traffic.
-    - Business organisations can make use of Hadoop MapReduce programming to have access to various new sources of data and also operate on different types of data, whether they are structured or unstructured. This allows them to generate value from all of the data that can be accessed by them. This suit the high variety of the big data.
+    - Apart from parallelism, Hadoop can quickly locate the place where data store and usually process the data at where it store. In this case, it could greatly reducing network traffic and suit for high velocity data which no single server bottleneck.
   - Disadvantages
     - It does not have fine-grained control for each job and not good for complicated job such as big data machine learning
+    - Variety needs programming to tackle
 - Spark
   - Advantages
     - Can perform complicated job using MapReduce which suit the need of big data analysis
     - Reduce the latency inherent in the Hadoop approach for the execution of MapReduce job
     - Lazy evaluated RDD during computation where could reduce cost of the job dramatically.
     - Can have fine-grained control of the job perform comparing to the MapReduce in Hadoop.
+    - Supports large in memory analysis
+    - Typically used with HDFS to benefit from above two
   - Disadvantages
     - Not good for permanently storing the data, maintaining data consistency when the data are modified rapidly.
 
