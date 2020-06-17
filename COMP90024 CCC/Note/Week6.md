@@ -23,8 +23,12 @@
 ### Past Exam
 
 - [2016 Q1 B] How has the evolution of service-oriented architectures supported Cloud computing?
-  - SoA is a set of architectural principles that support modularity, encapsulation, loose coupling, separation of concerns, reuse and composability which just suit cloud computing and can server as a design principle for breaking down the large services into small pieces and deploy on different computer but working as an integrity. 
-  - It is also a middleware solution optimized for service assembly, orchestration, monitoring and managements which suit the need for cloud computing.
+  - SoA is a set of architectural principles that support modularity, encapsulation, loose coupling, separation of concerns, reuse and composability which just suit cloud computing and can server as a design principle for breaking down the large services into small pieces and deploy on different computer but working as an integrity.
+  - you have standardized interface for the service-oriented architectures
+    - it offers the autonomy
+    - you are providing interface that people/software can interact with
+  - Where it is helping cloud computing is every single cloud provider at the builder of the interface using different technologies i.e. you have to learn the programming language to do that and this can be a major bottleneck. 
+    - Adopting SOA like ReST can help to solve this problem. We have apis provided by openstack where you can interact with the cloud with the help of set of libraries for doing that.
 
 
 
@@ -95,6 +99,20 @@
 | :----------------------------------------------------------: | ------------------------------------------------------------ |
 | Centered around resources, and the way they can be manipulated (added, deleted, etc.) remotely | Built upon the Remote Procedure Call(RPC) paradigm (a language independent function call that spans another system) |
 | Actually ReST is more of a style to use HTTP than a separate protocol | While SOAP/WS is a stack of protocols that covers every aspect of using a remote service, from service discovery, to service description, to the actual request/response. Can use HTTP or other protocols. |
+
+
+
+### Past Exam
+
+- [2013 Q4] A) Compare and contrast Representational State Transfer (ReST) based web services and Simple Object Access Protocol (SOAP)-based web services for implementing service-oriented architectures(SoA). [8]
+  - They are different flavors of web services
+  - Complexity of SOAP
+    - Have <u>namespace</u> and <u>standardization</u> around us to do with the operation names of parameters
+    - SOAP uses WSDL which is an XML-based interface description language that describes the functionality offered by a web service. WSDL provides a machine-readable description of how the service can be called, what parameters it expects, and what results/data structures are.
+    - While ReST doesn't deal with complex WSDL. You can mix/match service models
+    - While ReST has no need to understand what methods mean. There is a very small subset of methods that are available in operation where you can do PUT, POST, GET, etc. This very limited vocabulary can greatly simplify understanding from developers who are implementing system to make client to interact with it.
+    - Too much standards compared to ReST
+  - SOAP is built upon the RPC while ReST is centered around resources, and the way they can be manipulated (add, delete, etc) remotely.
 
 
 
