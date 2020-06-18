@@ -32,7 +32,7 @@
 
 - A key-value store is a DBMS that allows the retrieval of a chunk of data given a key
   - Fast but crude
-  - example
+  - Example
     - Redis
     - PostgreSQL
 - A BigTable DBMS stores data in columns grouped into column families, with rows potentially containing different columns of the same family
@@ -137,7 +137,7 @@
 | complexity     | Higher                                                       | Lower                                                        |
 | Availability   | Lower                                                        | Higher                                                       |
 | Accessibility  | MongoDB software routers must be embedded in application servers | Can connected by any HTTP client                             |
-| Data Integrity | Losing two primary nodes in the MongoDB in this example implies losing write access to half the data, and possibly read access too, depending on the cluster configuration parameters and the nature of the lost node (primary or secondary) | Losing two nodes out of three in the CouchDB example implies losing access to 1/4 of data |
+| Data Integrity | Losing one nodes in the MongoDB in this example implies losing write access to half the data, and possibly read access too. | Losing two nodes out of three in the CouchDB example implies losing access to 1/4 of data |
 | Functionality  | Some features, such as unique indexes, are not supported in MongoDB sharded environments other than *obviously* the document id. | Can support this                                             |
 | CAP            | <u>**Two-phase commit**</u> for replicating data from primary to secondary. **<u>Paxos-like</u>** to elect a primary node in a replica-set. | MVCC                                                         |
 
@@ -176,7 +176,7 @@
 
 
 
-### Paxos -- Consistency and Partition
+### Paxos -- Consistency and Partition-Tolerance
 
 - In Paxos, every node is either a proposer or an accepter
   - A proposer proposes a value with timestamp

@@ -79,8 +79,6 @@
   - Gmail
   - MS Office 365
 
-
-
 ### PaaS
 
 - Example

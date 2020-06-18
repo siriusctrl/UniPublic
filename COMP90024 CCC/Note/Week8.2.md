@@ -30,7 +30,6 @@
     - XenAPI, Hyper-V, VMWare ESX
     - Docker
   - You are not binding with any specific solution
-- ==(The following not covered in detail in the lecture)==
 - API
   - Nova-api
     - Accepts/responds to end user API calls

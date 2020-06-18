@@ -159,7 +159,7 @@
   |  Update Resource  |         POST to an existing URI          |
   |  Delete Resource  |                  DELETE                  |
 
-- **PUT** should be used when target resource URL is known by the client.
+- **PUT** should be used when target resource URL is known by the client
 
 - **POST** should be used when target resource URL is server generated
 
