@@ -32,7 +32,7 @@
 
 - A key-value store is a DBMS that allows the retrieval of a chunk of data given a key
   - Fast but crude
-  - example
+  - Example
     - Redis
     - PostgreSQL
 - A BigTable DBMS stores data in columns grouped into column families, with rows potentially containing different columns of the same family
@@ -115,8 +115,9 @@
 ### MongoDB Cluster
 
 - ![image-20200608003142952](assets/image-20200608003142952.png)
-
-- Sharding is done at the replica set level, hence it involves more than one cluster
+- Sharding is done at the replica set level, hence it involves more than one cluster.
+- Every data node in a Replica set contains the complete shard data
+- The configuration nodes contain the metadata that map documents to replica sets. The partitioning algorithm uses a configurable shard key field to distribute data across Replica Sets
 - Only the primary node in a replica set answers write requests, but read requests can depending on the specifics of the configuration.
   - Be answered by every node (including secondary nodes) in the set
 - Updates flow only from the primary to the secondary
@@ -136,8 +137,8 @@
 | complexity     | Higher                                                       | Lower                                                        |
 | Availability   | Lower                                                        | Higher                                                       |
 | Accessibility  | MongoDB software routers must be embedded in application servers | Can connected by any HTTP client                             |
-| Data Integrity | Lossing two nodes in the MongoDB in this example implies losing write access to half the data, and possibly read access too, depending on the cluster configuration parameters and the nature of the lost node (primary or secondary) | Losing two nodes out of three in the CouchDB example implies losing access to 1/4 of data |
-| Functionality  | Some features, such as unique indexes, are not supported in MongoDB sharded environments | Can support this                                             |
+| Data Integrity | Losing one nodes in the MongoDB in this example implies losing write access to half the data, and possibly read access too. | Losing two nodes out of three in the CouchDB example implies losing access to 1/4 of data |
+| Functionality  | Some features, such as unique indexes, are not supported in MongoDB sharded environments other than *obviously* the document id. | Can support this                                             |
 | CAP            | <u>**Two-phase commit**</u> for replicating data from primary to secondary. **<u>Paxos-like</u>** to elect a primary node in a replica-set. | MVCC                                                         |
 
 
@@ -175,7 +176,7 @@
 
 
 
-### Paxos -- Consistency and Partition
+### Paxos -- Consistency and Partition-Tolerance
 
 - In Paxos, every node is either a proposer or an accepter
   - A proposer proposes a value with timestamp
@@ -211,6 +212,12 @@
   - Distributes data across machines
 - Reduce
   - Summarizes them until the result is obtained.
+
+### Advantages
+
+- Naturally parallel processing
+- Moving the process to where data are, greatly reducing network traffic as the data will usually be processed at the place it store.
+- Good scalability which you could expand the job to thousands of nodes
 
 
 

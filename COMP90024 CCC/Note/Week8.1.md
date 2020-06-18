@@ -69,6 +69,7 @@
   - Including
     - Read data
     - Add two numbers
+
 - Popek and Goldgberg Theorem
 
 > For any conventional third generation computer, a virtual machine monitor may be constructed if the set of **<u>sensitive instructions</u>** for that computer is a subset of the set of **<u>privileged instruction</u>**.
@@ -81,6 +82,7 @@
   - Intel and AMD introduced extensions to make x86 virtualisable
     - AMD SVM (Secure Virtual Machine)
     - Intel VT (Virtualisation Technology)
+- All sensitive/privileged instructions have to be dealt with. Some will need to be emulated/translated, others can just happen depending on the mode and/or whether para-virtualisation is supported.
 
 
 
@@ -115,7 +117,6 @@
   - Guest OS has no idea it is not on physical machine
   - ![image-20200608182903922](assets/image-20200608182903922.png)
   - OS code will be trapped by VMM
-
 - Pros
   - Guest is unaware it is executing within a VM
   - Guest OS need not be modified
@@ -123,6 +124,8 @@
   - Can run legacy OS
 - Cons
   - Can be less efficient
+- Example
+  - VMWare Workstation
 
 
 
@@ -139,6 +142,8 @@
   - Need to modify guest OS
   - Less portable
   - Less compatibility
+- Example
+  - Xen
 
 
 
@@ -154,6 +159,17 @@
   - Advanced implementation supports hardware assisted DMA, memory virtualisation
 - Cons
   - Needs hardware support
+- Example
+  - KVM
+
+
+
+#### Difference between HW and SW virtualisation in treating shadow page table
+
+- <u>Performance</u> is a major advantage of HW virtualisation. 
+- The hypervisor maintains shadow page tables and having this approach adds additional management overheads.
+- By addressing this in hardware, the performance issues of GuestOS memory to actual physical memory and the actual instruction sets that require paging can tackled in a more performant manner.
+- Imagine if every single call to memory had to get processed in software - there would be large amounts of overheads for any/all GuestOSs that would degrade the performance of anyone using the Cloud.
 
 
 
@@ -183,6 +199,8 @@
   - VMM runs directly on actual hardware (e.g. WMWare ESX server)
   - Boots up and runs on actual physical machine
   - VMM has to support device drivers, all HW
+- Example
+  - WMWare ESX Server
 
 
 
@@ -234,3 +252,37 @@
 - Steps
   - ![image-20200610160541581](assets/image-20200610160541581.png)
 
+
+
+
+
+## Past Exam
+
+- Popek and Goldberg laid down the foundations for computer virtualization in their 1974 paper, Formal Requirements for Third Generation Architectures.
+
+  - a. Identify and explain the different types of classification of instruction sets for virtualization to occur according to the theorem of Popek and Goldberg. You should include the relationships between the instruction sets. [3]
+    - Privileged Instructions
+      - Instructions that trap if the processor is in user mode and do not trap in kernel mode
+    - Sensitive Instructions
+      - Different behaviours depending on whether in user or kernel mode
+    - Innocuous Instructions
+      - Instructions that are neither privileged nor sensitive
+    - For the virtualization to occur, it requires sensitive instructions is a subset of the set of privileged instructions. However, innocuous instructions do not need to be trapped and hence can be considered separately.
+  - b. Describe how these principles are realized by modern virtual machine monitors/hypervisors.[2]
+    - There are multiple strategy could be used, including De-privileging (trap-and-emulate) which requires sensitive and <u>privileged instructions to the trapped and dealt with</u>
+    - Primary/Shadow structures
+      - What is?
+        - VMM maintains shadow copies of critical structures whose primary versions are manipulated by the GuestOS
+        - Primary copies needed to insure correct versions are visible to GuestOS
+    - Memory traces (common strategy)
+      - What is?
+        - Controlling access to memory so that the shadow and primary structure remain coherent
+      - Advantages
+        - Write-protect primary copies so that update operations cause page faults which can be caught, interpreted and addressed
+          - Someones app/code doesn’t crash the server you are using
+  - d. Describe the role of a virtual machine manager/hypervisor with regards to memory management and shadow page tables. [3]
+    - We use memory virtualisation to achieve the goal. Conventionally page tables store the logical page number and physical page number mappings.
+    - VMM maintains shadow page tables in lock-step with the page tables. 
+    - In full virtualisation, the privileged instructions will be trapped and apply the changes to the virtual memory. The changes will be later emulate the effect onto the real memory.
+
+  

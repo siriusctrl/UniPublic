@@ -41,11 +41,44 @@
   - Pros
     - Powerful and convenient since you only need on username and password to login and access many resources
   - Cons
-    - Protocols are static and not dynamic
+    - Protocols are <u>**static**</u> and not dynamic
       - You can’t assign a random role to someone that let him to get access to the cancer database. (Example provided by Rich in Week 12 Zoom lecture2)
-  - Why don’t we this to access many other cloud-based system
+  - Why don’t we use this to access many other cloud-based system
     - They may not ***Trust*** each other to do the authentication
     - Since different organisation have different CA mechanisms.
+
+
+
+### Past Exam
+
+- [2015 Q5 B b)] Why isn’t Shibboleth used to access Cloud-based systems more generally?
+  - <u>Static federation</u> as mentioned above
+  - <u>Trust</u>
+  - No single CA
+- [2015 Q5 A] There are many open challenges in delivering secure Clouds. Describe some of the technical and non-technical issues that currently exist for development and delivery of security-oriented Clouds. [4]
+  - <u>Technical issue</u>
+    - Authorisation
+    - Trust, where let the customer trust the cloud provider that data is secured to be stored on that
+    - API
+    - Single sign-on
+      - Login once, but can access many more resources that potentially provided by other providers
+      - The grid model and Shibboleth model needed
+      - Currently not solved for cloud-based IaaS
+  - <u>Non-techincal issues</u>
+    - Business issue
+      - Government won’t allow medical data stored on cloud like AWS because it might be backup in somewhere else
+    - Sensitive issue
+    - Policy issue
+    - liability
+      - Using contract to state the risk when put data here
+    - licensing
+      - Challenges with the cloud delivery model
+      - Many license models
+        - Per user
+        - Per server
+        - Per organisation
+        - Floating licenses
+        - Fixed to machines
 
 
 
@@ -77,6 +110,7 @@
     - Often need to delegate to local **<u>Registration Authority</u>**
       - Prove who you are
       - **<u>RA</u>** is the individual organization who responsible for checking someone’s identity
+      - A registration authority (RA) is an authority in a network that verifies user requests for a <u>digital certificate</u> and tells the certificate authority (CA) to issue it.
   - Revoking certificates
     - Certificate Revocation List (CRL) for expired/compromised certificates
   - Storing, archiving
@@ -139,20 +173,21 @@
 ### Auditing
 
 - Logging the actions by each user
-  - When bad thing happen, we have the record
-
+  
+- When bad thing happen, we have the record
+  
 - Logging, intrusion detection, auditing of security in external computer facilities
   - Well established in theory and practice and for local systems
     - Less mature in Cloud environments
   - Tools to support generation of diagnostic trails
 - Problem
+  
   - The record are distributed most of time
 - Solution
+  
   - Use block-chain ledger to provide confidentiality of the log
-
-
-
-
+  
+    
 
 ### Deletion
 
