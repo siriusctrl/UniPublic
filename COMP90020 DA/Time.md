@@ -1,4 +1,4 @@
-# Time and Global State
+# Time
 
 ## Introduction
 
@@ -179,6 +179,7 @@ $t$ Is the absolute frame of reference for time and is commonly different than $
 - Designed to externally synchronize clients via Internet to UTC
   - Hiarachical structure
   - ![image-20200620203349450](assets/image-20200620203349450.png) 
+  - The server on higher level (lower stratum) are more preferable than those on lower level (higher stratum)
 - The synchronization subnet can reconfigure if failures occur, if
   - A primary clock that loses its UTC source can become a secondary
   - A secondary that loses its primary can use another primary
@@ -218,4 +219,66 @@ $t$ Is the absolute frame of reference for time and is commonly different than $
 
 
 ## Logical Time
+
+### Assumptions
+
+- If two events occur in the same process, then they occurred in the order in which the process observed them
+- Whenever a message is sent between processes, the event of sending the message occurred before the event of receiving the message
+
+
+
+### Happened-Before Relation
+
+- Use $\rightarrow$ , happened-before
+- Let $a, b, c$ be three events. Then the following global happened-before orders hold
+  - HB1 (same process order)
+    - If $\exist$ process $p:a\rightarrow _Pb$, then $a \rightarrow b$
+  - HB2 (sending before receiving)
+    - For any message
+    - $m:a=send(m)\rightarrow b=receive(m)$
+  - HB3 (transitivity)
+    - If $a\rightarrow b$ and $b\rightarrow c$ then $a\rightarrow c$
+- $\rightarrow$ Is a partial order
+  - If two events $a$ and $b$ happen in different processes which do not exchange messages, then a and b are neither $a\rightarrow b$ nor $b\rightarrow a$
+  - We consider them as run in parallel
+- ![image-20200620224342225](assets/image-20200620224342225.png)
+
+
+
+### Lamport’s Logical Clock
+
+- Each process $p_i$ has a logical clock $L_i$ and initialized to 0
+- LC1
+  - $L_i$ Is incremented by 1 before each event at process $p_i$
+- LC2
+  - If event $a$ is $send(m)$ by process $p_i$, then message $m$ contains a timestamp $t=L_i(a)$
+  - Upon receiving message $m$, process $p_j$ sets $L_j=max(L_j, t)$, then applies LC1 to account for the $receive(m)$ event.
+    - max of the current logical clock or the event sending process’ clock
+- NOTE
+  - $L(a)<L(b)$ **<u>does not</u>** imply $a \rightarrow b$
+    - An event occurring earlier does not mean that it’s the cause of a later event
+
+
+
+### Vector Clocks
+
+- For a system with N processes, vector clock $V_i$ at process $p_i$ is an array of N integers
+- Rules
+  - VC1
+    - Set $V_i[j]=0$ for $i,j=1..N$
+  - VC2
+    - Before $p_i$ timestamps an event is sets $V_i[I] \mathrel{+}= 1$
+  - VC3
+    - $p_i$ carrying $t=V_i$ on every message it sends
+  - VC4
+    - When $p_i$ receives $t$ in a message, it set $V_i[j]=max(V_i[j], t[j]) \text{ for } j=1..N$
+
+- Comparison
+  - $V=V’ \iff V[j]=V’[j] \text{ for } j=1..N$
+  - $V\le V’ \iff V[j]\le V’[j] \text{ for } j=1..N$
+  - $V < V’ \iff V[j] \leq V’[j] \and V'\neq V' \text{ for } j=1..N$
+- $a \rightarrow b \iff V(a) < V(b)$
+- $a \text{ }|| \text{ } b$ 
+  -  If neither $V(a) \le V(b)$ nor $V(b) \le V(a)$
+- ![image-20200620234326639](assets/image-20200620234326639.png)
 
