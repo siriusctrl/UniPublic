@@ -16,9 +16,55 @@
 
 ## Failure Detection
 
+- Unreliable failure detector
 
+  - When queried about a process, produces on of two values
 
+    - Unsuspected
 
+      - The detector has recently received evidence suggesting that the process has not failed
+      - a message was recently received from it
+      - May be inaccurate, the process may have failed since then
+      - Or just connection failed
+
+    - Suspected
+
+      - The detector has some indication that the process may have failed
+
+      - no message received in quite some time
+
+      - May be inaccurate, for example, the process could be functioning
+
+        correctly, but the communication link is down, or it could be running more slowly than expected
+
+  - Implementation
+
+    - Periodically, every $T$ seconds each process $p$ sends a heart beat message to every other process
+    - If a local failure detector at q does not receive heart beat message from p within T+D (D = estimated maximum transmission delay), then p is suspected.
+    - If message is subsequently received, p is declared OK
+
+  - Problems
+
+    - For small D, intermittent network performance downgrades will lead to suspected nodes
+
+    - For large D crashes will remain unobserved (crashed nodes will be
+
+      fixed before timeout expires)
+
+  - Solution
+
+    - Variable $D$ that reflects the observed network latencies
+
+- Reliable failure detector
+
+  - Unsuspected
+    - Potentially inaccurate as in unreliable detector
+    - We cannot 100% sure about if the process is not failed since the failure message may still on the way but the process actually crashed already.
+  - Failed
+    - Accurate determination that peer process has failed
+  - Only possible in synchronous network
+
+  
 
 ## Mutual Exclusion
 
