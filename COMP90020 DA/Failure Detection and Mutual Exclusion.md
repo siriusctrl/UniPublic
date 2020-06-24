@@ -1,4 +1,4 @@
-# Coordination and Agreement
+# Failure Detection and Mutual Exclusion
 
 ## Aims
 

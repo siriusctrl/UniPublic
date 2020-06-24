@@ -60,14 +60,32 @@ $t$ Is the absolute frame of reference for time and is commonly different than $
 
 ## Clock Synchronization
 
+### Why?
+
+- Know exact time of event occurred at a particular computer
+  - E-commerce scenario
+- Distributed algorithms depend on it
+  - Maintianing distributed data consistency
+    - The used of timestamps to serialize transactions
+  - Checking the authenticity of a request sent to a server
+  - Eliminating the processing of duplicate updates
+- Multiple frames of reference existing, causes discrepancy in time interval measurement
+  - Timing of physical events was thus proved to be relative to the observer
+- Measuring time is overall problematic as there is no global clock to refer to
+
+
+
 ### Synchronous System
 
 - Time to execute step of a process has known lower and upper bounds
+
 - Each message transmitted is received within a known bounded time
+  
   - We do not know $T_{trans}$ but we know its $max$ and $min$
+  
 - Each process has a local clock whose drift rate has a known bound
 
-
+  
 
 ### Asynchronous System
 
@@ -105,7 +123,7 @@ $t$ Is the absolute frame of reference for time and is commonly different than $
   - A single time server might fail
     - Use of a group of synchronized servers
   - It does not deal with faulty clocks
-    - ==todo==
+    - Cristian's method assumes that the provider server is correctly synchronised to a UTC source. If the provider's clock is faulty, all bets are off.
 
 
 
