@@ -54,7 +54,7 @@
 
 - Lost update
   - ![image-20200625115246327](assets/image-20200625115246327.png)
-  - The previous update has been over-written by other updates
+  - The previous update has been over-written by other updates which perform on old values
 
 - Inconsistent Retrieval
   - ![image-20200625115326564](assets/image-20200625115326564.png)
@@ -82,6 +82,7 @@
 ### Dirty Read
 
 - Interaction between a read operation in one transaction and an earlier write operation on the same object
+  - read a tentative value
 - Transaction that committed with a dirty read is not recoverable
 - ![image-20200625132531990](assets/image-20200625132531990.png)
 
@@ -283,8 +284,6 @@
 
 
 
-
-
 #### Hierarchic locks
 
 - Main idea
@@ -326,9 +325,175 @@
 ### 3 phases
 
 - Working phase
-  - 
+  - Transaction uses a tentative version of the objects it accesses
+  - <u>read</u> operations are performed immediately
+  - Keep two records of objects
+    - The <u>read</u> and <u>write</u> set of each transaction
 - Validation phase
-  - 
+  - At <u>closeTransaction</u> the coordinator validates the transaction
+  - If the validation is successful, the transaction can commit
+  - Otherwise, either the current transaction or conflict transaction need to abort
 - Update phase
-  - 
+  - If validated, the changes in its tentative versions are made permanent
+  - Read-only transactions can commit immediately after validation
+
+
+
+### Read-Write Conflict Rules
+
+- Ensure a particular transaction is serially equivalent w.r.t. all other overlapping transactions
+- Each transaction gets a transaction number when it starts validation, 
+  - issues closeTransaction (the number is kept if it commits)
+- Transaction number defines its position in time and a transaction finishes its working phase after all transactions with lower numbers 
+
+- ![image-20200625202723502](assets/image-20200625202723502.png)
+
+
+
+### Validation
+
+- Simplification
+  - Only one transaction may be in the validation and update phase at one time
+    - Could implement as critical section
+  - Rule 3 satisfied here
+  - Produces strict executions
+
+- Transaction number
+  - Current transaction number act like a pseudo-clock that ticks whenever a transaction completes successfully
+- Approach
+  - backward
+  - forward
+
+
+
+#### Backward Validation
+
+- Compare <u>current read set</u> with <u>previous overlapping write set</u>
+  - If intersection set is non empty
+    - Abort the current transaction
+  - else
+    - Pass validation
+- Properties
+  - Rule 1 (previous read check)
+    - Auto-satisfied as previous read already done before current validation
+  - Rule 2 (previous write check)
+    - This is what we check above, if not satisfy we abort
+    - Therefore, in update phase transaction should fulfill this already
+  - Write-only transaction could pass without checking
+
+
+
+#### Forward Validation
+
+- Compare <u>write set</u> with currently <u>active transaction read set</u>
+- Properties
+  - Rule 1
+    - This is what we examine above
+  - Rule 2
+    - Auto-satisfied as active transactions do not write until after current validating transaction has complete
+  - Read-only transaction could pass without checking
+
+
+
+#### Compare Backward and Forward
+
+|                                     | Backward Validation                                          | Forward Validation                                           |
+| ----------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| conflict                            | Transaction being validated has to abort                     | More flexible. We could:<br />1. Defer the validation until a later time<br />2. Abort all the conflicting active transactions and commit the transaction being validated<br />3. Abort the transaction being validated |
+| In general: read sets >> write sets | 1. Compares a possibly large read set against the old write sets<br />2. Overhead of storing old write sets | 1. Checks a small write set against the read sets of active transactions<br />2. Need to allow for new transactions starting during validation |
+
+
+
+#### Validation
+
+- Starvation
+  - Prevention of transaction ever being able to commit
+  - After a transaction is aborted, the client must restart it, but there is no guarantee it will ever succeed 
+  - Solution
+    - Should be given exclusive access by the use of a critical section protected by a semaphore if the same transaction is aborted repeatedly
+
+
+
+## Timestamp Ordering Concurrency Control
+
+- Idea
+
+  - Each operation in a transaction is validated when it is carried out 
+  - If an operation cannot be validated, the transaction is aborted
+  - Each transaction is given a unique timestamp when it starts
+    - Timestamp defines its position in the time sequence of transactions
+    - Timestamp represents a total order 
+
+- Validation rules (called <u>ordering rule</u> in slides)
+
+  - Write operation 
+    - Only valid if that object was last <u>read</u> and <u>written</u> by earlier transactions
+
+  - Read operation
+    - Only if last object was last <u>written</u> by an earlier transaction
+  - Assumes only one version of each object and restricts access to one transaction at a time
+
+- Rule Refinement (to enable tentative version)
+
+  - Enables concurrent access by transactions to objects
+  - Might require transaction waiting
+
+- Refined rule
+
+  - Tentative versions are committed in the order of their timestamps
+    - Wait if necessary
+  - Read operations wait for earlier transactions to finish their writes
+  - Only wait for earlier ones
+    - No deadlock
+  - Each read or write operation is checked with the conflict rules
+  - As usual write operations are in tentative objects
+  - ==Note:Have greater timestamp means later==
+  - ![image-20200625231956986](assets/image-20200625231956986.png)
+    - Must **<u>not write</u>** if 
+      - Some later transaction performed **<u>read</u>** operation to that object
+      - Some later transaction already committed its **<u>write</u>**
+      - ![image-20200626001040185](assets/image-20200626001040185.png)
+      - ![image-20200626004030110](assets/image-20200626004030110.png)
+    - Must <u>not read</u> if
+      - Abort
+        - Some later transaction committed **<u>write</u>** operation already to that object
+      - Wait until commit/about of
+        - the version of D with the maximum write timestamp which smaller than current timestamp
+      - ![image-20200626003927474](assets/image-20200626003927474.png)
+      - ![image-20200626004041005](assets/image-20200626004041005.png)
+
+- When coordinator receives a commit request
+
+  - Carries it out 
+    - because all operations have been checked for consistency with earlier transactions
+  - Committed versions of an object must be created in timestamp order
+  - The server may sometimes need to wait, but the client need not wait 
+  - To ensure recoverability, the server will save the waiting to be committed versions in permanent storage 
+  - In this case, it is strict
+    - The read rule delays each read operation until previous transactions that had written the object had committed or aborted 
+    - Writing the committed versions in order ensures that the write operation is delayed until previous transactions that had written the object have committed or aborted
+
+### Analysis
+
+- Avoid deadlocks, but is likely to suffer from restarts
+- ‘ignore obsolete write’ rule is an improvement 
+  - If a write is too late it can be ignored instead of aborting the transaction, because if it had arrived in time its effects would have been overwritten anyway 
+  - However, if another transaction has read the object, the transaction with the late write fails due to the read timestamp on the item
+
+
+
+## Comparison of Concurrency Control Methods
+
+- Pessimistic approach (detect conflicts as they arise) 
+  - Timestamp ordering
+    - Serialisation order decided statically
+    - Better if reads >> writes
+    - Abort immediately
+  - Locking
+    - Serilisation order decided dynamically
+    - Better if writes >> reads
+    - Waits but can get deadlock
+- Optimistic method
+  - All transactions proceed, but may need to abort at the end
+  - Efficient operations when there are few conflicts, but aborts lead to repeated work
 
