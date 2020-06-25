@@ -228,11 +228,11 @@ $t$ Is the absolute frame of reference for time and is commonly different than $
 - We can have
   - $T_{i-2}=T_{i-3}+t+o$
   - $T_{i}=T_{i-1}+t'+o$
-  - $d_i=t+t’=T_{i-2}-T_{i-3}+T_{I}-T_{i-1}$
+  - $d_i=t+t’=T_{i-2}-T_{i-3}+T_{i}-T_{i-1}$
   - $o = o_i + (t’-t)/2$ where $o_i=(T_{i-2}-T_{i-3}+T_{i-1}-T_{i})/2$
 - Accuracy will be
   - $o_i–d_i/2 \le O \le o_i + d_i/2$
-  - Since in worst case, $(t’-t)/2=\pm d_i/2$ if $t’=0$ or $t =0$
+  - Since in worst case, $(t’-t)/2=\pm \frac{d_i}2$ if $t’=0$ or $t =0$
 
 
 
@@ -285,7 +285,7 @@ $t$ Is the absolute frame of reference for time and is commonly different than $
   - VC1
     - Set $V_i[j]=0$ for $i,j=1..N$
   - VC2
-    - Before $p_i$ timestamps an event is sets $V_i[I] \mathrel{+}= 1$
+    - Before $p_i$ timestamps an event is sets $V_i[i] \mathrel{+}= 1$
   - VC3
     - $p_i$ carrying $t=V_i$ on every message it sends
   - VC4
