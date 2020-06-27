@@ -72,7 +72,8 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
 ### Why? (In the context of one phase commit)
 
 - Coordinator keeps sending workers a commit or abort request until all of them acknowledged that they had carried it out
-- Does not allow a coordinator to make a unilateral decision to  abort a transaction when a client requests a commit
+  - Very long waiting period, especially when someone crashed
+- Does not allow a coordinator to make a unilateral decision to  abort a transaction when a client requests a commit (but something goes wrong)
   - Servers do not have decision consensus process among themselves
   - Concurrcny control
     - Resolution of a deadlock can lead to aborting of a transaction
@@ -84,6 +85,7 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
 
 - Why
   - Allow any participant to choose to abort a transaction
+    - Reach consensus
   - General, inexpensive and widely used
 - Phase 1
   - Each participant votes
