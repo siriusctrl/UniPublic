@@ -1,7 +1,5 @@
 # Transactions and Concurrent Control
 
-
-
 ## Goals
 
 - The objects managed by a server must remain in a consistent state
@@ -82,7 +80,7 @@
 ### Dirty Read
 
 - Interaction between a read operation in one transaction and an earlier write operation on the same object
-  - read a tentative value
+  - read (and modify) a tentative value
 - Transaction that committed with a dirty read is not recoverable
 - ![image-20200625132531990](assets/image-20200625132531990.png)
 
@@ -101,15 +99,16 @@
 ### Premature writes
 
 - Overwriting uncommitted values
-- Example
+  - Mainly caused by using a “before image” to rollback
+  - Example
   - ![image-20200625134056362](assets/image-20200625134056362.png)
   - If T abort later, the U setBalance(110) will be covered by the “before image”
-
 - Cure
   - If a recovery scheme uses before image
     - Write operations must be delayed until earlier transactions that updated the same objects have either *committed* or *abort*
   - Strict executions of transactions
-    - Delay both <u>read</u> and <u>write</u> operations to avoid both dirty reads an premature writes 
+    - Delay both <u>read</u> and <u>write</u> operations until all transactions that previously wrote that object have either committed or aborted
+    - to avoid both dirty reads an premature writes
   - Tentative versions are used during progress of a transaction
     - Objects in tentative versions are stored in volatile memory
 
