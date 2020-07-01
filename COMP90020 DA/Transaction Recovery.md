@@ -2,12 +2,16 @@
 
 ## Why?
 
-- Ensuring that a server’s objects are durable
+- To ensure 
+  - failure atomicity
+    - Effects of transactions are atomic even when the server crashes.
+  - durability
+    - Objects are saved in permanent storage and will be available indefinitely thereafter
 - Service provides failure atomicity
   - Which means effects of transactions are atomic even when server crashes
 - To simplify
-  - We assume all running server store their object in volatile memory
-  - All of its committed objects are in a recovery file in permanent storage
+  - We assume all running server store their object in <u>volatile memory</u>
+  - All of its committed objects are in a recovery file in <u>permanent storage</u>
 - Recovery consists of restoring the server with the latest committed versions of all of its objects from its recovery file
 
 
@@ -21,7 +25,7 @@
   - To reorganize the recovery file to improve the performance of recovery
   - To reclaim storage space
     - In the recovery files
-- <u>Media failures</u> also need to be covered
+- <u>Media failures</u> also need to be covered, using mirrored disks or copies at a different location
   - Disk failures affecting the recovery file
   - Need another copy of the recovery file one an independent disk
 
@@ -30,7 +34,8 @@
 ### Intention list
 
 - Each server records an intentions list for each of its currently active transactions
-- An intentions list contains a list of the object references of all the objects that are altered by the transaction
+- An *intentions list* 
+  - contains a list of the object references of all the objects that are altered by the transaction
 - When a transaction commits, the intentions list is used to identify the objects affected
   - The committed version of each object is replaced by the tentative one
   - The new value is written to the server’s recovery file
@@ -63,12 +68,22 @@
 - Recovery of <u>objects</u>
 
   - ![image-20200626181756468](assets/image-20200626181756468.png)
-
-  - Start from end, restores values of objects with values from committed transactions until all of the objects have been restored.
-  - Need recovery procedure to be idempotent which we can perform the recovery as many times as we need
-
+- Uncommitted value should be ignore
+  - Idempotent since the server may crash in the middle of recovering
+  
 - Recovery of <u>two-phase commit</u>
   - ![image-20200626190716211](assets/image-20200626190716211.png)
+  - Procedure
+    1. In phase 1, 
+       - when the coordinator is prepared to commit add a $prepare$ entry to its recovery file
+         - Add another $coordinator$ entry to its recovery file
+       - Before a participant can vote $yes$, its recovery manager records a $participant$ entry to its recovery file and adds an $uncertain$ transaction status to its recovery file as a <u>forced write</u>.
+    2. In phase 2
+       - Adds either a $committed$ or an $aborted$ transaction status to its recovery file
+       - This must be a forced write, which will force all the buffered message to write to the recovery files.
+       - RM of participants add a $commit$ or $abort$ transaction status to their recovery files according to the message received from the coordinator.
+       - When a coordinator has received a confirmation from all of its participants
+         - Its RM adds a $done$ transaction status to its recovery file.
   - ![image-20200626190722793](assets/image-20200626190722793.png)
   - ![image-20200626190729763](assets/image-20200626190729763.png)
 
