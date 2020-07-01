@@ -282,6 +282,7 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
 - For a single server
   - Coordinator issue unique timestamp to each transaction
   - Versions of objects committed in timestamp order
+    - That access each object
   - Ensuers serializability
 - In distributed transactions
   - Coordinator issue globally unique timestamps to the client opening transcation
@@ -311,13 +312,14 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
     - In the **<u>first phase</u>** of two-phase commit protocol
   - Global validation needed
     - Serialize across servers
-  - May result in a deadlock
+  - May result in a (commitment) deadlock
     - As different server could validate different transaction at same time, where they may interleaving with each other
     - Independent servers may schedule transactions <u>**in different order**</u> as well
     - <img src="assets/image-20200626160703648.png" alt="image-20200626160703648" style="zoom:67%;" />
 
   - Global validation needed
     - Some premise that we made for single server optimistic concurrency control does not hold
+      - We need to both check rule 2 and rule 3 in backward validation for example.
     - There may be conflict between the transaction which currently being validation
 
 

@@ -57,6 +57,7 @@
 - Inconsistent Retrieval
   - ![image-20200625115326564](assets/image-20200625115326564.png)
   - The value has been updated when retrieval performed (on tentative value without full operation performed)
+  - The database remains consistent but the reading is inconsistent with the record in the database.
 
 
 
