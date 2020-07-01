@@ -131,40 +131,77 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
 
 
 
-#### Nested Transactions
+### Nested Transactions
 
 - Properties
+  
+  - The outermost transaction in a set of nested transactions is called the <u>top-level transaction</u>, others are known as <u>subtransactions</u>
+    - Using the following examples
+      - T is top-level transaction
+      - Others are subtransactions
+  - Parent transaction start early than child transaction, and end after all child transaction finish
+    - Assume no failures
   - Arranged in level
-    - Top level can open sub-transactions
+    - Sub-transactions can be open
   - Any depth of nesting
   - Objects in different servers can be invoked in parallel
   - Better performance
+  
 - Extra Actions
-  - ![image-20200626143926380](assets/image-20200626143926380.png)
-
+  
+- ![image-20200626143926380](assets/image-20200626143926380.png)
+  
 - Nested Rules
   - A parent can commit even if a sub-transaction aborts
   - If a parent aborts, then its sub-transactions must abort even if they provisionally may have committed
+  
 - Informations
   - Each coordinator has a list of its sub-transactions
-    - Each node could be a coordinator of other transactions
-  - At provisional commit, a sub-transaction reports its status and the status of its descendants to its parent
-  - If a sub-transaction aborts, it tells its parent
+
+  - When a nested transaction provisionally commits,
+
+    - it reports its status and the status of its descendants to its parent. 
+
+  - When a nested transaction aborts,
+
+    - it just reports abort to its parent without giving any information about its descendants.
+
   - Example
     - ![image-20200626144547172](assets/image-20200626144547172.png)
+    
     - ![image-20200626144554923](assets/image-20200626144554923.png)
+    
+    - In this case, $T_{21}\ and\ T_{22}$ are <u>**orphan**</u>
+    
+      - Since their parent aborted without passing information about them to the top-level transaction
+    
+        - The abort could be explicitly, or crashed
+    
+        - Their coordinator can however, make enquiries about the status of their parent by using $getStatus$ operation
+    
+          
 
-- Hierarchical Two-phase commit protocol
-  - ![image-20200626150208685](assets/image-20200626150208685.png)
-  - Coordinator of top-level transaction is coordinator
-  - Coordinator sends *<u>canCommit?</u>* to coordinator of sub-transactions one level down the tree
-  - Propagate to next level down the tree and so forth
-  - Aborted sub-transactions ignored
-  - Participants collect replies from children before replying
-  - If any provisionally committed sub-transaction found
-    - Prepares the object and votes **<u>Yes</u>**
-    - otherwise
-      - Assume must have crashed and vote **<u>No</u>**
+#### Hierarchical Two-phase commit protocol
+
+- ![image-20200626150208685](assets/image-20200626150208685.png)
+  - $trans$ is the TID of the top-level transaction, for use when preparing the data
+  - $subTrans$ is the TID for subTransactions, for example, in this case could be $T_1$.
+    - The participant receiving the call looks in its transaction list for any provisionally committed transaction or subtransaction matching this ID.
+- In this case, the two-phase commit protocol becomes a <u>multi-level nested protocol</u>
+  - Recursively ask whether it can commit or not
+- <u>Coordinator</u> sends *<u>canCommit?</u>* to coordinator of sub-transactions one level down the tree
+  - Coordinators are define as the server that the real transaction runs on
+  - For example, both $T_{12}$ and $T_{21}$ runs at server $N$. In this case, $N$ is the coordinator for both of them.
+  - That is why we need $subTrans$ in $canCommit?$ as only care, for example, the subtransaction of $T_1$, which only $T_{12}$ will be deal with in the server $N$.
+- Propagate to next level down the tree and so forth
+- Aborted sub-transactions ignored.
+  - Like $T_2$
+- Participants collect replies from children before replying
+- If any provisionally committed sub-transaction found
+  - Prepares the object and votes **<u>Yes</u>**
+  - otherwise
+    - Assume must have crashed and vote **<u>No</u>**
+
 - Timeout Actions in Nested 2PC
   - Issues
     - Participant has finished but has not yet received *<u>canCommit?</u>*
@@ -174,9 +211,32 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
     - Use *<u>getStatus</u>* on parent, whose coordinator should remain active for a while
     - If parent does not reply
       - abort
-- Flat two phase commit (alternative)
-  - The Root coordinator could directly contact every other node on the tree instead of only contacting its children
-  - 
+
+
+
+#### Flat two phase commit
+
+- In this approach, the coordinator of the top-level transaction sends $canCommit?$ messages to the coordinators of <u>all of the subtransactions</u> in the provisional commit list
+  - In this case, $T_1$ and $T_{12}$
+- A new version of commit in this case
+  - ![image-20200701175533905](assets/image-20200701175533905.png)
+  - The first value is the top-level TID where each coordinator could match it with the corresponding transactions
+  - However, in our case, both $T_{21}$ and $T_{12}$ has the same coordinator, if only TID is checked, both will be commit. However, we know $T_2$ has abort.
+  - Therefore, we need thee second value to check whether those sub-transactions have aborted ancestors in $abortList$
+    - Do not commit those, if so.
+  - The whole process could be described in
+    - ![image-20200701180043881](assets/image-20200701180043881.png)
+
+
+
+#### Comparison between hierarchic and flat
+
+- Hierarchic
+  - The participant only need look for subtransactions of its immediate parent
+  - Need to pass a series of messages down and up the tree in stages.
+- Flat
+  - The flat protocol needs to have the abort list in order to eliminate transactions whose parents have aborted
+  - It allows the coordinator of the top-level transaction to communicate directly with all of the participants
 
 
 
@@ -214,8 +274,6 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
   - Locks acquired independently
   - Cyclic dependencies may arise
   - Distributed deadlock detection and resolution needed
-
-
 
 
 
