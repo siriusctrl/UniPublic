@@ -451,13 +451,13 @@
   - ![image-20200625231956986](assets/image-20200625231956986.png)
     - Must **<u>not write</u>** if 
       - Some later transaction performed **<u>read</u>** operation to that object
-      - Some later transaction already committed its **<u>write</u>**
+      - Some later transaction already **committed** its **<u>write</u>**
       - ![image-20200626001040185](assets/image-20200626001040185.png)
       - ![image-20200626004030110](assets/image-20200626004030110.png)
-    - Must <u>not read</u> if
+    - <u>Read</u> rules
       - Abort
-        - Some later transaction committed **<u>write</u>** operation already to that object
-      - Wait until commit/about of
+        - Some later transaction **<u>committed write</u>** operation already to that object
+      - Wait until commit/abort of
         - the version of D with the maximum write timestamp which smaller than current timestamp
       - ![image-20200626003927474](assets/image-20200626003927474.png)
       - ![image-20200626004041005](assets/image-20200626004041005.png)
@@ -476,7 +476,7 @@
 ### Analysis
 
 - Avoid deadlocks, but is likely to suffer from restarts
-- ‘ignore obsolete write’ rule is an improvement 
+- ignore obsolete write’ rule is an improvement 
   - If a write is too late it can be ignored instead of aborting the transaction, because if it had arrived in time its effects would have been overwritten anyway 
   - However, if another transaction has read the object, the transaction with the late write fails due to the read timestamp on the item
 
