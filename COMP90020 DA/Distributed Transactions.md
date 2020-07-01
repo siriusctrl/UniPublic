@@ -310,7 +310,9 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
 ### Edge Chasing (Path Pushing)
 
 - Distributed approach to deadlock detection
+
 - Does not solve for phantom deadlock, but prevent single point of failure and have better scalability
+
 - Ideas
   - No global wait-for graph
   - Each server knows about some of the edges
@@ -344,5 +346,11 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
   - There may be multiple probe in the system which cause multiple transaction to abort
   - ![image-20200626171249897](assets/image-20200626171249897.png)
   - P5 sends probe to P2 as P2 are currently waiting for P3, in the meantime, P3, wants to access P1 but currently holding by P5. In this case, two probe message in the system and may cause both P3 and P5 to abort.
+
+- Solution
+
+  - Use timestamp (or something else) to give the transaction a priority.
+  - When a deadlock has been detected, the one with lower priority will be abort
+  - In this case, multiple probe will always abort the same transaction
 
   

@@ -17,7 +17,7 @@
 - Multiple processes are allowed to call an election <u>simultaneously</u>
   - All of them together must yield only a single leader
 - Processes have <u>unique identifiers</u>
-- At any point in time, a process is 
+- At any point in time, a process is
   - A participant
     - Engaged in some run of the election algorithm
   - A non-participant
