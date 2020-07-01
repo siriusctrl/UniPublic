@@ -32,11 +32,13 @@
 
 - Analysis
   - Integrity
-    - ![image-20200624153054109](assets/image-20200624153054109.png)
-  - Validity
-    - If a correct process multicasts message m, then it will eventually deliver m (liveness)
+    - A correct process $p$ delivers a (not corrupted) message at most once
+    - Delivered message = Message sent by process
+  - Validity (liveness)
+    - If a correct process multicasts message m, then it will eventually deliver m
   - Agreement
-    - ![image-20200624153119943](assets/image-20200624153119943.png)
+    - If a correct process delivers a message $m$, then all other correct processes in the target group of message $m$ will also deliver message m
+    - <u>All or nothing</u>
   - Agreement and validity together ensure overall liveness
     - If one process delivers a message $m$, then $m$ will eventually be delivered to all group members
 

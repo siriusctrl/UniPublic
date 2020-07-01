@@ -56,7 +56,7 @@
 
 - Inconsistent Retrieval
   - ![image-20200625115326564](assets/image-20200625115326564.png)
-  - The value has been updated when retrieval performed
+  - The value has been updated when retrieval performed (on tentative value without full operation performed)
 
 
 
@@ -384,7 +384,7 @@
 
 #### Forward Validation
 
-- Compare <u>write set</u> with currently <u>active transaction read set</u>
+- Compare <u>current write set</u> with currently <u>active transaction read set</u>
 - Properties
   - Rule 1
     - This is what we examine above

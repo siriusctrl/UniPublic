@@ -114,14 +114,24 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
     - Cost is proportional to 3N without counting *haveCommitted*
   - If failure occur
     - There may be arbitrarily many server and communication failures
-    - 2PC is guaranteed to complete eventually, but is is not possible to say when
+    - 2PC is guaranteed to complete eventually, but it is not possible to say when
       - Delays to participants in uncertain state
     - 3PCs design to alleviate such delays
-      - But require more messages and more rounds for normal case
+      - 3PC example
+        - ![image-20200701110722817](assets/image-20200701110722817.png)
+      - In 2PC, the state uncertain exists since a worker vote yes, but not yet received any results
+        - And don’t know how long it will receive it
+        - And cannot abort unilaterally
+      - That’s why we need 3PC which
+        - If the worker does not received a ACK for a certain period of time.
+          - The uncertain time only last until the coordinator ACK its message
+        - It knows that the coordinator may failed.
+        - Therefore, it can abort the transaction unilaterally.
+      - However, it requires more messages and more rounds for normal case
 
 
 
-#### For Nested Transactions
+#### Nested Transactions
 
 - Properties
   - Arranged in level
@@ -164,8 +174,9 @@ Need to achieve atomicity in distributed transaction. When a distributed transac
     - Use *<u>getStatus</u>* on parent, whose coordinator should remain active for a while
     - If parent does not reply
       - abort
-- Flatten two phase commit (alternative)
+- Flat two phase commit (alternative)
   - The Root coordinator could directly contact every other node on the tree instead of only contacting its children
+  - 
 
 
 
