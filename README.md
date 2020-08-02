@@ -11,5 +11,5 @@ Highly recommend using Typora to read the notes for the best experience and make
 
 ---
 
-There is also a work around for the Latex rendering in github, which a Google Chrome plugin may help on this.
+There is also a work around for the Latex rendering in github if using the doc online is more preferrable, which a Google Chrome plugin may help on this.
 https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima/related
