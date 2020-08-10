@@ -24,10 +24,10 @@
 ## Notations
 
 - $O$ is the lower bound of a function
-  - Where the original function $g$ grows no faster than (a constant time of) function $f$
+  - Where the original function $f$ grows no faster than (a constant time of) function $g$
   - $|f(n)| \leq c|g(n)|$
 - $\Omega$ Is the upper bound
-  - Where the original function $g$ grows no slower than (a constant time of) function $f$
+  - Where the original function $f$ grows no slower than (a constant time of) function $g$
 - If $O(g(n)) = \Omega(g(n))$ 
   - $\Theta(g(n)) = f(n)$
 
@@ -73,6 +73,7 @@
 
 - Any algorithm that runs on a <u>EREW PRAM</u> will run on a <u>CREW PRAM</u>
   - ==Why? Can we guarantee the correctness in this case?==
+  - Yes, since the <u>EREW PRAM</u> require to handle how multiple thread write to the same data location, however, this won’t happen at <u>CREW PRAM</u>
 - Any algorithm that runs on a <u>CREW PRAM</u> will run on a <u>COMMON CRCW PRAM</u>
 - 
 
