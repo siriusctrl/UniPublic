@@ -109,7 +109,7 @@
 
 #### Initialisation
 
-- The state of a model at the beginning of a simulation
+- The state of a model at the beginning of the simulation
 - Some modes are not sensitive to initial state
   - Their long term behaviour will converge
 - Some mode are sensitive to initial state
