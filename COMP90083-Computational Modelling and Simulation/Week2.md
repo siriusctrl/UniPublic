@@ -23,8 +23,6 @@
 
 ## ODD
 
-
-
 ### Overview
 
 #### Purpose
@@ -32,19 +30,22 @@
 - The purpose serves as a guide to what needs to be included in a model
 - A model is not just a model for particular system, it is also a model for specific purpose
   - Knowing what problem are addressed by the model is important
+- Do not describe anything about how the model works here, only what it is to be used for.
 
 
 
-#### Components
+#### Entities, state variables, and scales
 
 - Entities
 
-  - Things represented in the model and their characteristics. Typically, agents and the environment (local and global). Entities are characterised by static variables.
+  - Things represented in the model and their characteristics. Typically, agents and the environment (local and global). Entities are characterised by state variables.
 
 - State variable
 
   - Characteristics or attributes that define agents, environmental units, and the global environment
   - To characterize things normally vary between agents
+  - A state variable or attribute is a variable that distinguishes an entity from other entities of the same type or category, or traces how the entity changes over time. (Reading)
+  - State variables should be low level or elementary in the sense that they cannot be calculated from other state variables. (Reading)
 
 - Scales
 
@@ -78,19 +79,25 @@
 
 ### Design Concepts
 
-- How a model implements a set of basic agent-based model design principles
+- This section define how a model implements a set of basic agent-based model design principles
 - ![image-20200813195858011](assets/image-20200813195858011.png)
-
-
-
+- Basic principles
+  - General concepts, theories, hypotheses or modelling approaches
 - Emergence
-  - How system level behaviour occur from interaction between interaction between elements of the system or between agent in the model.
+  - How system level behaviour occur from interaction between elements of the system or between agent in the model.
 - Adaptation
   - How agent adapt its behaviour overtime based on set of rules.
+  - For example, the changing or environment will change the behaviours of our agents
 - Objectives
   - The guideline/function by which these agent adapt their behaviour
-- Learning/Prediction
+  - For example, maximise or minimise some things
+- Learning
   - How agent gather information around them, and learn to make decision to achieve objectives
+  - Comparing with adaptation, this learning usually require some extend of updates of knowledge of the agents about the environment.
+- Prediction
+  - Generally two types
+    - **Tacit prediction** is an assumption that an agent will seek out some resource because that will help meet it’s objective
+    - **Explicit prediction** is an explicit calculation of expected future value.
 - Sensing
   - The information of the world that available to agents.
 - interaction
@@ -102,6 +109,7 @@
   - Different class of agents in the model
 - Observation
   - As a user of the model, how we gather information about how that model is behaving, so that we can use these data to answer the question motivating our model.
+  - The model outputs that are needed in order to observe its dynamics and individual and system-level behaviour
 
 
 

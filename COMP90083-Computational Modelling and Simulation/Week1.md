@@ -5,20 +5,26 @@
 - A new language of thinking about and describing models
 - The software skills to implement, observe, test, control and analyse models
 - Strategies for designing and analysing models
-- We will explore an approach to simulation model known as agent-based models, which focus on representing the components of a system and their interactions.
+- We will explore an approach to simulation model known as agent-based models, which focusing on representing the components of a system and their interactions.
 
 
 
 ## Definitions
 
+### Agent
+
+- An autonomous individual element of computer simulation
+
+
+
 ### Model
 
 ![image-20200807004123849](assets/image-20200807004123849.png)
 - Model
-  - A representation of the real world system
-  - For some specific purposes
-  - The purpose define what we should include in the model in order to make it useful
+  - A representation of the real world system for some <u>specific purposes</u>
+    - The purpose define what we should include in the model in order to make it useful
   - Normally the model is **<u>simpler</u>** than the real system
+    - An abstracted description of a process, object or event (from the reading).
   - Even for a same thing people may build a model from different perspective
     - Some models of the earth
     - <img src="assets/image-20200807004717913.png" alt="image-20200807004717913" style="zoom:25%;" />
@@ -49,7 +55,8 @@
   - A subset of model (specific type of model)
     - Focusing on specific aspect of a model, specifically, the behaviour.
 - Computational model
-  - We design and implementation as a computer-based simulation to store and implement its behaviour.
+  - We design the implementation as a computer-based simulation to store and implement its behaviour.
+  - Is a model that takes certain input values, manipulates those inputs in an algorithmic way, and generates outputs.
 
 
 
@@ -59,15 +66,15 @@
 
 - The subject focusing on a specific type of simulation model, which is agent-based simulation model
 - We are focusing on the agent (component) of the system, and see how they behave and interact between the agent operating together generate the behavior of the system as a whole.
-- In contrast, we could write down a mathematical equation of the shape of those birds, however, we can obtain how each individual’s behavior operate as a whole system.
-- Another example is we could build a very simple statistical model about the weather-forecasting, however, we might not know the lower level factors that cause the weather to be like this.
+- In contrast, we could write down a mathematical equation of the shape of those birds, however, we can hardly obtain how each individual’s behavior operate as a whole system. 
+- Another example is we could build a very simple statistical model about the weather-forecasting, however, we might not know the lower-level factors that cause the weather to generate what we observed.
 
 - Be able to explain how system behavior emerged from lower level (agent level)
 - However, by introducing those low-level agent, we need much more extra computational powers.
 
 - | ML Model                                                     | Agent-Based Model                                            |
   | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | Focusing on the data, ant try to find the pattern in the data | Looks the underlined system, including the component, the structure, the behaviour of the system and trying to find how the behaviour that generate the observed data is produced |
+  | Focusing on the data, ant try to recognize a pattern within the data. | Looks the underlined system, including components, structure and behaviour of the system which trying to find how the behaviour that generate the observed data is produced. |
 
 
 
@@ -88,7 +95,7 @@
 ### Assemble hypotheses for essential processes and structures
 
 - We can research and brainstorm what needs to go into our model based on our question that found from the previous step
-- Use agile idea to start from a very simple model and gradually refine the model.
+- Use agile development idea to start from a very simple model and gradually refine the model.
 
 
 
